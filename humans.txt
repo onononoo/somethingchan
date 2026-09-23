@@ -1,7 +1,7 @@
 /* team */
 creator: kai
-mascot: kara eklund
-mascot art: hitsuji goods
+site owner's wife: kara eklund
+art: hitsuji goods
 license: mit (see license)
 site: https://kaieklund.vercel.app/
 repo: github -> somethingchan

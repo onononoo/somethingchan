@@ -1,7 +1,7 @@
 # somethingchan
 
 an authoritative and entirely wrong field guide to git, github, and gitlab. certified gem.
-made by hand by kai. mascot: kara eklund (art by hitsuji goods). zero javascript.
+made by hand by kai. site owner's wife: kara eklund (art by hitsuji goods). zero javascript.
 
 ## rule #1
 
@@ -22,7 +22,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `qa/` | the faq, as an imageboard: questions are threads, admin answers. catalog view, 3 themes, hide threads, quote previews, image expand — all css |
 | `ip/` | your ip address bouncing and dancing around the screen |
 | `soy/` | the gitjak soytionary: git, sharty and javascript terms, filter chips, gem/coal voting with a css-counted tally, a "nooo you can't just" panel, and a rosetta stone |
-| `kara/` | kara eklund, the official mascot: profile, filterable gallery with popover lightbox, and a hotspot map of her bag |
+| `kara/` | kara eklund, the site owner's wife: profile, filterable gallery with popover lightbox, and a hotspot map of her bag |
 | `arcade/` | gem-tac-toe (css win detection, all 8 lines), whack-a-javascript (css counter + css timer), and the soy slots. "new game" is a plain `<button type="reset">` |
 | `os/` | somethingos: a desktop made of `popover="manual"` windows — taskbar, start menu, notepad, ms-dos prompt, recycle bin, image viewer, minesweeper (css win/lose), a css uptime clock, and a recurring javascript.exe crash |
 | `map/` | a fake, decorative "ddos map": javascript-themed sources fire at somethingchan hq and the csp blocks them all. svg dot map, css arcs, smil packets, css counters |
