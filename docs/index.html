@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · docs</title>
+<link rel="icon" href="../assets/kara/favicon.png" type="image/png">
+<link rel="stylesheet" href="../css/somethingchan.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../css/docs.css">
+<link rel="stylesheet" href="../css/bland.css">
+<!--
+  /docs/ — how everything on somethingchan works, with live demos of each technique.
+  the changelog stepper at the bottom is generated from feed.xml.
+-->
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="toggle dark theme">
+<nav class="top" aria-label="site">
+  <a href="../index.html">home</a><a href="../index.html">secrets</a><a href="#overview">overview</a><a href="#techniques">techniques</a><a href="#matrix">matrix</a><a href="#changelog">changelog</a>
+  <a href="../status/">status</a><a href="../wiki/">wiki</a><a href="../qa/">qa</a><a href="../os/">os</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="hero">
+  <h1>somethingchan docs<img class="logo kara-logo" src="../assets/kara/avatar.webp" alt="kara eklund, mascot" width="44" height="44"></h1>
+  <p>how every part of the site works without javascript.</p>
+</header>
+
+<div class="docs">
+<aside class="dnav" aria-label="docs">
+  <b>start</b><a href="#overview">overview</a><a href="#rules">rule #1</a>
+  <b>techniques</b><a href="#t-csp">content-security-policy</a><a href="#t-checkbox">checkbox state</a><a href="#t-radio">radio groups</a><a href="#t-target">:target routing</a><a href="#t-has">:has() as logic</a><a href="#t-counters">css counters</a><a href="#t-property">@property counters over time</a><a href="#t-popover">popover</a><a href="#t-details">details name=</a><a href="#t-reset">form reset</a><a href="#t-scripting">@media (scripting)</a><a href="#t-cycle">stacked links on a timer</a>
+  <b>reference</b><a href="#matrix">page × technique</a><a href="#changelog">changelog</a>
+</aside>
+<main>
+
+<section id="overview">
+  <h2>overview</h2>
+  <p>somethingchan is 19 pages of html and css. there is no build step, no framework and no javascript. interactivity comes from a small set of techniques that browsers already support. each one is documented below with the code and a working demo on this page.</p>
+</section>
+
+<section id="rules">
+  <h2>rule #1</h2>
+  <p>no javascript, anywhere. this is enforced two ways: nothing on the site is written in javascript, and every page sends <code>script-src 'none'</code> so the browser would refuse to run it anyway.</p>
+</section>
+
+<section id="techniques">
+  <h2>techniques</h2>
+  
+<section class="tech" id="t-csp">
+  <h3>content-security-policy</h3>
+  <p>every page ships a meta tag that forbids scripts. even if a script tag sneaks in, the browser refuses to run it. this is rule #1, enforced by the browser instead of by discipline.</p>
+  <div class="code">
+    <input type="radio" name="c-csp" id="c-csp-h" class="sr" checked><label for="c-csp-h">html</label>
+    <input type="radio" name="c-csp" id="c-csp-c" class="sr"><label for="c-csp-c">css</label>
+    <pre class="ch">&lt;meta http-equiv=&quot;content-security-policy&quot;
+      content=&quot;script-src &#x27;none&#x27;; object-src &#x27;none&#x27;&quot;&gt;</pre><pre class="cc">/* nothing. the browser does the work. */</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><p class="demo-note">this page has the tag. there is nothing to click: the demo is that nothing runs.</p></div>
+  <p class="used">used on: every page</p>
+</section>
+<section class="tech" id="t-checkbox">
+  <h3>checkbox state</h3>
+  <p>a hidden checkbox stores on/off. a label toggles it. css reads it with :checked, or with :has() from anywhere above it.</p>
+  <div class="code">
+    <input type="radio" name="c-checkbox" id="c-checkbox-h" class="sr" checked><label for="c-checkbox-h">html</label>
+    <input type="radio" name="c-checkbox" id="c-checkbox-c" class="sr"><label for="c-checkbox-c">css</label>
+    <pre class="ch">&lt;input type=&quot;checkbox&quot; id=&quot;lamp&quot; hidden&gt;
+&lt;label for=&quot;lamp&quot;&gt;toggle&lt;/label&gt;
+&lt;div class=&quot;bulb&quot;&gt;&lt;/div&gt;</pre><pre class="cc">.bulb { background: #ccc; }
+body:has(#lamp:checked) .bulb { background: #555; }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><input type="checkbox" id="d-lamp" class="sr"><label for="d-lamp" class="dbtn">toggle</label> <span class="bulb"></span></div>
+  <p class="used">used on: theme toggle, dungeon inventory, recycle bin, pledge</p>
+</section>
+<section class="tech" id="t-radio">
+  <h3>radio groups</h3>
+  <p>radios with the same name are mutually exclusive, which makes them a tab switcher, a filter, or a view mode.</p>
+  <div class="code">
+    <input type="radio" name="c-radio" id="c-radio-h" class="sr" checked><label for="c-radio-h">html</label>
+    <input type="radio" name="c-radio" id="c-radio-c" class="sr"><label for="c-radio-c">css</label>
+    <pre class="ch">&lt;input type=&quot;radio&quot; name=&quot;t&quot; id=&quot;a&quot; checked&gt;
+&lt;input type=&quot;radio&quot; name=&quot;t&quot; id=&quot;b&quot;&gt;
+&lt;label for=&quot;a&quot;&gt;a&lt;/label&gt; &lt;label for=&quot;b&quot;&gt;b&lt;/label&gt;</pre><pre class="cc">.pa, .pb { display: none; }
+:has(#a:checked) .pa,
+:has(#b:checked) .pb { display: block; }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><div class="rdemo"><input type="radio" name="d-r" id="d-ra" class="sr" checked><input type="radio" name="d-r" id="d-rb" class="sr"><label for="d-ra" class="dbtn">panel a</label> <label for="d-rb" class="dbtn">panel b</label><p class="pa">this is panel a.</p><p class="pb">this is panel b.</p></div></div>
+  <p class="used">used on: species tabs, /qa/ themes, catalog, gallery filter, soytionary</p>
+</section>
+<section class="tech" id="t-target">
+  <h3>:target routing</h3>
+  <p>a link to #something makes that element the :target. show only the targeted section and you have pages without a router.</p>
+  <div class="code">
+    <input type="radio" name="c-target" id="c-target-h" class="sr" checked><label for="c-target-h">html</label>
+    <input type="radio" name="c-target" id="c-target-c" class="sr"><label for="c-target-c">css</label>
+    <pre class="ch">&lt;a href=&quot;#p2&quot;&gt;go to page 2&lt;/a&gt;
+&lt;section id=&quot;p1&quot;&gt;…&lt;/section&gt;
+&lt;section id=&quot;p2&quot;&gt;…&lt;/section&gt;</pre><pre class="cc">section { display: none; }
+section:target { display: block; }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><p class="demo-note">used for every room in the dungeon and every tab on the wiki. this docs page uses it too: the sidebar links jump here.</p></div>
+  <p class="used">used on: dungeon rooms, wiki tabs, footnotes</p>
+</section>
+<section class="tech" id="t-has">
+  <h3>:has() as logic</h3>
+  <p>:has() lets a parent react to anything inside it. chain several and you get and; put a list inside and you get or. that is enough for win detection.</p>
+  <div class="code">
+    <input type="radio" name="c-has" id="c-has-h" class="sr" checked><label for="c-has-h">html</label>
+    <input type="radio" name="c-has" id="c-has-c" class="sr"><label for="c-has-c">css</label>
+    <pre class="ch">&lt;div class=&quot;game&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;c1&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;c2&quot;&gt;
+&lt;/div&gt;</pre><pre class="cc">.game:has(#c1:checked):has(#c2:checked) .msg::after {
+  content: &quot;both checked&quot;;
+}</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><div class="hdemo"><input type="checkbox" id="d-h1"><label for="d-h1">one</label> <input type="checkbox" id="d-h2"><label for="d-h2">two</label><p class="hmsg"></p></div></div>
+  <p class="used">used on: gem-tac-toe, minesweeper, merge puzzle, quiz</p>
+</section>
+<section class="tech" id="t-counters">
+  <h3>css counters</h3>
+  <p>counter-increment on checked inputs, counter() in generated content. the counter only sees elements that come earlier in the page, so put the readout after the inputs.</p>
+  <div class="code">
+    <input type="radio" name="c-counters" id="c-counters-h" class="sr" checked><label for="c-counters-h">html</label>
+    <input type="radio" name="c-counters" id="c-counters-c" class="sr"><label for="c-counters-c">css</label>
+    <pre class="ch">&lt;input type=&quot;checkbox&quot; class=&quot;v&quot;&gt;…
+&lt;p class=&quot;score&quot;&gt;&lt;/p&gt;</pre><pre class="cc">.box { counter-reset: n; }
+.v:checked { counter-increment: n; }
+.score::after { content: counter(n); }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><div class="cdemo"><input type="checkbox" class="cv"><input type="checkbox" class="cv"><input type="checkbox" class="cv"><input type="checkbox" class="cv"><p class="cscore"></p></div></div>
+  <p class="used">used on: tallies, vote counts, minesweeper, whack-a-js</p>
+</section>
+<section class="tech" id="t-property">
+  <h3>@property counters over time</h3>
+  <p>register a custom property as an &lt;integer&gt;, animate it, and feed it to a counter. that is a number that counts up with no script.</p>
+  <div class="code">
+    <input type="radio" name="c-property" id="c-property-h" class="sr" checked><label for="c-property-h">html</label>
+    <input type="radio" name="c-property" id="c-property-c" class="sr"><label for="c-property-c">css</label>
+    <pre class="ch">&lt;b class=&quot;tick&quot;&gt;&lt;/b&gt;</pre><pre class="cc">@property --n { syntax: &quot;&lt;integer&gt;&quot;; inherits: false; initial-value: 0; }
+.tick { animation: up 20s linear forwards; counter-reset: n var(--n); }
+.tick::after { content: counter(n); }
+@keyframes up { to { --n: 200; } }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><b class="pdemo"></b></div>
+  <p class="used">used on: shame counters, uptime clock, ddos map, npm install</p>
+</section>
+<section class="tech" id="t-popover">
+  <h3>popover</h3>
+  <p>the popover attribute plus a button with popovertarget gives you dialogs, menus and windows. popover=&quot;manual&quot; lets several stay open.</p>
+  <div class="code">
+    <input type="radio" name="c-popover" id="c-popover-h" class="sr" checked><label for="c-popover-h">html</label>
+    <input type="radio" name="c-popover" id="c-popover-c" class="sr"><label for="c-popover-c">css</label>
+    <pre class="ch">&lt;button popovertarget=&quot;w&quot;&gt;open&lt;/button&gt;
+&lt;div id=&quot;w&quot; popover&gt;hello&lt;/div&gt;</pre><pre class="cc">[popover] { padding: 1em; }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><button class="dbtn" popovertarget="d-pop">open a popover</button><div id="d-pop" popover class="dpop">this is a popover. <button class="dbtn" popovertarget="d-pop" popovertargetaction="hide">close</button></div></div>
+  <p class="used">used on: somethingos, kara lightbox, merge conflict dialog</p>
+</section>
+<section class="tech" id="t-details">
+  <h3>details name=</h3>
+  <p>details elements that share a name attribute form an exclusive accordion. opening one closes the others.</p>
+  <div class="code">
+    <input type="radio" name="c-details" id="c-details-h" class="sr" checked><label for="c-details-h">html</label>
+    <input type="radio" name="c-details" id="c-details-c" class="sr"><label for="c-details-c">css</label>
+    <pre class="ch">&lt;details name=&quot;faq&quot;&gt;&lt;summary&gt;a&lt;/summary&gt;…&lt;/details&gt;
+&lt;details name=&quot;faq&quot;&gt;&lt;summary&gt;b&lt;/summary&gt;…&lt;/details&gt;</pre><pre class="cc">/* none needed */</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><details name="d-acc"><summary>first</summary><p>opening the second closes this one.</p></details><details name="d-acc"><summary>second</summary><p>and the other way round.</p></details></div>
+  <p class="used">used on: command dictionary, faq, changelog</p>
+</section>
+<section class="tech" id="t-reset">
+  <h3>form reset</h3>
+  <p>a button with type=&quot;reset&quot; restores every input in its form. that is a &quot;new game&quot; button that html has had since the 90s.</p>
+  <div class="code">
+    <input type="radio" name="c-reset" id="c-reset-h" class="sr" checked><label for="c-reset-h">html</label>
+    <input type="radio" name="c-reset" id="c-reset-c" class="sr"><label for="c-reset-c">css</label>
+    <pre class="ch">&lt;form&gt;
+  &lt;input type=&quot;checkbox&quot;&gt;
+  &lt;button type=&quot;reset&quot;&gt;new game&lt;/button&gt;
+&lt;/form&gt;</pre><pre class="cc">/* none */</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><form class="rdemo2"><input type="checkbox" checked> <input type="checkbox"> <input type="checkbox" checked> <button class="dbtn" type="reset">reset</button></form></div>
+  <p class="used">used on: arcade, minesweeper</p>
+</section>
+<section class="tech" id="t-scripting">
+  <h3>@media (scripting)</h3>
+  <p>the scripting media feature tells css whether the browser would run javascript. a style inside &lt;noscript&gt; is a second signal. neither needs a script.</p>
+  <div class="code">
+    <input type="radio" name="c-scripting" id="c-scripting-h" class="sr" checked><label for="c-scripting-h">html</label>
+    <input type="radio" name="c-scripting" id="c-scripting-c" class="sr"><label for="c-scripting-c">css</label>
+    <pre class="ch">&lt;noscript&gt;&lt;style&gt;.on { display: none; }&lt;/style&gt;&lt;/noscript&gt;</pre><pre class="cc">@media (scripting: none) { .on { display: none; } }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><p class="sdemo"></p></div>
+  <p class="used">used on: /js/</p>
+</section>
+<section class="tech" id="t-cycle">
+  <h3>stacked links on a timer</h3>
+  <p>put several links in the same spot and make each visible for a slice of a fast animation. the click lands on whichever one is showing. that is a random link.</p>
+  <div class="code">
+    <input type="radio" name="c-cycle" id="c-cycle-h" class="sr" checked><label for="c-cycle-h">html</label>
+    <input type="radio" name="c-cycle" id="c-cycle-c" class="sr"><label for="c-cycle-c">css</label>
+    <pre class="ch">&lt;span class=&quot;r&quot;&gt;
+  &lt;a href=&quot;#a&quot;&gt;random&lt;/a&gt;
+  &lt;a href=&quot;#b&quot;&gt;random&lt;/a&gt;
+&lt;/span&gt;</pre><pre class="cc">.r a { animation: s .4s steps(1) infinite; }
+.r a + a { position: absolute; animation-delay: -.2s; }
+@keyframes s { 50% { visibility: hidden; } }</pre>
+  </div>
+  <div class="demo"><span class="demo-label">live demo</span><p class="demo-note">see "random article" on the <a href="../wiki/">wiki</a>.</p></div>
+  <p class="used">used on: wiki random article</p>
+</section>
+</section>
+
+<section id="matrix">
+  <h2>page × technique</h2>
+  <p class="used">which pages use which technique. hover a column heading for its full name.</p>
+  <div class="matrix"><table><thead><tr><th scope="col"></th><th scope="col" title="content-security-policy">csp</th><th scope="col" title="checkbox state">checkbox</th><th scope="col" title="radio groups">radio</th><th scope="col" title=":target routing">target</th><th scope="col" title=":has() as logic">has</th><th scope="col" title="css counters">counters</th><th scope="col" title="@property counters over time">property</th><th scope="col" title="popover">popover</th><th scope="col" title="details name=">details</th><th scope="col" title="form reset">reset</th><th scope="col" title="@media (scripting)">scripting</th><th scope="col" title="stacked links on a timer">cycle</th></tr></thead><tbody><tr><th scope="row"><a href="../index.html">home</a></th><td>●</td><td>●</td><td>●</td><td></td><td>●</td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../qa/">/qa/</a></th><td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">/kai/</th><td>●</td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../game.html">dungeon</a></th><td>●</td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../lab.html">lab</a></th><td>●</td><td>●</td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../js/">/js/</a></th><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td></tr><tr><th scope="row"><a href="../ip/">/ip/</a></th><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../shame/">/shame/</a></th><td>●</td><td></td><td></td><td></td><td>●</td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../soy/">/soy/</a></th><td>●</td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../kara/">/kara/</a></th><td>●</td><td></td><td>●</td><td></td><td></td><td>●</td><td></td><td>●</td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../arcade/">/arcade/</a></th><td>●</td><td></td><td>●</td><td></td><td>●</td><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td></td></tr><tr><th scope="row"><a href="../os/">/os/</a></th><td>●</td><td>●</td><td></td><td></td><td>●</td><td></td><td>●</td><td>●</td><td></td><td>●</td><td></td><td></td></tr><tr><th scope="row"><a href="../map/">/map/</a></th><td>●</td><td></td><td></td><td></td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row"><a href="../wiki/">/wiki/</a></th><td>●</td><td></td><td></td><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>●</td></tr><tr><th scope="row"><a href="../status/">/status/</a></th><td>●</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+</section>
+
+<section id="changelog">
+  <h2>changelog</h2>
+  <p class="used">step through every release. the list is generated from <a href="../feed.xml">feed.xml</a>.</p>
+  <div class="versions">
+    <input type="radio" name="ver" id="v0" class="sr"><input type="radio" name="ver" id="v1" class="sr"><input type="radio" name="ver" id="v2" class="sr"><input type="radio" name="ver" id="v3" class="sr"><input type="radio" name="ver" id="v4" class="sr"><input type="radio" name="ver" id="v5" class="sr"><input type="radio" name="ver" id="v6" class="sr"><input type="radio" name="ver" id="v7" class="sr"><input type="radio" name="ver" id="v8" class="sr"><input type="radio" name="ver" id="v9" class="sr"><input type="radio" name="ver" id="v10" class="sr"><input type="radio" name="ver" id="v11" class="sr"><input type="radio" name="ver" id="v12" class="sr"><input type="radio" name="ver" id="v13" class="sr"><input type="radio" name="ver" id="v14" class="sr"><input type="radio" name="ver" id="v15" class="sr" checked>
+    <div class="ver-labels"><label for="v0" title="v0.0.1 — pre-history">v0.0.1</label><label for="v1" title="v1.0.0 — initial commit">v1.0.0</label><label for="v2" title="v2.0.0 — css only">v2.0.0</label><label for="v3" title="v3.0.0 — the complexity update">v3.0.0</label><label for="v4" title="v4.0.0 — the extreme update">v4.0.0</label><label for="v5" title="v5.0.0 — kai edition">v5.0.0</label><label for="v6" title="v6.0.0 — lowercase edition">v6.0.0</label><label for="v7" title="v7.0.0 — imageboard edition">v7.0.0</label><label for="v8" title="v8.0.0 — the hate update">v8.0.0</label><label for="v9" title="v9.0.0 — the gem update">v9.0.0</label><label for="v10" title="v10.0.0 — kara edition">v10.0.0</label><label for="v11" title="v11.0.0 — arcade update">v11.0.0</label><label for="v12" title="v12.0.0 — somethingos">v12.0.0</label><label for="v13" title="v13.0.0 — ddos map + secrets">v13.0.0</label><label for="v14" title="v14.0.0 — somethingwiki">v14.0.0</label><label for="v15" title="v15.0.0 — bland update">v15.0.0</label></div>
+    <div class="ver-bar"><i></i></div>
+    <div class="ver-card vc0"><b>v0.0.1 — pre-history</b><small>thu, 01 jan 1970 00:00:00 gmt</small><p>epoch. the void. a lone .git folder.</p></div><div class="ver-card vc1"><b>v1.0.0 — initial commit</b><small>wed, 23 sep 2026 10:00:00 gmt</small><p>&quot;stuff&quot;</p></div><div class="ver-card vc2"><b>v2.0.0 — css only</b><small>wed, 23 sep 2026 11:00:00 gmt</small><p>removed javascript that never existed. added flip cards.</p></div><div class="ver-card vc3"><b>v3.0.0 — the complexity update</b><small>wed, 23 sep 2026 12:00:00 gmt</small><p>added mathml, smil, xslt, popovers, image maps, and a csp that bans scripts outright.</p></div><div class="ver-card vc4"><b>v4.0.0 — the extreme update</b><small>wed, 23 sep 2026 13:00:00 gmt</small><p>added the lab (3d cube, pipeline, merge resolver, svg filters), rebase dungeon text adventure, 404 page, icalendar holidays, certificate svg. still 0 bytes of javascript.</p></div><div class="ver-card vc5"><b>v5.0.0 — kai edition</b><small>wed, 23 sep 2026 14:00:00 gmt</small><p>new look matching kaieklund.vercel.app. mit license (c) 2026 kai. added .git explorer, css clock, /qa/, code review simulator, museum of waiting. still 0 bytes of javascript.</p></div><div class="ver-card vc6"><b>v6.0.0 — lowercase edition</b><small>wed, 23 sep 2026 15:00:00 gmt</small><p>everything is lowercase now, even the comments. added /js, which shouts at browsers with javascript enabled, using zero javascript. added a css-only environment report.</p></div><div class="ver-card vc7"><b>v7.0.0 — imageboard edition</b><small>wed, 23 sep 2026 16:00:00 gmt</small><p>the faq is now /qa/, a css-only imageboard: threads, admin capcodes, greentext, quote previews, catalog view, three themes. added /ip/, where your ip bounces and dances. still 0 bytes of javascript.</p></div><div class="ver-card vc8"><b>v8.0.0 — the hate update</b><small>wed, 23 sep 2026 17:00:00 gmt</small><p>added /shame/, the hall of javascript shame: rap sheet, framework graveyard, node_modules black hole, an npm install that never finishes, css-counted counters and a pledge. a javascript defender got banned on /qa/. the dungeon has a javascript goblin now. still 0 bytes of javascript.</p></div><div class="ver-card vc9"><b>v9.0.0 — the gem update</b><small>wed, 23 sep 2026 18:00:00 gmt</small><p>added /soy/, the gitjak soytionary: filterable terms, gem/coal voting with a css tally, a nooo-you-can&#x27;t panel and a rosetta stone. soyspeak everywhere. new /qa/ thread. still 0 bytes of javascript. we&#x27;re so back.</p></div><div class="ver-card vc10"><b>v10.0.0 — kara edition</b><small>wed, 23 sep 2026 19:00:00 gmt</small><p>kara eklund is now the official mascot. new /kara/ page with profile, filterable gallery and popover lightbox, and a hotspot map of her bag. she&#x27;s the /qa/ admin now, she&#x27;s in the favicon, and she shows up on every page. still 0 bytes of javascript.</p></div><div class="ver-card vc11"><b>v11.0.0 — arcade update</b><small>wed, 23 sep 2026 20:00:00 gmt</small><p>added /arcade/: gem-tac-toe with css win detection on all 8 lines, whack-a-javascript with a css counter and a 30 second css timer, and the soy slots. new game buttons are html form resets. hosted by kara. still 0 bytes of javascript.</p></div><div class="ver-card vc12"><b>v12.0.0 — somethingos</b><small>wed, 23 sep 2026 22:00:00 gmt</small><p>added /os/, a desktop made of html popovers: windows, taskbar, start menu, notepad, ms-dos prompt, recycle bin, image viewer, minesweeper with css win/lose detection, a css uptime clock and a recurring javascript.exe crash. still 0 bytes of javascript.</p></div><div class="ver-card vc13"><b>v13.0.0 — ddos map + secrets</b><small>wed, 23 sep 2026 23:00:00 gmt</small><p>added /map/, a fake live attack map: javascript-themed sources fire at somethingchan hq and the csp blocks every one. svg dot map, css arcs, smil packets, css counters. also added a secrets tab. it goes to the homepage. still 0 bytes of javascript.</p></div><div class="ver-card vc14"><b>v14.0.0 — somethingwiki</b><small>thu, 24 sep 2026 00:00:00 gmt</small><p>added /wiki/, a wikipedia-shaped encyclopedia: 6 articles with talk, edit and history tabs, infoboxes, footnotes, hover previews, citation needed tooltips and a random article button made of 6 links cycling faster than you can see. still 0 bytes of javascript.</p></div><div class="ver-card vc15"><b>v15.0.0 — bland update</b><small>thu, 24 sep 2026 01:00:00 gmt</small><p>the whole ui is quieter now: muted greys, one plain font, thin borders, no glitch or tilt (css/bland.css, loaded last on every page). every feature still works. added /status/, a plain status page with 90-day uptime bars, incident history and metrics. javascript is listed as a component and is always blocked. still 0 bytes of javascript.</p></div>
+  </div>
+</section>
+
+</main>
+</div>
+
+<footer class="site">
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan · <a href="../index.html">home</a> · mascot: kara eklund · art: hitsuji goods
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>

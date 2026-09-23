@@ -1,0 +1,121 @@
+/* =========================================================
+   docs.css — /docs/. a plain technical reference with live demos.
+   code tabs: radios. version stepper: radios + generated :has() rules.
+   the demos are the techniques themselves, running on this page.
+   ========================================================= */
+
+@property --dn { syntax: "<integer>"; inherits: false; initial-value: 0; }
+
+@layer sections {
+  .docs { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 28px; max-width: 1100px; margin: 0 auto; padding: 16px; }
+  .docs main { max-width: none; padding: 0; margin: 0; }
+  .dnav { position: sticky; top: 56px; align-self: start; font-size: 14px; max-height: calc(100vh - 70px); overflow: auto; }
+  .dnav b { display: block; font-size: 12px; color: var(--muted); margin: 14px 0 4px; font-weight: 500; }
+  .dnav a { display: block; padding: 2px 0; text-decoration: none; color: var(--fg); }
+  .dnav a:hover { text-decoration: underline; }
+  @media (max-width: 820px) { .docs { grid-template-columns: 1fr; } .dnav { position: static; max-height: none; columns: 2; } }
+  .docs section { scroll-margin-top: 60px; }
+  .docs h2 { margin-top: 36px; }
+  .tech { border-top: 1px solid var(--line); padding-top: 14px; margin-top: 18px; }
+  .tech h3 { margin: 0 0 4px; font-weight: 600; font-size: 17px; }
+  .tech:target h3 { text-decoration: underline; }
+
+  .sr { position: absolute; opacity: 0; pointer-events: none; }
+  .code { border: 1px solid var(--line); margin: 10px 0; }
+  .code label { display: inline-block; padding: 3px 12px; font: 13px var(--mono); cursor: pointer; color: var(--muted); border-right: 1px solid var(--line); }
+  .code input:checked + label { color: var(--fg); background: var(--card2); }
+  .code input:focus-visible + label { outline: 1px solid var(--fg); }
+  .code pre { margin: 0; padding: 10px 12px; border-top: 1px solid var(--line); font: 13px/1.5 var(--mono); overflow-x: auto; background: var(--card); display: none; }
+  .code:has(input[id$="-h"]:checked) .ch, .code:has(input[id$="-c"]:checked) .cc { display: block; }
+
+  .demo { border: 1px dashed var(--line); padding: 10px 12px; position: relative; }
+  .demo-label { position: absolute; top: -9px; left: 8px; background: var(--bg); padding: 0 4px; font-size: 11px; color: var(--muted); }
+  .demo-note { margin: 0; color: var(--muted); font-size: 14px; }
+  .used { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+  .dbtn { display: inline-block; border: 1px solid var(--line); padding: 1px 10px; cursor: pointer; background: var(--card); font: inherit; font-size: 14px; color: var(--fg); }
+  .sr:checked + .dbtn, .sr:focus-visible + .dbtn { outline: 1px solid var(--fg); }
+
+  .bulb { display: inline-block; width: 16px; height: 16px; border: 1px solid var(--line); background: var(--card); vertical-align: middle; }
+  body:has(#d-lamp:checked) .bulb { background: var(--fg); }
+  .rdemo .pa, .rdemo .pb { display: none; margin: 8px 0 0; }
+  .rdemo:has(#d-ra:checked) .pa, .rdemo:has(#d-rb:checked) .pb { display: block; }
+  .hmsg { margin: 6px 0 0; font-size: 14px; }
+  .hmsg::after { content: "check both."; color: var(--muted); }
+  .hdemo:has(#d-h1:checked):has(#d-h2:checked) .hmsg::after { content: "both checked. :has() said so."; color: var(--fg); }
+  .cdemo { counter-reset: dc; }
+  .cv:checked { counter-increment: dc; }
+  .cscore { margin: 6px 0 0; font-size: 14px; }
+  .cscore::after { content: "checked: " counter(dc) " / 4"; }
+  .pdemo { font: 600 22px var(--mono); animation: dn 60s linear forwards; counter-reset: dn var(--dn); }
+  .pdemo::after { content: counter(dn) " seconds since you opened this page"; font-size: 14px; font-weight: 400; }
+  @keyframes dn { to { --dn: 60; } }
+  .dpop { border: 1px solid var(--line); padding: 14px; background: var(--card); color: var(--fg); }
+  .sdemo::after { content: "javascript: on (css can tell)."; }
+  @media (scripting: none) { .sdemo::after { content: "javascript: off (css can tell)."; } }
+
+  .matrix { overflow-x: auto; border: 1px solid var(--line); }
+  .matrix table { border-collapse: collapse; font-size: 13px; min-width: 640px; width: 100%; }
+  .matrix th, .matrix td { border: 1px solid var(--line); padding: 4px 6px; text-align: center; }
+  .matrix thead th { writing-mode: vertical-rl; rotate: 180deg; font-weight: 400; color: var(--muted); height: 110px; white-space: nowrap; }
+  .matrix tbody th { text-align: left; font-weight: 500; white-space: nowrap; }
+  .matrix tbody tr:hover { background: var(--card2); }
+  .matrix td { color: var(--muted); }
+
+  .versions { border: 1px solid var(--line); padding: 12px; }
+  .ver-labels { display: flex; flex-wrap: wrap; gap: 4px; }
+  .ver-labels label { border: 1px solid var(--line); padding: 1px 8px; font: 13px var(--mono); cursor: pointer; }
+  .ver-bar { height: 3px; background: var(--card2); margin: 10px 0; }
+  .ver-bar i { display: block; height: 100%; background: var(--fg); transition: width .2s; }
+  .ver-card { display: none; }
+  .ver-card b { display: block; }
+  .ver-card small { color: var(--muted); }
+  .ver-card p { margin: 6px 0 0; }
+  .versions:has(#v0:checked) .vc0 { display: block; }
+  .versions:has(#v0:checked) label[for="v0"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v1:checked) .vc1 { display: block; }
+  .versions:has(#v1:checked) label[for="v1"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v2:checked) .vc2 { display: block; }
+  .versions:has(#v2:checked) label[for="v2"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v3:checked) .vc3 { display: block; }
+  .versions:has(#v3:checked) label[for="v3"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v4:checked) .vc4 { display: block; }
+  .versions:has(#v4:checked) label[for="v4"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v5:checked) .vc5 { display: block; }
+  .versions:has(#v5:checked) label[for="v5"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v6:checked) .vc6 { display: block; }
+  .versions:has(#v6:checked) label[for="v6"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v7:checked) .vc7 { display: block; }
+  .versions:has(#v7:checked) label[for="v7"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v8:checked) .vc8 { display: block; }
+  .versions:has(#v8:checked) label[for="v8"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v9:checked) .vc9 { display: block; }
+  .versions:has(#v9:checked) label[for="v9"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v10:checked) .vc10 { display: block; }
+  .versions:has(#v10:checked) label[for="v10"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v11:checked) .vc11 { display: block; }
+  .versions:has(#v11:checked) label[for="v11"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v12:checked) .vc12 { display: block; }
+  .versions:has(#v12:checked) label[for="v12"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v13:checked) .vc13 { display: block; }
+  .versions:has(#v13:checked) label[for="v13"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v14:checked) .vc14 { display: block; }
+  .versions:has(#v14:checked) label[for="v14"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v15:checked) .vc15 { display: block; }
+  .versions:has(#v15:checked) label[for="v15"] { background: var(--fg); color: var(--bg); }
+  .versions:has(#v0:checked) .ver-bar i { width: 6.2%; }
+  .versions:has(#v1:checked) .ver-bar i { width: 12.5%; }
+  .versions:has(#v2:checked) .ver-bar i { width: 18.8%; }
+  .versions:has(#v3:checked) .ver-bar i { width: 25.0%; }
+  .versions:has(#v4:checked) .ver-bar i { width: 31.2%; }
+  .versions:has(#v5:checked) .ver-bar i { width: 37.5%; }
+  .versions:has(#v6:checked) .ver-bar i { width: 43.8%; }
+  .versions:has(#v7:checked) .ver-bar i { width: 50.0%; }
+  .versions:has(#v8:checked) .ver-bar i { width: 56.2%; }
+  .versions:has(#v9:checked) .ver-bar i { width: 62.5%; }
+  .versions:has(#v10:checked) .ver-bar i { width: 68.8%; }
+  .versions:has(#v11:checked) .ver-bar i { width: 75.0%; }
+  .versions:has(#v12:checked) .ver-bar i { width: 81.2%; }
+  .versions:has(#v13:checked) .ver-bar i { width: 87.5%; }
+  .versions:has(#v14:checked) .ver-bar i { width: 93.8%; }
+  .versions:has(#v15:checked) .ver-bar i { width: 100.0%; }
+}

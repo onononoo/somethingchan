@@ -142,3 +142,50 @@ button.pop:hover, a.pop:hover, .btn:hover { background: var(--card2) !important;
 .tabs > label { background: var(--card2) !important; }
 .tabs > input:checked + label { background: var(--card) !important; }
 .stage .dot { border-width: 2px !important; }
+
+/* =========================================================
+   bland, pass 2 — even quieter. greys only, pictures in
+   grayscale until you hover them, no radius, no shadows,
+   no decorative motion. functional animation (games, timers,
+   counters, typing, bouncing ip) is left alone.
+   ========================================================= */
+:root:not(:has(.boardtitle)) {
+  --link: #444; --ok: #555; --warn: #777; --bad: #444; --git: #555; --hub: #666; --lab: #777;
+  --line: #dddddb; --dim: #dddddb; --card2: #efefee; --muted: #767674;
+}
+:root:has(#theme-flip:checked) { --link: #c8c8c6; --ok: #b0b0ae; --bad: #c8c8c6; --line: #3a3a3a; }
+
+/* pictures: grey until hovered or focused */
+img:not(.ico):not([src$=".svg"]), .ip iframe + * { filter: grayscale(1) contrast(.95); transition: filter .2s; }
+img:not(.ico):hover, a:focus img, button:focus img, label:hover img { filter: none; }
+
+/* flat everything */
+*, *::before, *::after { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
+.kara-logo, .bulb, .clock, .clock .pin, .pie, .pie span, .stage .dot, .spot, .hq circle { border-radius: 50% !important; }
+
+/* headings and weights */
+header.hero h1 { font-weight: 500 !important; font-size: 24px !important; }
+main > section > h2 { font-weight: 500 !important; font-size: 18px !important; }
+main > section > h2::before { content: none !important; }
+b, strong { font-weight: 600; }
+
+/* decorative motion off */
+main > section { animation: none !important; opacity: 1 !important; translate: none !important; }
+.progress { display: none !important; }
+.sticker.peek { animation: none !important; }
+.kara-says::after { animation-duration: 48s !important; }
+.flip:hover .flip-in, .flip:focus-within .flip-in { transition-duration: .01s; }
+.soyboard figure:hover { scale: 1 !important; }
+.kg button:hover, .kg button:focus-visible { translate: none !important; }
+
+/* status + map + qa: drop the last tints */
+.bars i { background: #c4c4c2 !important; }
+.bars i.minor { background: #8f8f8d !important; }
+.bars i.blocked { background: #e2e2e0 !important; }
+.overall::before { background: #888 !important; }
+.st.operational { color: var(--muted) !important; }
+.legend-st i { filter: grayscale(1); }
+.metric polyline { stroke: #777 !important; }
+:root:not(:has(#th-y:checked, #th-t:checked)):has(.boardtitle) { --name: #444; --quote: #6a6a68; --admin: #444; --link: #444; }
+.admin-icon, .dev-icon, .news-badge { background: #777 !important; }
+.dev .name, .dev .capcode { color: #444 !important; }

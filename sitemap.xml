@@ -16,5 +16,6 @@
   <url><loc>map/</loc></url>
   <url><loc>wiki/</loc></url>
   <url><loc>status/</loc></url>
+  <url><loc>docs/</loc></url>
   <url><loc>feed.xml</loc></url>
 </urlset>

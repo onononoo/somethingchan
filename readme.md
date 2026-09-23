@@ -28,6 +28,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `map/` | a fake, decorative "ddos map": javascript-themed sources fire at somethingchan hq and the csp blocks them all. svg dot map, css arcs, smil packets, css counters |
 | `wiki/` | somethingwiki: articles with talk / edit / history tabs (all `:target`), infoboxes, footnotes, hover previews, and a random-article link that is 6 links cycling on a css timer |
 | `status/` | a plain status page: 90-day uptime bars with hover details, incident history, metrics. javascript is a component and is always "blocked" |
+| `docs/` | how every technique works: code tabs, live demos, a page × technique matrix, and a changelog stepper generated from `feed.xml` |
 | `support.html` | source + donate |
 | `license.html` | the mit license, rendered like a man page |
 | `404.html` | lost object |
@@ -52,7 +53,7 @@ two independent animations bounce it like a dvd logo.
 | language | where |
 | --- | --- |
 | html | every page |
-| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css`, `css/status.css`, `css/bland.css` |
+| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css`, `css/status.css`, `css/bland.css`, `css/docs.css` |
 | svg + smil | `assets/*.svg`, inline graphs |
 | mathml | the math section on the home page |
 | xml + xslt | `feed.xml`, `feed.xsl`, `sitemap.xml` |
