@@ -1,0 +1,108 @@
+/* =========================================================
+   ip.css — /ip/. your ip, bouncing and dancing. no javascript.
+   the ip text comes from a sandboxed iframe (icanhazip.com).
+   css can't style inside it, so we use filters on the frame:
+   invert() makes it white-on-black, sepia+saturate+hue-rotate
+   paints it, and transforms make it move.
+   ========================================================= */
+
+@layer base, stage, bounce, dance, ui;
+
+@property --ty  { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --hue { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { text-transform: lowercase; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #000; color: #ddd; font: 16px/1.5 "times new roman", times, serif; }
+  a { color: #8ab4f8; }
+}
+
+@layer stage {
+  /* starfield: three layers of radial-gradient dots drifting at different speeds */
+  .stars, .stars::before, .stars::after { position: fixed; inset: -50%; pointer-events: none;
+    background-image: radial-gradient(1px 1px at 20px 30px, #fff, transparent), radial-gradient(1px 1px at 140px 90px, #ccc, transparent),
+      radial-gradient(1.5px 1.5px at 60px 160px, #fff, transparent), radial-gradient(1px 1px at 190px 20px, #aaa, transparent);
+    background-size: 220px 200px; animation: drift 90s linear infinite; opacity: .5; }
+  .stars::before { content: ""; inset: 0; background-size: 330px 290px; animation-duration: 60s; opacity: .7; }
+  .stars::after  { content: ""; inset: 0; background-size: 470px 410px; animation-duration: 35s; opacity: .9; }
+  @keyframes drift { to { transform: translate(-220px, -200px); } }
+
+  /* disco floor glow */
+  .glow { position: fixed; inset: auto -20% -40% -20%; height: 70vh; pointer-events: none; filter: blur(60px); opacity: .35;
+    background: conic-gradient(from 0deg, #f28b82, #fdd663, #81c995, #8ab4f8, #c58af9, #f28b82); animation: spin 8s linear infinite; border-radius: 50%; }
+  @keyframes spin { to { rotate: 360deg; } }
+}
+
+@layer bounce {
+  /* dvd-logo bounce: x and y animate independently with coprime durations,
+     so the path never quite repeats. --w/--h is the box size. */
+  /* --w is the frame (wide enough for ipv6); --vis is how wide an ipv4 actually looks.
+     bouncing uses --vis so the ip hits every wall. long ipv6 may clip briefly on the right. */
+  .ip { --w: 340px; --vis: 150px; --h: 40px; --s: 2; position: fixed; left: 0; top: 0; width: calc(var(--vis) * var(--s)); height: calc(var(--h) * var(--s));
+    animation: bx 7.3s linear infinite alternate, by 5.1s linear infinite alternate; }
+  @keyframes bx { from { translate: 0 var(--ty, 0); } to { translate: calc(100vw - var(--vis) * var(--s)) var(--ty, 0); } }
+  @keyframes by { from { --ty: 0px; } to { --ty: calc(100vh - var(--h) * var(--s)); } }
+  @media (min-width: 1200px) { .ip { --s: 3; } }
+  @media (max-width: 760px) { .ip { --s: 1.4; } }
+  @media (max-width: 420px) { .ip { --s: 1.1; } }
+
+  /* ghosts: same bounce, delayed, fading — a dancing trail */
+  .ip { mix-blend-mode: screen; }
+  .ip.ghost { opacity: .35; pointer-events: none; }
+  .ip.g1 { animation-delay: -.25s, -.25s; opacity: .45; }
+  .ip.g2 { animation-delay: -.5s, -.5s; opacity: .25; }
+}
+
+@layer dance {
+  .dance { width: 100%; height: 100%; transform-origin: 30% 50%; animation: boogie 1.1s ease-in-out infinite; }
+  @keyframes boogie {
+    0%   { transform: rotate(-8deg) scale(1) skewX(0deg); }
+    25%  { transform: rotate(6deg) scale(1.12) skewX(-8deg) translateY(-8px); }
+    50%  { transform: rotate(-4deg) scale(.94) skewX(6deg); }
+    75%  { transform: rotate(9deg) scale(1.08) skewX(-4deg) translateY(6px); }
+    100% { transform: rotate(-8deg) scale(1) skewX(0deg); }
+  }
+  .g1 .dance { animation-delay: -.2s; } .g2 .dance { animation-delay: -.4s; }
+
+  /* the frame itself: scaled up, inverted, and color-cycled */
+  .ip iframe { display: block; border: 0; width: var(--w); height: var(--h); transform: scale(var(--s)); transform-origin: 0 0;
+    background: #fff; color-scheme: light; mix-blend-mode: screen; /* black frame bg vanishes */
+    filter: invert(1) sepia(1) saturate(8) hue-rotate(var(--hue)) brightness(1.1);
+    animation: huecycle 3s linear infinite; }
+  @keyframes huecycle { to { --hue: 360deg; } }
+  .g1 iframe { animation-delay: -1s; } .g2 iframe { animation-delay: -2s; }
+
+  /* corner-hit flash: a pseudo-element pulses on the bounce period */
+  .ip:not(.ghost)::after { content: ""; position: absolute; inset: -10px; border: 2px solid #fff; border-radius: 6px; opacity: 0;
+    animation: hit 3.65s linear infinite; }
+  @keyframes hit { 0%, 3% { opacity: .8; } 8%, 100% { opacity: 0; } }
+}
+
+@layer ui {
+  .hud { position: fixed; inset: auto 0 0 0; z-index: 10; text-align: center; padding: 10px 16px 12px;
+    background: linear-gradient(transparent, rgb(0 0 0 / .85) 40%); font-size: 13px; }
+  .hud nav { margin-bottom: 4px; }
+  .hud nav a { margin: 0 6px; }
+  .hud .note { color: #b0b0b0; max-width: 60ch; margin: 0 auto; }
+  .hud .tiny { font-size: 10px; color: #999; margin-top: 6px; }
+  .hud .tiny a { color: #999; }
+  .title { position: fixed; top: 10px; left: 0; right: 0; text-align: center; z-index: 10; font: bold 20px "times new roman", serif; letter-spacing: .1em; pointer-events: none; }
+  .title span { display: inline-block; animation: wave 1.2s ease-in-out infinite; }
+  .title span:nth-child(2n) { animation-delay: -.3s; } .title span:nth-child(3n) { animation-delay: -.6s; }
+  @keyframes wave { 50% { translate: 0 -6px; } }
+
+  /* pause button: a checkbox that freezes every animation on the page */
+  #freeze { position: absolute; opacity: 0; }
+  .freeze-lbl { cursor: pointer; border: 2px solid #ccc; padding: 1px 8px; margin-left: 6px; }
+  .freeze-lbl::after { content: "pause the dance"; }
+  body:has(#freeze:checked) * { animation-play-state: paused !important; }
+  body:has(#freeze:checked) .freeze-lbl::after { content: "resume the dance"; }
+  #freeze:focus-visible + .freeze-lbl { outline: 2px solid #8ab4f8; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ip { animation: none; left: 50%; top: 40%; translate: -50% -50%; }
+    .ip.ghost { display: none; }
+    .dance, .ip iframe, .stars, .stars::before, .stars::after, .glow, .title span { animation: none; }
+  }
+}

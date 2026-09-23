@@ -5,6 +5,7 @@
     <title>somethingchan changelog</title>
     <link>https://kaieklund.vercel.app/</link>
     <description>release notes nobody reads, rendered by xslt.</description>
+    <item><title>v7.0.0 — imageboard edition</title><pubdate>wed, 23 sep 2026 16:00:00 gmt</pubdate><description>the faq is now /qa/, a css-only imageboard: threads, admin capcodes, greentext, quote previews, catalog view, three themes. added /ip/, where your ip bounces and dances. still 0 bytes of javascript.</description></item>
     <item><title>v6.0.0 — lowercase edition</title><pubdate>wed, 23 sep 2026 15:00:00 gmt</pubdate><description>everything is lowercase now, even the comments. added /js, which shouts at browsers with javascript enabled, using zero javascript. added a css-only environment report.</description></item>
     <item><title>v5.0.0 — kai edition</title><pubdate>wed, 23 sep 2026 14:00:00 gmt</pubdate><description>new look matching kaieklund.vercel.app. mit license (c) 2026 kai. added .git explorer, css clock, /qa/, code review simulator, museum of waiting. still 0 bytes of javascript.</description></item>
     <item><title>v4.0.0 — the extreme update</title><pubdate>wed, 23 sep 2026 13:00:00 gmt</pubdate><description>added the lab (3d cube, pipeline, merge resolver, svg filters), rebase dungeon text adventure, 404 page, icalendar holidays, certificate svg. still 0 bytes of javascript.</description></item>

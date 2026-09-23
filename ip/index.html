@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>somethingchan · /ip/</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/ip.css">
+<!--
+  /ip/ — your ip address, bouncing and dancing. zero javascript.
+  a static page can't know your ip, so your own browser asks icanhazip.com
+  inside a sandboxed iframe (sandbox="" = no scripts in there either).
+  somethingchan never sees or stores your ip.
+-->
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+
+<div class="title" aria-hidden="true"><span>t</span><span>h</span><span>i</span><span>s</span>&nbsp;<span>i</span><span>s</span>&nbsp;<span>y</span><span>o</span><span>u</span><span>r</span>&nbsp;<span>i</span><span>p</span></div>
+
+<!-- two ghost trails, then the real one on top -->
+<div class="ip ghost g2" aria-hidden="true"><div class="dance"><iframe src="https://icanhazip.com/" sandbox="" referrerpolicy="no-referrer" loading="eager" title="ip ghost" tabindex="-1"></iframe></div></div>
+<div class="ip ghost g1" aria-hidden="true"><div class="dance"><iframe src="https://icanhazip.com/" sandbox="" referrerpolicy="no-referrer" loading="eager" title="ip ghost" tabindex="-1"></iframe></div></div>
+<div class="ip"><div class="dance"><iframe src="https://icanhazip.com/" sandbox="" referrerpolicy="no-referrer" title="your ip address, via icanhazip.com"></iframe></div></div>
+
+<div class="hud">
+  <nav><a href="../index.html">home</a> <a href="../qa/">qa</a> <a href="../js/">js</a> <a href="../lab.html">lab</a>
+    <input type="checkbox" id="freeze"><label for="freeze" class="freeze-lbl"></label></nav>
+  <p class="note">your browser fetched this from icanhazip.com inside a sandboxed frame. somethingchan never sees it. if it's blank, an ad blocker or network filter stopped the request.</p>
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a> · © 2026 kai · <a href="../license.html">mit</a></p>
+</div>
+</body>
+</html>

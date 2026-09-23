@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>/qa/ - questions &amp; answers - somethingchan</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/qa.css">
+<!--
+  /qa/ — the somethingchan faq, as an imageboard.
+  every question is a thread. anonymous asks. admin answers.
+  state lives in radios + checkboxes; css :has() reads it. no scripts.
+-->
+</head>
+<body>
+<!-- global state: view mode + theme -->
+<input class="sr" type="radio" name="view" id="v-index" checked>
+<input class="sr" type="radio" name="view" id="v-cat">
+<input class="sr" type="radio" name="theme" id="th-b" checked>
+<input class="sr" type="radio" name="theme" id="th-y">
+<input class="sr" type="radio" name="theme" id="th-t">
+
+<div class="boardnav" id="top">
+  <span>[<a href="../index.html">home</a> / <a href="../lab.html">lab</a> / <a href="../game.html">dungeon</a> / <a href="../js/">js</a> / <a href="../ip/">ip</a> / <a class="cur" href="./">qa</a>] [<a href="../support.html">support</a> / <a href="../license.html">license</a>]</span>
+  <span>[<a href="#bottom">bottom</a>] [<a href="../index.html">return</a>]</span>
+</div>
+
+<div class="banner" aria-hidden="true"><span>no js allowed</span><span>rebase responsibly</span><span>git gud</span></div>
+<h1 class="boardtitle">/qa/ - questions &amp; answers</h1>
+<p class="boardsub">the somethingchan faq. anonymous asks, admin answers.</p>
+<hr>
+
+<form class="postform-wrap" action="#" method="get" aria-label="new thread form (disabled)">
+<table class="postform">
+  <tr><th>name</th><td><input type="text" placeholder="anonymous" disabled></td></tr>
+  <tr><th>options</th><td><input type="text" placeholder="sage" disabled></td></tr>
+  <tr><th>subject</th><td><div class="row2"><input type="text" disabled><button type="button" disabled>post</button></div></td></tr>
+  <tr><th>comment</th><td><textarea disabled placeholder="posting is disabled. posting would require a server, and servers want javascript. ask kai instead."></textarea></td></tr>
+  <tr><th>verification</th><td><div class="captcha">captcha unavailable: captchas need javascript. you are verified as human by default.</div></td></tr>
+  <tr><th>file</th><td><input type="file" disabled></td></tr>
+</table>
+</form>
+<ul class="rules">
+  <li>please read the <a href="#p1001">rules</a> before posting.</li>
+  <li>supported file types: svg, and only svg, because it can animate without js.</li>
+  <li>maximum file size: whatever the tanuki can carry.</li>
+</ul>
+<hr>
+<p class="announce"><b>announcement:</b> /qa/ is now the official somethingchan faq. old /qa/ and faq sections were merged (no conflicts, miraculously).</p>
+<hr>
+
+<div class="toolbar">
+  <span><label for="v-index">index</label> <label for="v-cat">catalog</label></span>
+  <span>style: <label for="th-b">yotsuba b</label> <label for="th-y">yotsuba</label> <label for="th-t">tomorrow</label></span>
+</div>
+<hr>
+
+<div class="threads">
+
+<!-- ======================= thread 1001 — sticky rules ======================= -->
+<div class="thread" id="t1001" data-r="2" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1001"><label class="hidebtn" for="h1001" title="hide thread"></label>
+  <span class="stub">thread no.1001 hidden (rules)</span>
+  <div class="op admin" id="p1001">
+    <div class="file">file: <a class="fname" href="../assets/logo.svg">rules.svg</a> (2 kb, 120x120)</div>
+    <input class="sr exp" type="checkbox" id="e1001"><label class="thumb" for="e1001"><img src="../assets/logo.svg" alt="somethingchan logo"></label>
+    <div class="postinfo"><span class="subject">read this before posting</span> <span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon" title="administrator"></span> <span class="date">09/23/26(wed)00:00:00</span> <span class="num"><a href="#p1001">no.1001</a></span> <span class="sticky-icon" title="sticky"></span> <span class="closed-icon" title="closed"></span> <span class="backlinks"><a href="#p1002">&gt;&gt;1002</a></span></div>
+    <blockquote class="body" data-subject="read this before posting">
+      welcome to /qa/. this is the faq.<br><br>
+      1. <b>rule #1: no javascript.</b> no scripts. not even one.<br>
+      2. be nice to the tanuki.<br>
+      3. do not force-push to main.<br>
+      4. all questions are real. all answers are wrong.<br><br>
+      <span class="quote">&gt;what if i want javascript</span><br>
+      see <a href="../js/">/js/</a>.
+    </blockquote>
+  </div>
+  <div class="replywrap"><div class="reply" id="p1002">
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="name">anonymous</span> <span class="date">09/23/26(wed)00:01:12</span> <span class="num"><a href="#p1002">no.1002</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1001">&gt;&gt;1001<span class="prev"><b>admin ## admin</b> no.1001<br>rule #1: no javascript. no scripts. not even one.</span></a><br>based</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1010 — who made this ======================= -->
+<div class="thread" id="t1010" data-r="3" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1010"><label class="hidebtn" for="h1010" title="hide thread"></label>
+  <span class="stub">thread no.1010 hidden (who made this?)</span>
+  <div class="op" id="p1010">
+    <div class="file">file: <a class="fname" href="../assets/certificate.svg">wizard.svg</a> (3 kb, 800x560)</div>
+    <input class="sr exp" type="checkbox" id="e1010"><label class="thumb" for="e1010"><img src="../assets/certificate.svg" alt="certified git wizard certificate"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">who made this?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)09:12:44</span> <span class="num"><a href="#p1010">no.1010</a></span> <span class="backlinks"><a href="#p1011">&gt;&gt;1011</a> <a href="#p1012">&gt;&gt;1012</a></span></div>
+    <blockquote class="body" data-subject="who made this?">
+      <span class="quote">&gt;be me</span><br>
+      <span class="quote">&gt;find website about git with zero javascript</span><br>
+      <span class="quote">&gt;it has a dungeon</span><br>
+      who is responsible for this
+    </blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1011">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)09:13:02</span> <span class="num"><a href="#p1011">no.1011</a></span> <span class="backlinks"><a href="#p1012">&gt;&gt;1012</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1010">&gt;&gt;1010<span class="prev"><b>anonymous</b> no.1010<br>who is responsible for this</span></a><br>kai. by hand. with no javascript, on purpose.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1012">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)09:15:30</span> <span class="num"><a href="#p1012">no.1012</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1011">&gt;&gt;1011<span class="prev"><b>admin ## admin</b> no.1011<br>kai. by hand. with no javascript, on purpose.</span></a><br><span class="quote">&gt;on purpose</span><br>respect</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1020 — why ======================= -->
+<div class="thread" id="t1020" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1020"><label class="hidebtn" for="h1020" title="hide thread"></label>
+  <span class="stub">thread no.1020 hidden (why?)</span>
+  <div class="op" id="p1020">
+    <div class="file">file: <a class="fname" href="../assets/map.svg">repoverse.svg</a> (2 kb, 520x300)</div>
+    <input class="sr exp" type="checkbox" id="e1020"><label class="thumb" for="e1020"><img src="../assets/map.svg" alt="map of the repoverse"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">why?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)09:40:10</span> <span class="num"><a href="#p1020">no.1020</a></span> <span class="backlinks"><a href="#p1021">&gt;&gt;1021</a></span></div>
+    <blockquote class="body" data-subject="why?">genuinely why does this exist</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1021">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)09:41:00</span> <span class="num"><a href="#p1021">no.1021</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1020">&gt;&gt;1020<span class="prev"><b>anonymous</b> no.1020<br>genuinely why does this exist</span></a><br>because a site about git should be as needlessly complex as git itself.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1030 — open source ======================= -->
+<div class="thread" id="t1030" data-r="2" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1030"><label class="hidebtn" for="h1030" title="hide thread"></label>
+  <span class="stub">thread no.1030 hidden (is it open source?)</span>
+  <div class="op" id="p1030">
+    <div class="file">file: <a class="fname" href="../assets/logo.svg">fork_me.svg</a> (2 kb, 120x120)</div>
+    <input class="sr exp" type="checkbox" id="e1030"><label class="thumb" for="e1030"><img src="../assets/logo.svg" alt="logo"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">is it open source?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)10:02:51</span> <span class="num"><a href="#p1030">no.1030</a></span> <span class="backlinks"><a href="#p1031">&gt;&gt;1031</a></span></div>
+    <blockquote class="body" data-subject="is it open source?">can i steal the css</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1031">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)10:03:15</span> <span class="num"><a href="#p1031">no.1031</a></span> <span class="backlinks"><a href="#p1032">&gt;&gt;1032</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1030">&gt;&gt;1030<span class="prev"><b>anonymous</b> no.1030<br>can i steal the css</span></a><br>yes. mit licensed, see <a href="../license.html">license</a>. source is on github in the <code class="inline">somethingchan</code> repo. keep the copyright notice.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1032">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)10:04:40</span> <span class="num"><a href="#p1032">no.1032</a></span> <span class="you">(you)</span></div>
+    <blockquote class="body"><a class="ql" href="#p1031">&gt;&gt;1031<span class="prev"><b>admin ## admin</b> no.1031<br>yes. mit licensed.</span></a><br><span class="quote">&gt;keep the copyright notice</span><br>fine</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1040 — languages ======================= -->
+<div class="thread" id="t1040" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1040"><label class="hidebtn" for="h1040" title="hide thread"></label>
+  <span class="stub">thread no.1040 hidden (how many languages?)</span>
+  <div class="op" id="p1040">
+    <div class="file">file: <a class="fname" href="../assets/certificate.svg">polyglot.svg</a> (3 kb, 800x560)</div>
+    <input class="sr exp" type="checkbox" id="e1040"><label class="thumb" for="e1040"><img src="../assets/certificate.svg" alt="certificate"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">how many languages?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)10:30:00</span> <span class="num"><a href="#p1040">no.1040</a></span> <span class="backlinks"><a href="#p1041">&gt;&gt;1041</a></span></div>
+    <blockquote class="body" data-subject="how many languages?">what is this site actually written in</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1041">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)10:30:44</span> <span class="num"><a href="#p1041">no.1041</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1040">&gt;&gt;1040<span class="prev"><b>anonymous</b> no.1040<br>what is this site actually written in</span></a><br>
+      html, css, svg, smil, mathml, xml, xslt (<a href="../feed.xml">changelog</a>), json (<a href="../manifest.webmanifest">manifest</a>), icalendar (<a href="../events.ics">holidays</a>), markdown (readme.md) and plain text (<a href="../humans.txt">humans.txt</a>).<br>
+      <span class="quote">&gt;javascript</span><br>0 bytes. was not invited.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1050 — donate ======================= -->
+<div class="thread" id="t1050" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1050"><label class="hidebtn" for="h1050" title="hide thread"></label>
+  <span class="stub">thread no.1050 hidden (can i donate?)</span>
+  <div class="op" id="p1050">
+    <div class="file">file: <a class="fname" href="../assets/logo.svg">coin.svg</a> (2 kb, 120x120)</div>
+    <input class="sr exp" type="checkbox" id="e1050"><label class="thumb" for="e1050"><img src="../assets/logo.svg" alt="logo"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">can i donate?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)11:11:11</span> <span class="num"><a href="#p1050">no.1050</a></span> <span class="backlinks"><a href="#p1051">&gt;&gt;1051</a></span></div>
+    <blockquote class="body" data-subject="can i donate?">site is good. how do i throw money at it</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1051">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)11:11:12</span> <span class="num"><a href="#p1051">no.1051</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1050">&gt;&gt;1050<span class="prev"><b>anonymous</b> no.1050<br>how do i throw money at it</span></a><br>please. <a href="https://kaieklund.vercel.app/" rel="noopener">kaieklund.vercel.app</a></blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1060 — pronunciation ======================= -->
+<div class="thread" id="t1060" data-r="4" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1060"><label class="hidebtn" for="h1060" title="hide thread"></label>
+  <span class="stub">thread no.1060 hidden (git or jit?)</span>
+  <div class="op" id="p1060">
+    <div class="file">file: <a class="fname" href="../assets/map.svg">pronunciation_map.svg</a> (2 kb, 520x300)</div>
+    <input class="sr exp" type="checkbox" id="e1060"><label class="thumb" for="e1060"><img src="../assets/map.svg" alt="map"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">is it pronounced "git" or "jit"?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)12:00:03</span> <span class="num"><a href="#p1060">no.1060</a></span> <span class="backlinks"><a href="#p1061">&gt;&gt;1061</a> <a href="#p1062">&gt;&gt;1062</a></span></div>
+    <blockquote class="body" data-subject="git or jit?">settle this once and for all</blockquote>
+  </div>
+  <details class="omitted"><summary>2 replies omitted. <span class="more">click here</span> to view.</summary>
+    <div class="replywrap"><div class="reply" id="p1063">
+      <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)12:00:40</span> <span class="num"><a href="#p1063">no.1063</a></span></div>
+      <blockquote class="body">it's jit like gif</blockquote>
+    </div></div>
+    <div class="replywrap"><div class="reply" id="p1064">
+      <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)12:00:52</span> <span class="num"><a href="#p1064">no.1064</a></span></div>
+      <blockquote class="body"><a class="ql" href="#p1063">&gt;&gt;1063<span class="prev"><b>anonymous</b> no.1063<br>it's jit like gif</span></a><br><span class="spoiler">get out</span></blockquote>
+    </div></div>
+  </details>
+  <div class="replywrap"><div class="reply admin" id="p1061">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)12:01:00</span> <span class="num"><a href="#p1061">no.1061</a></span> <span class="backlinks"><a href="#p1062">&gt;&gt;1062</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1060">&gt;&gt;1060<span class="prev"><b>anonymous</b> no.1060<br>settle this once and for all</span></a><br>it is pronounced like a sigh.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1062">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)12:01:30</span> <span class="num"><a href="#p1062">no.1062</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1061">&gt;&gt;1061<span class="prev"><b>admin ## admin</b> no.1061<br>it is pronounced like a sigh.</span></a><br>*sighs* ok</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1070 — merge vs rebase ======================= -->
+<div class="thread" id="t1070" data-r="2" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1070"><label class="hidebtn" for="h1070" title="hide thread"></label>
+  <span class="stub">thread no.1070 hidden (merge vs rebase)</span>
+  <div class="op" id="p1070">
+    <div class="file">file: <a class="fname" href="../assets/logo.svg">branches.svg</a> (2 kb, 120x120)</div>
+    <input class="sr exp" type="checkbox" id="e1070"><label class="thumb" for="e1070"><img src="../assets/logo.svg" alt="logo"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">merge vs rebase general</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)12:30:00</span> <span class="num"><a href="#p1070">no.1070</a></span> <span class="backlinks"><a href="#p1071">&gt;&gt;1071</a></span></div>
+    <blockquote class="body" data-subject="merge vs rebase">what's the difference between merge and rebase. no bully</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1071">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)12:31:07</span> <span class="num"><a href="#p1071">no.1071</a></span> <span class="backlinks"><a href="#p1072">&gt;&gt;1072</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1070">&gt;&gt;1070<span class="prev"><b>anonymous</b> no.1070<br>what's the difference between merge and rebase</span></a><br>merge is telling the truth.<br>rebase is rewriting history so it looks like you always knew what you were doing.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1072">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)12:33:21</span> <span class="num"><a href="#p1072">no.1072</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1071">&gt;&gt;1071<span class="prev"><b>admin ## admin</b> no.1071<br>rebase is rewriting history</span></a><br><span class="quote">&gt;rewriting history</span><br>so rebase is a historian. got it.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1080 — password ======================= -->
+<div class="thread" id="t1080" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1080"><label class="hidebtn" for="h1080" title="hide thread"></label>
+  <span class="stub">thread no.1080 hidden (committed my password)</span>
+  <div class="op" id="p1080">
+    <div class="file">file: <a class="fname" href="../assets/map.svg">escape_route.svg</a> (2 kb, 520x300)</div>
+    <input class="sr exp" type="checkbox" id="e1080"><label class="thumb" for="e1080"><img src="../assets/map.svg" alt="map"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">i committed my password</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)13:13:13</span> <span class="num"><a href="#p1080">no.1080</a></span> <span class="backlinks"><a href="#p1081">&gt;&gt;1081</a></span></div>
+    <blockquote class="body" data-subject="committed my password"><span class="quote">&gt;git add .</span><br><span class="quote">&gt;.env was in there</span><br><span class="quote">&gt;pushed to public repo</span><br>what do i do</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1081">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)13:13:30</span> <span class="num"><a href="#p1081">no.1081</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1080">&gt;&gt;1080<span class="prev"><b>anonymous</b> no.1080<br>pushed .env to public repo. what do i do</span></a><br>change the password. then move to a new town.<br><span class="quote">&gt;(seriously: rotate the secret first. deleting the commit is not enough.)</span></blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1090 — undo ======================= -->
+<div class="thread" id="t1090" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1090"><label class="hidebtn" for="h1090" title="hide thread"></label>
+  <span class="stub">thread no.1090 hidden (can i undo a commit?)</span>
+  <div class="op" id="p1090">
+    <div class="file">file: <a class="fname" href="../assets/logo.svg">ctrl_z.svg</a> (2 kb, 120x120)</div>
+    <input class="sr exp" type="checkbox" id="e1090"><label class="thumb" for="e1090"><img src="../assets/logo.svg" alt="logo"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">can i undo a commit?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)13:45:00</span> <span class="num"><a href="#p1090">no.1090</a></span> <span class="backlinks"><a href="#p1091">&gt;&gt;1091</a></span></div>
+    <blockquote class="body" data-subject="can i undo a commit?">asking for a friend (the friend is me)</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1091">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)13:46:19</span> <span class="num"><a href="#p1091">no.1091</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1090">&gt;&gt;1090<span class="prev"><b>anonymous</b> no.1090<br>asking for a friend (the friend is me)</span></a><br>yes. there are nineteen ways, and each undoes something slightly different.<br><span class="quote">&gt;git reset --soft</span> keeps your changes<br><span class="quote">&gt;git revert</span> makes a new commit that undoes it<br><span class="quote">&gt;git reset --hard</span> <span class="spoiler">see the reflog crypt in the <a href="../game.html#crypt">dungeon</a></span></blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1100 — github or gitlab ======================= -->
+<div class="thread" id="t1100" data-r="2" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1100"><label class="hidebtn" for="h1100" title="hide thread"></label>
+  <span class="stub">thread no.1100 hidden (github or gitlab?)</span>
+  <div class="op" id="p1100">
+    <div class="file">file: <a class="fname" href="../assets/map.svg">the_two_kingdoms.svg</a> (2 kb, 520x300)</div>
+    <input class="sr exp" type="checkbox" id="e1100"><label class="thumb" for="e1100"><img src="../assets/map.svg" alt="map"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">github or gitlab?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)14:00:00</span> <span class="num"><a href="#p1100">no.1100</a></span> <span class="backlinks"><a href="#p1101">&gt;&gt;1101</a></span></div>
+    <blockquote class="body" data-subject="github or gitlab?">choose. no fence sitting.</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1101">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)14:00:01</span> <span class="num"><a href="#p1101">no.1101</a></span> <span class="backlinks"><a href="#p1102">&gt;&gt;1102</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1100">&gt;&gt;1100<span class="prev"><b>anonymous</b> no.1100<br>choose. no fence sitting.</span></a><br>yes.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1102">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)14:02:11</span> <span class="num"><a href="#p1102">no.1102</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1101">&gt;&gt;1101<span class="prev"><b>admin ## admin</b> no.1101<br>yes.</span></a><br>i hate that this is the correct answer</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= thread 1110 — why no javascript ======================= -->
+<div class="thread" id="t1110" data-r="3" data-i="1">
+  <input class="sr hide" type="checkbox" id="h1110"><label class="hidebtn" for="h1110" title="hide thread"></label>
+  <span class="stub">thread no.1110 hidden (why no javascript?)</span>
+  <div class="op" id="p1110">
+    <div class="file">file: <a class="fname" href="../assets/certificate.svg">0_bytes.svg</a> (3 kb, 800x560)</div>
+    <input class="sr exp" type="checkbox" id="e1110"><label class="thumb" for="e1110"><img src="../assets/certificate.svg" alt="certificate"></label>
+    <div class="postinfo"><input type="checkbox" aria-label="select post"> <span class="subject">why is there no javascript?</span> <span class="name">anonymous</span> <span class="date">09/23/26(wed)15:00:00</span> <span class="num"><a href="#p1110">no.1110</a></span> <span class="backlinks"><a href="#p1111">&gt;&gt;1111</a> <a href="#p1112">&gt;&gt;1112</a></span></div>
+    <blockquote class="body" data-subject="why no javascript?">how does the dungeon even work. how do the tabs work. what is going on</blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p1111">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)15:00:30</span> <span class="num"><a href="#p1111">no.1111</a></span> <span class="backlinks"><a href="#p1113">&gt;&gt;1113</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1110">&gt;&gt;1110<span class="prev"><b>anonymous</b> no.1110<br>why is there no javascript?</span></a><br>it was in a separate branch. that branch was never merged.<br><br>
+      everything here is radios, checkboxes, <code class="inline">:target</code> and <code class="inline">:has()</code>. this very thread's [−] button, the catalog view and the theme switcher are all checkboxes.</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1112">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)15:01:02</span> <span class="num"><a href="#p1112">no.1112</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1110">&gt;&gt;1110<span class="prev"><b>anonymous</b> no.1110<br>how does the dungeon even work</span></a><br><span class="quote">&gt;he doesn't know about /js/</span><br><a href="../js/">go look</a></blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply" id="p1113">
+    <div class="postinfo"><span class="name">anonymous</span> <span class="date">09/23/26(wed)15:02:44</span> <span class="num"><a href="#p1113">no.1113</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1111">&gt;&gt;1111<span class="prev"><b>admin ## admin</b> no.1111<br>that branch was never merged.</span></a><br>and /ip/? how does it know my ip with no js</blockquote>
+  </div></div>
+  <div class="replywrap"><div class="reply admin" id="p1114">
+    <div class="postinfo"><span class="name">admin</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)15:03:00</span> <span class="num"><a href="#p1114">no.1114</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p1113">&gt;&gt;1113<span class="prev"><b>anonymous</b> no.1113<br>how does /ip/ know my ip with no js</span></a><br>it doesn't. your browser asks icanhazip.com inside a sandboxed iframe, and css makes the iframe dance. <a href="../ip/">see for yourself</a>.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+</div><!-- /threads -->
+
+<div class="toolbar" id="bottom">
+  <span><label for="v-index">index</label> <label for="v-cat">catalog</label> [<a href="#top">top</a>]</span>
+  <span>12 threads · 0 bytes of javascript</span>
+</div>
+
+<div class="footer">
+  all trademarks and copyrights on this page are owned by their respective parties. posts are made up by kai.<br>
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</div>
+</body>
+</html>

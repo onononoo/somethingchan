@@ -6,5 +6,7 @@
   <url><loc>game.html</loc></url>
   <url><loc>license.html</loc></url>
   <url><loc>js/</loc></url>
+  <url><loc>qa/</loc></url>
+  <url><loc>ip/</loc></url>
   <url><loc>feed.xml</loc></url>
 </urlset>
