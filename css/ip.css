@@ -112,3 +112,7 @@
 .ip-kara:hover { rotate: 0deg; scale: 1.1; }
 .ip-kara img { display: block; width: 100%; }
 @media (max-width: 600px) { .ip-kara { width: 70px; } }
+
+/* nothing to see here */
+.secret-dot { color: #b0b0b0; text-decoration: none; padding: 0 2px; }
+.secret-dot:hover, .secret-dot:focus { color: #2233ff; text-shadow: 0 0 6px #7aa2ff; }

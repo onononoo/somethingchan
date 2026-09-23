@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>/kai/ - kai's corner - somethingchan</title>
+<link rel="icon" href="../assets/kara/favicon.png" type="image/png">
+<link rel="stylesheet" href="../css/qa.css">
+<!--
+  /kai/ — the secret board. only linked from /ip/. not in the sitemap, the feed, the readme, or anywhere else.
+  noindex so search engines skip it. zero javascript, obviously.
+
+  ========================= how to post =========================
+  1. copy the template below (everything between the two ✂ lines).
+  2. paste it right under the line that says  <!-- ▼ new posts go here ▼ -->
+  3. change: NUMBER (pick the next free no., e.g. 2008), SUBJECT, DATE, the body text.
+  4. image is optional. delete the two lines marked (image) if you don't want one.
+     any file in ../assets/kara/ or ../assets/soy/ works.
+  5. bump the thread count in the bottom toolbar if you care. save. push. done.
+
+  greentext:   <span class="quote">&gt;your text</span><br>
+  spoiler:     <span class="spoiler">hidden text</span>
+  quote link:  <a class="ql" href="#pNUMBER">&gt;&gt;NUMBER<span class="prev"><b>kai</b> no.NUMBER<br>preview text</span></a>
+  line break:  <br>
+
+  ✂ ---------------------------------------------------------------------------
+<div class="thread" id="tNUMBER" data-r="0" data-i="1">
+  <input class="sr hide" type="checkbox" id="hNUMBER"><label class="hidebtn" for="hNUMBER" title="hide thread"></label>
+  <span class="stub">thread no.NUMBER hidden (SUBJECT)</span>
+  <div class="op dev" id="pNUMBER">
+    <div class="file">file: <a class="fname" href="../assets/kara/smile.webp">smile.webp</a></div>                                         (image)
+    <input class="sr exp" type="checkbox" id="eNUMBER"><label class="thumb" for="eNUMBER"><img src="../assets/kara/smile.webp" alt="" loading="lazy"></label>   (image)
+    <div class="postinfo"><span class="subject">SUBJECT</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">MM/DD/YY(day)HH:MM:SS</span> <span class="num"><a href="#pNUMBER">no.NUMBER</a></span></div>
+    <blockquote class="body" data-subject="SUBJECT">your post here.</blockquote>
+  </div>
+</div>
+<hr>
+  ✂ ---------------------------------------------------------------------------
+-->
+<style>
+  /* /kai/-only extras. the developer capcode is blue, like the real thing. */
+  .dev .name, .dev .capcode { color: #2233ff !important; }
+  :root:has(#th-t:checked) .dev .name, :root:has(#th-t:checked) .dev .capcode { color: #7aa2ff !important; }
+  .dev-icon { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-left: 3px; background: #2233ff; clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%); }
+  .secret { text-align: center; font-size: 11px; color: var(--muted); }
+  .secret::before { content: "🤫 "; }
+  .news-badge { display: inline-block; background: #2233ff; color: #fff; font: bold 10px var(--font); padding: 0 5px; margin-left: 4px; vertical-align: 1px; }
+  .jshate { border: 2px dashed #f00; padding: 6px 10px; margin: 10px auto; max-width: 560px; text-align: center; font-weight: bold; color: #c00; }
+  :root:has(#th-t:checked) .jshate { color: #ff6b6b; }
+</style>
+</head>
+<body>
+<input class="sr" type="radio" name="view" id="v-index" checked>
+<input class="sr" type="radio" name="view" id="v-cat">
+<input class="sr" type="radio" name="theme" id="th-b" checked>
+<input class="sr" type="radio" name="theme" id="th-y">
+<input class="sr" type="radio" name="theme" id="th-t">
+
+<div class="boardnav" id="top">
+  <span>[<a href="../index.html">home</a> / <a href="../qa/">qa</a> / <a class="cur" href="./">kai</a>]</span>
+  <span>[<a href="#bottom">bottom</a>] [<a href="../ip/">back to /ip/</a>]</span>
+</div>
+
+<div class="banner" aria-hidden="true"><span>you found it</span><span>kai was here</span><span>js not welcome</span></div>
+<h1 class="boardtitle">/kai/ - kai's corner</h1>
+<p class="boardsub">site news, dev notes, and other stuff. only kai posts here.</p>
+<p class="secret">this board isn't linked anywhere except one hidden spot on /ip/. keep it between us.</p>
+<hr>
+
+<form class="postform-wrap" action="#" method="get" aria-label="post form (disabled)">
+<table class="postform">
+  <tr><th>name</th><td><input type="text" placeholder="kai ## developer" disabled></td></tr>
+  <tr><th>subject</th><td><div class="row2"><input type="text" disabled><button type="button" disabled>post</button></div></td></tr>
+  <tr><th>comment</th><td><textarea disabled placeholder="only kai can post here. kai posts by editing kai/index.html in a text editor, like our ancestors intended. there is no javascript to post for you."></textarea></td></tr>
+  <tr><th>verification</th><td><div class="captcha">no captcha. if you can edit this file, you're kai.</div></td></tr>
+</table>
+</form>
+<p class="jshate">reminder: this board runs on 0 bytes of javascript. the post button is disabled out of spite.</p>
+<hr>
+
+<div class="toolbar">
+  <span><label for="v-index">index</label> <label for="v-cat">catalog</label></span>
+  <span>style: <label for="th-b">yotsuba b</label> <label for="th-y">yotsuba</label> <label for="th-t">tomorrow</label></span>
+</div>
+<hr>
+
+<div class="threads">
+
+<!-- ▼ new posts go here ▼ -->
+
+<!-- ======================= 2005 — the manifesto ======================= -->
+<div class="thread" id="t2005" data-r="2" data-i="1">
+  <input class="sr hide" type="checkbox" id="h2005"><label class="hidebtn" for="h2005" title="hide thread"></label>
+  <span class="stub">thread no.2005 hidden (the javascript manifesto)</span>
+  <div class="op dev" id="p2005">
+    <div class="file">file: <a class="fname" href="../assets/no-js.svg">manifesto.svg</a> (1 kb, 200x200)</div>
+    <input class="sr exp" type="checkbox" id="e2005"><label class="thumb" for="e2005"><img src="../assets/no-js.svg" alt="the no javascript sign" loading="lazy"></label>
+    <div class="postinfo"><span class="subject">the javascript manifesto</span><span class="news-badge">pinned</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)21:30:00</span> <span class="num"><a href="#p2005">no.2005</a></span> <span class="sticky-icon" title="sticky"></span> <span class="backlinks"><a href="#p2006">&gt;&gt;2006</a></span></div>
+    <blockquote class="body" data-subject="the javascript manifesto">
+      things i believe, in order:<br><br>
+      1. a website is a document. documents do not need a runtime.<br>
+      2. every script is a download, a parse, a compile, and a new way to break.<br>
+      3. html already ships buttons, links, forms, dialogs, accordions and popovers. use them.<br>
+      4. css can hold state now. radios, checkboxes, <code class="inline">:target</code>, <code class="inline">:has()</code>. this whole site is proof.<br>
+      5. a language where <code class="inline">[] == ![]</code> is <code class="inline">true</code> should not be trusted with your scroll wheel.<br>
+      6. "but it needs js for interactivity." no it doesn't. go play <a href="../arcade/">gem-tac-toe</a>.<br>
+      7. the best line of javascript is the one you didn't write.<br><br>
+      <span class="quote">&gt;what about when you actually need it</span><br>
+      then use a little. somewhere else. not here.
+    </blockquote>
+  </div>
+  <div class="replywrap"><div class="reply dev" id="p2006">
+    <div class="postinfo"><span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)21:31:10</span> <span class="num"><a href="#p2006">no.2006</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p2005">&gt;&gt;2005<span class="prev"><b>kai</b> no.2005<br>the best line of javascript is the one you didn't write.</span></a><br>addendum: every page here sends <code class="inline">script-src 'none'</code>. even if i wanted to cheat, the browser would stop me. that's the point.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= 2004 — site news: arcade ======================= -->
+<div class="thread" id="t2004" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h2004"><label class="hidebtn" for="h2004" title="hide thread"></label>
+  <span class="stub">thread no.2004 hidden (arcade is live)</span>
+  <div class="op dev" id="p2004">
+    <div class="file">file: <a class="fname" href="../assets/kara/gmod.webp">arcade.webp</a></div>
+    <input class="sr exp" type="checkbox" id="e2004"><label class="thumb" for="e2004"><img src="../assets/kara/gmod.webp" alt="kara in gmod" loading="lazy"></label>
+    <div class="postinfo"><span class="subject">site news: the arcade is live</span><span class="news-badge">news</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)20:05:00</span> <span class="num"><a href="#p2004">no.2004</a></span> <span class="backlinks"><a href="#p2007">&gt;&gt;2007</a></span></div>
+    <blockquote class="body" data-subject="arcade is live">
+      <a href="../arcade/">/arcade/</a> is up. three games:<br>
+      <span class="quote">&gt;gem-tac-toe, css checks all 8 lines for a win</span><br>
+      <span class="quote">&gt;whack-a-javascript, the only good use of javascript is getting whacked</span><br>
+      <span class="quote">&gt;the soy slots</span><br><br>
+      the "new game" buttons are plain html form resets. html has had those since the 90s. javascript devs will reinvent them in a 40 kb package next year.
+    </blockquote>
+  </div>
+  <div class="replywrap"><div class="reply dev" id="p2007">
+    <div class="postinfo"><span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)20:40:00</span> <span class="num"><a href="#p2007">no.2007</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p2004">&gt;&gt;2004<span class="prev"><b>kai</b> no.2004<br>site news: the arcade is live</span></a><br>bug report from myself: the draw detection didn't work at first because i nested <code class="inline">:has()</code> inside <code class="inline">:has()</code>. css said no. fixed. still no javascript. <span class="spoiler">it was tempting.</span></blockquote>
+  </div></div>
+</div>
+<hr>
+
+<!-- ======================= 2003 — kara mascot ======================= -->
+<div class="thread" id="t2003" data-r="0" data-i="1">
+  <input class="sr hide" type="checkbox" id="h2003"><label class="hidebtn" for="h2003" title="hide thread"></label>
+  <span class="stub">thread no.2003 hidden (new mascot)</span>
+  <div class="op dev" id="p2003">
+    <div class="file">file: <a class="fname" href="../assets/kara/portrait.webp">mascot.webp</a></div>
+    <input class="sr exp" type="checkbox" id="e2003"><label class="thumb" for="e2003"><img src="../assets/kara/portrait.webp" alt="kara eklund" loading="lazy"></label>
+    <div class="postinfo"><span class="subject">site news: kara is the mascot now</span><span class="news-badge">news</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)19:05:00</span> <span class="num"><a href="#p2003">no.2003</a></span></div>
+    <blockquote class="body" data-subject="kara is the mascot">
+      kara eklund is officially the face of somethingchan. she's in the favicon, she runs /qa/, and she has her own page at <a href="../kara/">/kara/</a>.<br>
+      art by hitsuji goods.<br>
+      <span class="quote">&gt;her stance on javascript</span><br>
+      0 bytes. no exceptions. she carries a rifle about it.
+    </blockquote>
+  </div>
+</div>
+<hr>
+
+<!-- ======================= 2002 — ip page ======================= -->
+<div class="thread" id="t2002" data-r="0" data-i="1">
+  <input class="sr hide" type="checkbox" id="h2002"><label class="hidebtn" for="h2002" title="hide thread"></label>
+  <span class="stub">thread no.2002 hidden (how /ip/ works)</span>
+  <div class="op dev" id="p2002">
+    <div class="file">file: <a class="fname" href="../assets/kara/televisual.webp">crt.webp</a></div>
+    <input class="sr exp" type="checkbox" id="e2002"><label class="thumb" for="e2002"><img src="../assets/kara/televisual.webp" alt="kara at a crt tv" loading="lazy"></label>
+    <div class="postinfo"><span class="subject">dev note: how /ip/ knows your ip</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)16:10:00</span> <span class="num"><a href="#p2002">no.2002</a></span></div>
+    <blockquote class="body" data-subject="how /ip/ works">
+      it doesn't. your browser asks icanhazip.com in a sandboxed iframe, and css makes the iframe dance. the site never sees your ip.<br>
+      a javascript dev would've used fetch(), a state library, a bundler, and a cookie banner.<br>
+      <span class="quote">&gt;and that's how you found this board</span><br>
+      yeah. you clicked the dot. welcome.
+    </blockquote>
+  </div>
+</div>
+<hr>
+
+<!-- ======================= 2001 — welcome ======================= -->
+<div class="thread" id="t2001" data-r="1" data-i="1">
+  <input class="sr hide" type="checkbox" id="h2001"><label class="hidebtn" for="h2001" title="hide thread"></label>
+  <span class="stub">thread no.2001 hidden (welcome to /kai/)</span>
+  <div class="op dev" id="p2001">
+    <div class="file">file: <a class="fname" href="../assets/kara/smile.webp">hi.webp</a></div>
+    <input class="sr exp" type="checkbox" id="e2001"><label class="thumb" for="e2001"><img src="../assets/kara/smile.webp" alt="kara smiling" loading="lazy"></label>
+    <div class="postinfo"><span class="subject">welcome to /kai/</span> <span class="name">kai</span> <span class="capcode">## developer</span><span class="dev-icon"></span> <span class="date">09/23/26(wed)00:00:01</span> <span class="num"><a href="#p2001">no.2001</a></span> <span class="backlinks"><a href="#p2008">&gt;&gt;2008</a></span></div>
+    <blockquote class="body" data-subject="welcome to /kai/">
+      you found the secret board. this is where i post site news, dev notes, and whatever else.<br>
+      it's styled like /qa/, but only i post here.<br>
+      <span class="quote">&gt;how do you post without a server or javascript</span><br>
+      i open this file in a text editor and type. revolutionary.
+    </blockquote>
+  </div>
+  <div class="replywrap"><div class="reply admin" id="p2008">
+    <div class="postinfo"><span class="name">kara</span> <span class="capcode">## admin</span><span class="admin-icon"></span> <span class="date">09/23/26(wed)00:02:00</span> <span class="num"><a href="#p2008">no.2008</a></span></div>
+    <blockquote class="body"><a class="ql" href="#p2001">&gt;&gt;2001<span class="prev"><b>kai</b> no.2001<br>welcome to /kai/</span></a><br>i have admin here too. i'm just visiting. no javascript on my watch.</blockquote>
+  </div></div>
+</div>
+<hr>
+
+</div><!-- /threads -->
+
+<div class="toolbar" id="bottom">
+  <span><label for="v-index">index</label> <label for="v-cat">catalog</label> [<a href="#top">top</a>]</span>
+  <span>5 threads · 1 poster · 0 bytes of javascript</span>
+</div>
+
+<div class="footer">
+  /kai/ is a secret. you didn't see anything.<br>
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</div>
+</body>
+</html>
