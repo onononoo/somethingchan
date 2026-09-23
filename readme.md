@@ -1,6 +1,6 @@
 # somethingchan
 
-an authoritative and entirely wrong field guide to git, github, and gitlab.
+an authoritative and entirely wrong field guide to git, github, and gitlab. certified gem.
 made by hand by kai. zero javascript.
 
 ## rule #1
@@ -21,6 +21,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `js/` | big angry text that only shows if your browser has javascript enabled, plus a css-only environment report |
 | `qa/` | the faq, as an imageboard: questions are threads, admin answers. catalog view, 3 themes, hide threads, quote previews, image expand — all css |
 | `ip/` | your ip address bouncing and dancing around the screen |
+| `soy/` | the gitjak soytionary: git, sharty and javascript terms, filter chips, gem/coal voting with a css-counted tally, a "nooo you can't just" panel, and a rosetta stone |
 | `support.html` | source + donate |
 | `license.html` | the mit license, rendered like a man page |
 | `404.html` | lost object |
@@ -45,7 +46,7 @@ two independent animations bounce it like a dvd logo.
 | language | where |
 | --- | --- |
 | html | every page |
-| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css` |
+| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css` |
 | svg + smil | `assets/*.svg`, inline graphs |
 | mathml | the math section on the home page |
 | xml + xslt | `feed.xml`, `feed.xsl`, `sitemap.xml` |

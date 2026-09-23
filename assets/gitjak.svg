@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="gitjak: a soyjak-style face pointing in excitement">
+  <title>gitjak</title>
+  <!-- original drawing. bald head, glasses, beard, mouth open in awe. smil makes it point and gasp. -->
+  <rect width="240" height="240" fill="#fff"/>
+  <!-- head -->
+  <path d="M60 110 C55 50 185 45 180 110 C182 160 160 205 120 208 C80 205 58 160 60 110 Z" fill="#f3d6bf" stroke="#000" stroke-width="3"/>
+  <!-- forehead wrinkles -->
+  <path d="M90 72 Q120 64 150 72 M95 82 Q120 76 145 82" fill="none" stroke="#000" stroke-width="1.5"/>
+  <!-- glasses -->
+  <g fill="#fff" fill-opacity=".35" stroke="#000" stroke-width="3">
+    <rect x="72" y="98" width="40" height="30" rx="6"/>
+    <rect x="128" y="98" width="40" height="30" rx="6"/>
+  </g>
+  <path d="M112 110 H128" stroke="#000" stroke-width="3"/>
+  <!-- eyes -->
+  <circle cx="92" cy="114" r="4">
+    <animate attributeName="r" values="4;5.5;4" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="148" cy="114" r="4">
+    <animate attributeName="r" values="4;5.5;4" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  <!-- beard -->
+  <path d="M68 150 C75 200 165 200 172 150 C160 185 80 185 68 150 Z" fill="#6b4a2b" opacity=".85"/>
+  <!-- mouth: gasping open -->
+  <ellipse cx="120" cy="162" rx="22" ry="16" fill="#3a0d0d" stroke="#000" stroke-width="3">
+    <animate attributeName="ry" values="16;22;16" dur="1s" repeatCount="indefinite"/>
+  </ellipse>
+  <rect x="104" y="148" width="32" height="6" fill="#fff">
+    <animate attributeName="y" values="148;142;148" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  <!-- pointing hand -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;-6 -4;0 0" dur=".5s" repeatCount="indefinite"/>
+    <path d="M190 200 L205 150 Q208 140 214 148 L206 185 L228 190 Q236 196 226 204 Z" fill="#f3d6bf" stroke="#000" stroke-width="3"/>
+  </g>
+  <text x="14" y="30" font-family="arial, sans-serif" font-size="18" font-weight="bold" fill="#000">it's a gem</text>
+</svg>

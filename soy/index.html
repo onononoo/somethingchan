@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · /soy/ · the gitjak soytionary</title>
+<link rel="icon" href="../assets/gitjak.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/somethingchan.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../css/soy.css">
+<!--
+  /soy/ — the gitjak soytionary. git terms, sharty terms, javascript terms.
+  filter with the chips, rate each entry gem or coal, and the tally
+  (css counters) keeps score. every bit of state is a radio button.
+-->
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="toggle terminal theme">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="top" aria-label="site">
+  <a href="../index.html">home</a><a href="#dict">soytionary</a><a href="#nooo">nooo</a><a href="#gallery">soyboard</a><a href="#rosetta">rosetta</a>
+  <a href="../qa/">qa</a><a href="../shame/">shame</a><a href="../js/">js</a><a href="../ip/">ip</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="soy-hero">
+  <img src="../assets/gitjak.svg" alt="gitjak, a soyjak-style face gasping and pointing" width="180" height="180">
+  <h1>the gitjak soytionary</h1>
+  <p>version control, explained the way the sharty would. rate every entry gem or coal. css keeps count.</p>
+</header>
+
+<main>
+
+<section id="dict">
+  <h2>soytionary</h2>
+  <span class="tag">filter with the chips. vote with the buttons. the tally stays pinned while you scroll.</span>
+  <div class="dict">
+    <div class="chips" style="order:-2">
+      <input type="radio" name="f" id="f-all" checked><label for="f-all">all</label>
+      <input type="radio" name="f" id="f-git"><label for="f-git">git</label>
+      <input type="radio" name="f" id="f-soy"><label for="f-soy">sharty</label>
+      <input type="radio" name="f" id="f-js"><label for="f-js">javascript (coal)</label>
+    </div>
+
+    <dl class="entries">
+      <div class="entry soy"><dt>gem <small>n. / adj.</small></dt><dd>a good post, commit, or website. this site, for example.</dd><span class="ex">zero javascript? total gem</span>
+        <div class="vote"><input type="radio" name="v1" id="v1g" class="g"><label for="v1g">💎 gem</label><input type="radio" name="v1" id="v1c" class="c"><label for="v1c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>coal <small>n. / adj.</small></dt><dd>the opposite of gem. a bad post. a 2 mb bundle for a contact form.</dd><span class="ex">"just add react" is pure coal</span>
+        <div class="vote"><input type="radio" name="v2" id="v2g" class="g"><label for="v2g">💎 gem</label><input type="radio" name="v2" id="v2c" class="c"><label for="v2c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>soot <small>n.</small></dt><dd>mediocre coal. not bad enough to be coal, not good enough to be a gem. most commit messages.</dd><span class="ex">"fix" as a commit message is soot</span>
+        <div class="vote"><input type="radio" name="v3" id="v3g" class="g"><label for="v3g">💎 gem</label><input type="radio" name="v3" id="v3c" class="c"><label for="v3c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>gemerald <small>n.</small></dt><dd>a gem so good it upgrades. a merge with zero conflicts.</dd><span class="ex">ci passed first try. gemerald</span>
+        <div class="vote"><input type="radio" name="v4" id="v4g" class="g"><label for="v4g">💎 gem</label><input type="radio" name="v4" id="v4c" class="c"><label for="v4c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>it's over / we're so back <small>interj.</small></dt><dd>the two states of every developer. alternates every time ci runs.</dd><span class="ex">tests red. it's over. tests green. we're so back</span>
+        <div class="vote"><input type="radio" name="v5" id="v5g" class="g"><label for="v5g">💎 gem</label><input type="radio" name="v5" id="v5c" class="c"><label for="v5c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>-jak <small>suffix</small></dt><dd>makes anything into a soyjak variant. gitjak, rebasejak, nodejak.</dd><span class="ex">he's doing the gitjak face at the merge conflict</span>
+        <div class="vote"><input type="radio" name="v6" id="v6g" class="g"><label for="v6g">💎 gem</label><input type="radio" name="v6" id="v6c" class="c"><label for="v6c">🪨 coal</label></div></div>
+
+      <div class="entry soy"><dt>fell for it again award <small>n.</small></dt><dd>given to anyone who runs <code>npm install</code> expecting it to work this time.</dd><span class="ex">updated one dependency, broke 40. fell for it again award</span>
+        <div class="vote"><input type="radio" name="v7" id="v7g" class="g"><label for="v7g">💎 gem</label><input type="radio" name="v7" id="v7c" class="c"><label for="v7c">🪨 coal</label></div></div>
+
+      <div class="entry git"><dt>commit <small>n. / v.</small></dt><dd>a snapshot. could be a gem, could be coal. usually soot titled "wip".</dd><span class="ex">48 commits, all named "wip". it's over</span>
+        <div class="vote"><input type="radio" name="v8" id="v8g" class="g"><label for="v8g">💎 gem</label><input type="radio" name="v8" id="v8c" class="c"><label for="v8c">🪨 coal</label></div></div>
+
+      <div class="entry git"><dt>rebase <small>v.</small></dt><dd>rewriting history so your branch looks like a gem even though it was coal the whole time.</dd><span class="ex">rebased 47 commits into 1. we're so back</span>
+        <div class="vote"><input type="radio" name="v9" id="v9g" class="g"><label for="v9g">💎 gem</label><input type="radio" name="v9" id="v9c" class="c"><label for="v9c">🪨 coal</label></div></div>
+
+      <div class="entry git"><dt>force push <small>v.</small></dt><dd>the chud move. overwrites everyone else's work. never on main.</dd><span class="ex">git push --force on friday. absolute chud behavior</span>
+        <div class="vote"><input type="radio" name="v10" id="v10g" class="g"><label for="v10g">💎 gem</label><input type="radio" name="v10" id="v10c" class="c"><label for="v10c">🪨 coal</label></div></div>
+
+      <div class="entry git"><dt>merge conflict <small>n.</small></dt><dd>when two soyteens edit line 42. resolve by talking, or by crying.</dd><span class="ex">&lt;&lt;&lt;&lt;&lt;&lt;&lt; head. it's over</span>
+        <div class="vote"><input type="radio" name="v11" id="v11g" class="g"><label for="v11g">💎 gem</label><input type="radio" name="v11" id="v11c" class="c"><label for="v11c">🪨 coal</label></div></div>
+
+      <div class="entry git"><dt>nusoy <small>n.</small></dt><dd>a developer who has never seen a <code>.git</code> folder and thinks github is git.</dd><span class="ex">nusoy asks "how do i download the github"</span>
+        <div class="vote"><input type="radio" name="v12" id="v12g" class="g"><label for="v12g">💎 gem</label><input type="radio" name="v12" id="v12c" class="c"><label for="v12c">🪨 coal</label></div></div>
+
+      <div class="entry js"><dt>consoom <small>v.</small></dt><dd>to install a package without reading it. then another. then 1,400 more.</dd><span class="ex">consoom npm package. get excited for next npm package</span>
+        <div class="vote"><input type="radio" name="v13" id="v13g" class="g"><label for="v13g">💎 gem</label><input type="radio" name="v13" id="v13c" class="c"><label for="v13c">🪨 coal</label></div></div>
+
+      <div class="entry js"><dt>framework <small>n.</small></dt><dd>a javascript thing that will be replaced before you finish the tutorial. always coal.</dd><span class="ex">new framework dropped. it's already over</span>
+        <div class="vote"><input type="radio" name="v14" id="v14g" class="g"><label for="v14g">💎 gem</label><input type="radio" name="v14" id="v14c" class="c"><label for="v14c">🪨 coal</label></div></div>
+
+      <div class="entry js"><dt>javascript <small>n.</small></dt><dd>coal. see <a href="../shame/">/shame/</a> for the full rap sheet. banned on <a href="../qa/#p1120">/qa/</a>.</dd><span class="ex">0.1 + 0.2 = 0.30000000000000004. coal</span>
+        <div class="vote"><input type="radio" name="v15" id="v15g" class="g"><label for="v15g">💎 gem</label><input type="radio" name="v15" id="v15c" class="c"><label for="v15c">🪨 coal</label></div></div>
+
+      <div class="entry js"><dt>html + css <small>n.</small></dt><dd>the gemerald stack. can do tabs, games, counters and this entire page. no js required.</dd><span class="ex">css did the tally on this page. gem</span>
+        <div class="vote"><input type="radio" name="v16" id="v16g" class="g"><label for="v16g">💎 gem</label><input type="radio" name="v16" id="v16c" class="c"><label for="v16c">🪨 coal</label></div></div>
+    </dl>
+
+    <div class="tally" role="status"><span class="gems"></span><span class="coals"></span><span class="verdict"></span></div>
+  </div>
+</section>
+
+<section id="nooo">
+  <h2>nooo you can't just</h2>
+  <span class="tag">the classic two-panel format. pick a scenario. the soyjak on the left, the reply on the right.</span>
+  <div class="meme">
+    <div class="meme-pick">
+      <input type="radio" name="m" id="m1" checked><label for="m1">html</label>
+      <input type="radio" name="m" id="m2"><label for="m2">css game</label>
+      <input type="radio" name="m" id="m3"><label for="m3">no framework</label>
+      <input type="radio" name="m" id="m4"><label for="m4">rm -rf</label>
+    </div>
+    <div class="panels">
+      <div class="panel-l">
+        <div>
+          <p class="line m1">"nooooo you can't just make a website with <b>only html</b>!! you need react, a bundler, and 1,402 packages!!"</p>
+          <p class="line m2">"nooooo you can't just build a <b>text adventure in css</b>!! state management requires javascript!!"</p>
+          <p class="line m3">"nooooo you can't just <b>not use a framework</b>!! how will you center a div!!"</p>
+          <p class="line m4">"nooooo you can't just <b>delete node_modules</b>!! that's 847 mb of culture!!"</p>
+        </div>
+        <img src="../assets/gitjak.svg" alt="gitjak crying" width="110" height="110">
+      </div>
+      <div class="panel-r">
+        <div>
+          <p class="line m1">haha <code>&lt;details&gt;</code> go brrr</p>
+          <p class="line m2">haha <code>:has()</code> go brrr</p>
+          <p class="line m3">haha <code>place-items: center</code> go brrr</p>
+          <p class="line m4">haha <code>rm -rf node_modules</code> go brrr</p>
+        </div>
+        <div class="chad" aria-hidden="true">:)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2>the soyboard</h2>
+  <span class="tag">a small collection of fun pictures. hover to straighten them.</span>
+  <div class="soyboard">
+    <figure><img src="../assets/soy/gapejak.png" alt="gapejak" loading="lazy"><figcaption>gapejak: saw a css-only dungeon</figcaption></figure>
+    <figure><img src="../assets/soy/helmetjak.png" alt="helmet soyjak" loading="lazy"><figcaption>rebase soldier</figcaption></figure>
+    <figure><img src="../assets/soy/suitjak.png" alt="suit soyjak" loading="lazy"><figcaption>the ctrl+z executive</figcaption></figure>
+    <figure><img src="../assets/soy/soytan-pipe.png" alt="soytan with a pipe" loading="lazy"><figcaption>soytan reviews your pr</figcaption></figure>
+    <figure><img src="../assets/soy/cant-gigaquote.png" alt="i can't gigaquote this" loading="lazy"><figcaption>reading package-lock.json</figcaption></figure>
+    <figure><img src="../assets/soy/must-not-gigaquote.png" alt="must not gigaquote" loading="lazy"><figcaption>must not npm install</figcaption></figure>
+    <figure><img src="../assets/soy/gigachad-walk.gif" alt="gigachad walking" loading="lazy"><figcaption>html dev walking past react devs</figcaption></figure>
+    <figure><img src="../assets/soy/gigachad-smoke.gif" alt="gigachad smoking" loading="lazy"><figcaption>0 bytes of javascript</figcaption></figure>
+    <figure><img src="../assets/soy/apu-canoe.jpg" alt="apu in a canoe" loading="lazy"><figcaption>cozy with no node_modules</figcaption></figure>
+    <figure><img src="../assets/soy/3djak.jpeg" alt="3d soyjak" loading="lazy"><figcaption>typeof null === "object"</figcaption></figure>
+    <figure><img src="../assets/soy/neutraljak.png" alt="neutral soyjak" loading="lazy"><figcaption>soot</figcaption></figure>
+    <figure><img src="../assets/soy/hoodjak.jpg" alt="hooded sketch soyjak" loading="lazy"><figcaption>the anonymous committer</figcaption></figure>
+  </div>
+</section>
+
+<section id="rosetta">
+  <h2>rosetta stone</h2>
+  <span class="tag">normal dev speak → sharty speak.</span>
+  <div class="tablewrap">
+    <table class="rosetta">
+      <caption>for nusoys who need a translation</caption>
+      <thead><tr><th scope="col">normal</th><th scope="col">soyspeak</th></tr></thead>
+      <tbody>
+        <tr><td>the build passed</td><td>we're so back</td></tr>
+        <tr><td>the build failed</td><td>it's over</td></tr>
+        <tr><td>this pull request is good</td><td>gem</td></tr>
+        <tr><td>this pull request is bad</td><td>coal</td></tr>
+        <tr><td>this pull request is fine i guess</td><td>soot</td></tr>
+        <tr><td>i updated the dependencies and everything broke</td><td>fell for it again award</td></tr>
+        <tr><td>i installed another package</td><td>consoomed</td></tr>
+        <tr><td>my coworker force-pushed to main</td><td>chud behavior</td></tr>
+        <tr><td>new junior developer</td><td>nusoy</td></tr>
+        <tr><td>we should rewrite it in a new framework</td><td>nooo you can't just not use a framework</td></tr>
+        <tr><td>this site has no javascript</td><td>gemerald</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+
+<a class="sticker peek" href="../qa/" tabindex="0"><span class="say">it's a gem!!</span><img src="../assets/soy/gapejak.png" alt="" loading="lazy"></a>
+<footer class="site">
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan · <a href="../index.html">home</a> · 0 bytes of javascript. gem.
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>

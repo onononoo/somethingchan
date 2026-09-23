@@ -386,3 +386,28 @@
   .hunk .ours, .hunk .theirs { color: var(--fg); }
   .dl.del::after, .dl.add::after { font-weight: bold; }
 }
+
+/* =========================================================
+   stickers — little soyjak pictures peeking in from the edges.
+   hover (or focus) to make them pop out. pure css.
+   ========================================================= */
+@layer kai {
+  .sticker { position: fixed; z-index: 15; width: 96px; bottom: -46px; right: 14px; transition: translate .25s cubic-bezier(.2,1.6,.4,1), rotate .25s;
+    border: 2px solid var(--line); background: #fff; rotate: -6deg; cursor: help; }
+  .sticker.left { right: auto; left: 14px; rotate: 6deg; }
+  .sticker img { display: block; width: 100%; height: auto; }
+  .sticker:hover, .sticker:focus { translate: 0 -54px; rotate: 0deg; outline: none; }
+  .sticker .say { position: absolute; bottom: 100%; left: 50%; translate: -50% -6px; white-space: nowrap; background: #111; color: #ddd; border: 2px solid var(--line);
+    font: 13px var(--serif); padding: 2px 8px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+  .sticker:hover .say, .sticker:focus .say { opacity: 1; }
+  .sticker.peek { animation: peek 9s ease-in-out infinite; }
+  @keyframes peek { 0%, 80%, 100% { translate: 0 0; } 85%, 92% { translate: 0 -30px; } }
+  .sticker.peek:hover { animation: none; }
+  /* inline "fun picture" frames */
+  .pic { float: right; width: 120px; margin: 0 0 10px 14px; border: 2px solid var(--line); background: #fff; rotate: 2deg; }
+  .pic img { display: block; width: 100%; height: auto; }
+  .pic figcaption { background: #111; margin: 0; padding: 2px 6px; font-size: 12px !important; }
+  .pic figcaption::before { content: none; }
+  @media (max-width: 600px) { .sticker { width: 70px; bottom: -34px; } .pic { width: 90px; } }
+  @media print { .sticker { display: none; } }
+}

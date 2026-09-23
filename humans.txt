@@ -5,7 +5,7 @@ site: https://kaieklund.vercel.app/
 repo: github -> somethingchan
 
 /* enemies */
-javascript. all of it. every version.
+javascript. all of it. every version. coal.
 
 /* thanks */
 the tanuki. the octocat. whoever invented git stash (we never got our stuff back).
