@@ -1,6 +1,6 @@
 /* =========================================================
-   somethingchan.css — zero-JavaScript stylesheet
-   Uses: @layer, @property, nesting, container queries,
+   somethingchan.css — zero-javascript stylesheet
+   uses: @layer, @property, nesting, container queries,
    :has(), counters, scroll-driven animations, color-mix()
    ========================================================= */
 
@@ -23,14 +23,14 @@
     --line: #e6dccd; --git: #f05033; --hub: #6e40c9; --lab: #fc6d26; --ok: #2f9e44;
     --warn: #e8a200; --bad: #d6336c;
     --term: #14110d; --termfg: #e9e2d6;
-    --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
-    --serif: Georgia, "Times New Roman", serif;
+    --mono: ui-monospace, "cascadia code", consolas, monospace;
+    --serif: georgia, "times new roman", serif;
     --r: 12px;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) { --bg: #16130f; --fg: #f1ebe2; --muted: #a39a8e; --card: #211d18; --card2: #2a251f; --line: #3a332b; }
   }
-  /* CSS-only theme toggle: checkbox anywhere on page flips tokens */
+  /* css-only theme toggle: checkbox anywhere on page flips tokens */
   :root:has(#theme-flip:checked) {
     --bg: #0b0f14; --fg: #d7f7d0; --muted: #6f9b6a; --card: #0f1620; --card2: #152030; --line: #1e3a2a;
     --git: #39ff14; --hub: #00e5ff; --lab: #ffd000;
@@ -50,11 +50,11 @@
 }
 
 @layer components {
-  /* reading progress bar — scroll-driven, no JS */
+  /* reading progress bar — scroll-driven, no js */
   .progress { position: fixed; inset: 0 0 auto 0; height: 4px; z-index: 100; transform-origin: 0 50%;
-    background: linear-gradient(90deg, var(--git), var(--hub), var(--lab)); transform: scaleX(0);
+    background: linear-gradient(90deg, var(--git), var(--hub), var(--lab)); transform: scalex(0);
     animation: prog linear both; animation-timeline: scroll(root); }
-  @keyframes prog { to { transform: scaleX(1); } }
+  @keyframes prog { to { transform: scalex(1); } }
 
   .ticker { background: var(--fg); color: var(--bg); font: 13px var(--mono); padding: 6px 0; }
 
@@ -94,7 +94,7 @@
   details[open] > summary::after { transform: rotate(45deg); }
   .danger { display: inline-block; font: 11px var(--mono); padding: 1px 6px; border-radius: 4px; color: #fff; }
 
-  /* native popovers, no JS */
+  /* native popovers, no js */
   [popover] { border: 2px solid var(--git); border-radius: var(--r); background: var(--term); color: var(--termfg);
     font: 14px/1.6 var(--mono); padding: 24px; max-width: min(560px, 92vw); white-space: pre-wrap; }
   [popover]::backdrop { background: rgb(0 0 0 / .7); backdrop-filter: blur(3px); }
@@ -149,7 +149,7 @@
   #t-git:checked + label { background: var(--card); color: var(--git); }
   #t-hub:checked + label { background: var(--card); color: var(--hub); }
   #t-lab:checked + label { background: var(--card); color: var(--lab); }
-  @keyframes fade { from { opacity: 0; transform: translateY(6px); } }
+  @keyframes fade { from { opacity: 0; transform: translatey(6px); } }
   .p-git h3 { color: var(--git); } .p-hub h3 { color: var(--hub); } .p-lab h3 { color: var(--lab); }
 
   /* flip cards w/ container queries */
@@ -158,12 +158,12 @@
   @container (min-width: 760px) { .facts { grid-template-columns: repeat(4, 1fr); } }
   .flip { perspective: 800px; height: 160px; }
   .flip-in { position: relative; width: 100%; height: 100%; transition: transform .6s; transform-style: preserve-3d; }
-  .flip:hover .flip-in, .flip:focus-within .flip-in { transform: rotateY(180deg); }
+  .flip:hover .flip-in, .flip:focus-within .flip-in { transform: rotatey(180deg); }
   .face { position: absolute; inset: 0; backface-visibility: hidden; border: 1px solid var(--line); border-radius: 10px;
     padding: 14px; display: flex; flex-direction: column; justify-content: center; font-size: 14.5px; }
   .front { background: var(--card2); text-align: center; font: 600 18px var(--mono);
     & small { font: 12px var(--mono); color: var(--muted); font-weight: normal; margin-top: 6px; } }
-  .back { background: var(--card); transform: rotateY(180deg); }
+  .back { background: var(--card); transform: rotatey(180deg); }
 
   /* svg graph */
   .graph { overflow-x: auto; padding: 16px;
@@ -285,7 +285,7 @@
 
 /* =========================================================
    @layer kai — restyles everything to match kaieklund.vercel.app
-   #111 background · #ddd text · Times New Roman · 2px #ccc boxes
+   #111 background · #ddd text · times new roman · 2px #ccc boxes
    square corners · blue underlined links · narrow centered column
    ========================================================= */
 @layer kai {
@@ -294,8 +294,8 @@
     --bg: #111; --fg: #ddd; --muted: #999; --card: #111; --card2: #1b1b1b; --line: #ccc; --dim: #444;
     --link: #8ab4f8; --git: #8ab4f8; --hub: #c58af9; --lab: #f6ae6b; --ok: #81c995; --warn: #fdd663; --bad: #f28b82;
     --term: #0a0a0a; --termfg: #ddd;
-    --serif: "Times New Roman", Times, serif;
-    --mono: "Courier New", Courier, monospace;
+    --serif: "times new roman", times, serif;
+    --mono: "courier new", courier, monospace;
     --r: 0px;
   }
   :root:has(#theme-flip:checked) { --bg: #000; --fg: #33ff66; --muted: #1f9e3f; --card: #000; --card2: #031a08; --line: #33ff66; --link: #33ff66; --git: #33ff66; }
@@ -341,7 +341,7 @@
   summary::before { content: "▶"; font-size: 10px; transition: transform .15s; }
   details[open] > summary::before { transform: rotate(90deg); }
   summary::after { display: none; }
-  .danger { border-radius: 0; font: 11px var(--mono); background: none !important; border: 1px solid currentColor; color: var(--muted); }
+  .danger { border-radius: 0; font: 11px var(--mono); background: none !important; border: 1px solid currentcolor; color: var(--muted); }
 
   .tabs > label { border: 2px solid var(--line); border-bottom: none; border-radius: 0; background: #111; font: bold 15px var(--serif); }
   .tabs > input:not(:checked) + label { color: var(--muted); border-color: var(--dim); }
@@ -364,4 +364,25 @@
   .tree summary { font: 14px var(--mono); }
   .tree summary::before { content: "[+] "; font-size: inherit; transform: none; color: var(--muted); }
   .tree details[open] > summary::before { content: "[-] "; transform: none; }
+}
+
+/* =========================================================
+   @layer kai (part 2) — everything lowercase, everything readable
+   ========================================================= */
+@layer kai {
+  /* belt + braces: source text is already lowercase, this catches attr() and generated content */
+  html, input, select, textarea, button, [popover] { text-transform: lowercase; }
+  math, code.keep-case { text-transform: none; }
+
+  /* readability: stronger contrast, no text smaller than 12px (except the tiny support line) */
+  :root, :root:not([data-theme="light"]) { --muted: #b0b0b0; --dim: #555; }
+  body { font-size: 17px; line-height: 1.6; }
+  .tag, .tag code, figcaption, caption, .legend, .badges, .stage, .danger, .tree .note,
+  .clock .lbl, .spinners figcaption, .diffbar, summary em { font-size: max(13px, 1em * .8) !important; }
+  .tree .note { color: #c8c8c8; }
+  p, li, dd, td { max-width: 72ch; }
+  .tiny { font-size: 10px; opacity: .85; }
+  a:focus-visible, label:focus-visible, summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+  .hunk .ours, .hunk .theirs { color: var(--fg); }
+  .dl.del::after, .dl.add::after { font-weight: bold; }
 }

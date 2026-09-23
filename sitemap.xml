@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>index.html</loc><changefreq>whenever-i-push</changefreq></url>
   <url><loc>support.html</loc></url>
   <url><loc>lab.html</loc></url>
   <url><loc>game.html</loc></url>
   <url><loc>license.html</loc></url>
+  <url><loc>js/</loc></url>
   <url><loc>feed.xml</loc></url>
 </urlset>

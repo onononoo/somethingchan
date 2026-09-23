@@ -1,21 +1,21 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//somethingchan//Holidays of Version Control//EN
+PRODID:-//somethingchan//holidays of version control//en
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
 UID:merge-conflict-day@somethingchan
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20261113
-SUMMARY:International Merge Conflict Awareness Day
-DESCRIPTION:Hug a coworker. Resolve a hunk. Do not force-push.
+SUMMARY:international merge conflict awareness day
+DESCRIPTION:hug a coworker. resolve a hunk. do not force-push.
 RRULE:FREQ=YEARLY
 END:VEVENT
 BEGIN:VEVENT
 UID:stash-remembrance@somethingchan
 DTSTAMP:20260923T000000Z
 DTSTART;VALUE=DATE:20260402
-SUMMARY:Stash Remembrance Day
-DESCRIPTION:A moment of silence for every stash never popped.
+SUMMARY:stash remembrance day
+DESCRIPTION:a moment of silence for every stash never popped.
 RRULE:FREQ=YEARLY
 END:VEVENT
 BEGIN:VEVENT
@@ -23,7 +23,7 @@ UID:no-deploy-friday@somethingchan
 DTSTAMP:20260923T000000Z
 DTSTART:20260925T164500
 DURATION:PT72H
-SUMMARY:No-Deploy Friday (observed weekly)
+SUMMARY:no-deploy friday (observed weekly)
 RRULE:FREQ=WEEKLY;BYDAY=FR
 END:VEVENT
 END:VCALENDAR

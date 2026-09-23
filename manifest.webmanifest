@@ -1,7 +1,7 @@
 {
   "name": "somethingchan",
   "short_name": "somethingchan",
-  "description": "An authoritative and entirely wrong field guide to Git, GitHub, and GitLab. Zero JavaScript.",
+  "description": "an authoritative and entirely wrong field guide to git, github, and gitlab. zero javascript.",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#fdf8f0",

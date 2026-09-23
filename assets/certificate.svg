@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="Georgia, serif">
-  <title>Certified Git Wizard</title>
+  <title>certified git wizard</title>
   <defs>
     <pattern id="guil" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M0 20 Q10 0 20 20 T40 20" fill="none" stroke="#e6dccd" stroke-width="1.5"/>
@@ -9,8 +9,8 @@
   <rect width="800" height="560" fill="#fdf8f0"/>
   <rect x="20" y="20" width="760" height="520" fill="url(#guil)" stroke="#6e40c9" stroke-width="6" rx="8"/>
   <rect x="40" y="40" width="720" height="480" fill="#fdf8f0" stroke="#f05033" stroke-width="2" rx="4"/>
-  <text x="400" y="120" text-anchor="middle" font-size="22" fill="#6b6258" letter-spacing="6">SOMETHINGCHAN ACADEMY</text>
-  <text x="400" y="190" text-anchor="middle" font-size="52" fill="#1d1a16">Certified Git Wizard</text>
+  <text x="400" y="120" text-anchor="middle" font-size="22" fill="#6b6258" letter-spacing="6">somethingchan academy</text>
+  <text x="400" y="190" text-anchor="middle" font-size="52" fill="#1d1a16">certified git wizard</text>
   <text x="400" y="250" text-anchor="middle" font-size="20" fill="#6b6258" font-style="italic">is hereby awarded to whoever is holding this</text>
   <text x="400" y="300" text-anchor="middle" font-size="18" fill="#1d1a16">for scoring 0 out of 3 on an exam where every answer was wrong</text>
   <text x="400" y="330" text-anchor="middle" font-size="18" fill="#1d1a16">and for never, ever running git push --force on main</text>
@@ -18,7 +18,7 @@
     <circle r="54" fill="url(#seal)">
       <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite"/>
     </circle>
-    <text y="6" text-anchor="middle" font-size="14" fill="#5a3d00" font-family="Consolas, monospace">0 bytes JS</text>
+    <text y="6" text-anchor="middle" font-size="14" fill="#5a3d00" font-family="Consolas, monospace">0 bytes js</text>
   </g>
   <line x1="120" y1="450" x2="360" y2="450" stroke="#1d1a16"/>
   <text x="240" y="475" text-anchor="middle" font-size="14" fill="#6b6258">signed, the tanuki</text>

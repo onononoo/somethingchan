@@ -1,0 +1,83 @@
+/* =========================================================
+   js.css — the /js page. detects javascript without running any.
+   ========================================================= */
+
+@layer sections {
+  /* big text: visible by default, hidden when scripting is off */
+  .fjs { display: grid; place-items: center; text-align: center; min-height: 78vh; padding: 40px 16px; border-bottom: 2px solid var(--line); }
+  .fjs-big { margin: 0; font: 900 clamp(2.2rem, 12.5vw, 11rem)/.95 var(--serif); display: grid; letter-spacing: -.02em; }
+  .fjs-big span { display: block; animation: shake .18s steps(2) infinite; }
+  .fjs-big span + span { color: var(--bad); animation-delay: .09s; }
+  .fjs-pre, .fjs-post { font: 16px var(--serif); color: var(--muted); max-width: 40ch; margin: 18px auto; }
+  @keyframes shake { 50% { translate: 2px -1px; } }
+
+  .nojs { display: none; text-align: center; padding: 80px 16px; border-bottom: 2px solid var(--line); }
+  .nojs-big { font: bold clamp(3rem, 12vw, 8rem) var(--serif); margin: 0; color: var(--ok); }
+
+  @media (scripting: none) {
+    .fjs { display: none; }
+    .nojs { display: block; }
+  }
+
+  /* environment readout */
+  table.env td.r { font: 14px var(--mono); }
+  .r::after { content: "unknown (your browser is too old to say)"; color: var(--muted); }
+  .detect-noscript::after { content: "on ✘ (noscript did not fire)"; color: var(--bad); }
+
+  @media (scripting: enabled)       { .r-scripting::after { content: "enabled ✘ shameful"; color: var(--bad); } }
+  @media (scripting: initial-only)  { .r-scripting::after { content: "initial-only (printing?)"; color: var(--warn); } }
+  @media (scripting: none)          { .r-scripting::after { content: "disabled ✔ based"; color: var(--ok); } }
+
+  @media (prefers-color-scheme: dark)  { .r-scheme::after { content: "dark ✔ correct"; color: var(--ok); } }
+  @media (prefers-color-scheme: light) { .r-scheme::after { content: "light (we forced dark anyway)"; color: var(--warn); } }
+
+  @media (prefers-reduced-motion: reduce)       { .r-motion::after { content: "reduced — animations calmed"; color: var(--ok); } }
+  @media (prefers-reduced-motion: no-preference){ .r-motion::after { content: "full motion — enjoy the shaking"; color: var(--fg); } }
+
+  @media (prefers-contrast: no-preference) { .r-contrast::after { content: "no preference"; color: var(--fg); } }
+  @media (prefers-contrast: more) { .r-contrast::after { content: "more"; color: var(--ok); } }
+  @media (prefers-contrast: less) { .r-contrast::after { content: "less"; color: var(--warn); } }
+
+  @media (forced-colors: none)   { .r-forced::after { content: "none"; color: var(--fg); } }
+  @media (forced-colors: active) { .r-forced::after { content: "active (high contrast mode)"; } }
+
+  @media (hover: hover) { .r-hover::after { content: "yes — flip cards will flip"; color: var(--ok); } }
+  @media (hover: none)  { .r-hover::after { content: "no — tap things instead"; color: var(--warn); } }
+
+  @media (pointer: fine)   { .r-pointer::after { content: "fine (mouse / trackpad)"; color: var(--fg); } }
+  @media (pointer: coarse) { .r-pointer::after { content: "coarse (finger)"; color: var(--fg); } }
+  @media (pointer: none)   { .r-pointer::after { content: "none (keyboard warrior)"; color: var(--ok); } }
+
+  @media (orientation: landscape) { .r-orient::after { content: "landscape"; color: var(--fg); } }
+  @media (orientation: portrait)  { .r-orient::after { content: "portrait"; color: var(--fg); } }
+
+  .r-width::after { content: "huge (≥ 1440px)"; color: var(--fg); }
+  @media (width < 1440px) { .r-width::after { content: "desktop (1024–1439px)"; } }
+  @media (width < 1024px) { .r-width::after { content: "tablet (768–1023px)"; } }
+  @media (width < 768px)  { .r-width::after { content: "phone (480–767px)"; } }
+  @media (width < 480px)  { .r-width::after { content: "tiny phone (< 480px)"; } }
+
+  .r-res::after { content: "1x (standard)"; color: var(--fg); }
+  @media (resolution >= 1.5dppx) { .r-res::after { content: "1.5x"; } }
+  @media (resolution >= 2dppx)   { .r-res::after { content: "2x (retina)"; } }
+  @media (resolution >= 3dppx)   { .r-res::after { content: "3x (very crisp)"; } }
+
+  @media (color-gamut: srgb) { .r-gamut::after { content: "srgb"; color: var(--fg); } }
+  @media (color-gamut: p3)   { .r-gamut::after { content: "display-p3"; color: var(--ok); } }
+  @media (color-gamut: rec2020) { .r-gamut::after { content: "rec2020 (fancy)"; color: var(--ok); } }
+
+  @media (update: fast) { .r-update::after { content: "fast (screen)"; color: var(--fg); } }
+  @media (update: slow) { .r-update::after { content: "slow (e-ink?)"; color: var(--warn); } }
+  @media (update: none) { .r-update::after { content: "none (paper)"; color: var(--warn); } }
+
+  @media (display-mode: browser)    { .r-display::after { content: "no, regular browser tab"; color: var(--fg); } }
+  @media (display-mode: standalone) { .r-display::after { content: "yes, installed via manifest"; color: var(--ok); } }
+
+  .r-theme::after { content: "off"; color: var(--fg); }
+  :root:has(#theme-flip:checked) .r-theme::after { content: "on — hacker mode"; color: var(--ok); }
+}
+
+/* the one place allowed to shout: exempt from the global lowercase rule */
+@layer kai {
+  .fjs-big, .fjs-big span { text-transform: none; }
+}

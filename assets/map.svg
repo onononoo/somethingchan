@@ -1,20 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" width="520" height="300" font-family="Consolas, monospace">
-  <title>Map of the Known Repoverse</title>
+  <title>map of the known repoverse</title>
   <rect width="520" height="300" rx="14" fill="#1b2a3a"/>
   <g fill="#fff" opacity=".35">
     <circle cx="30" cy="30" r="1.5"/><circle cx="490" cy="40" r="1.5"/><circle cx="250" cy="20" r="1"/><circle cx="470" cy="270" r="1.5"/><circle cx="40" cy="260" r="1"/>
   </g>
-  <!-- Git island -->
+  <!-- git island -->
   <ellipse cx="110" cy="150" rx="80" ry="60" fill="#f05033"/>
-  <text x="110" y="148" text-anchor="middle" fill="#fff" font-size="18">GIT</text>
+  <text x="110" y="148" text-anchor="middle" fill="#fff" font-size="18">git</text>
   <text x="110" y="168" text-anchor="middle" fill="#fff" font-size="10">isle of hashes</text>
-  <!-- GitHub continent -->
+  <!-- github continent -->
   <ellipse cx="300" cy="100" rx="90" ry="55" fill="#6e40c9"/>
-  <text x="300" y="98" text-anchor="middle" fill="#fff" font-size="18">GITHUB</text>
+  <text x="300" y="98" text-anchor="middle" fill="#fff" font-size="18">github</text>
   <text x="300" y="118" text-anchor="middle" fill="#fff" font-size="10">star-mining region</text>
-  <!-- GitLab archipelago -->
+  <!-- gitlab archipelago -->
   <ellipse cx="410" cy="220" rx="85" ry="50" fill="#fc6d26"/>
-  <text x="410" y="218" text-anchor="middle" fill="#fff" font-size="18">GITLAB</text>
+  <text x="410" y="218" text-anchor="middle" fill="#fff" font-size="18">gitlab</text>
   <text x="410" y="238" text-anchor="middle" fill="#fff" font-size="10">pipeline swamps</text>
   <!-- sea monster -->
   <text x="220" y="250" fill="#8fb3d9" font-size="11">here be submodules</text>

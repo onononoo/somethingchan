@@ -1,13 +1,13 @@
-/* TEAM */
-Creator: kai
-License: MIT (see LICENSE)
-Site: https://kaieklund.vercel.app/
-Repo: github -> somethingchan
+/* team */
+creator: kai
+license: mit (see license)
+site: https://kaieklund.vercel.app/
+repo: github -> somethingchan
 
-/* THANKS */
-The tanuki. The octocat. Whoever invented git stash (we never got our stuff back).
+/* thanks */
+the tanuki. the octocat. whoever invented git stash (we never got our stuff back).
 
-/* SITE */
-Languages: HTML, CSS, SVG, SMIL, MathML, XML, XSLT, JSON, plain text
-JavaScript: 0 bytes
-Scripts: forbidden by Content-Security-Policy
+/* site */
+languages: html, css, svg, smil, mathml, xml, xslt, json, plain text
+javascript: 0 bytes
+scripts: forbidden by content-security-policy

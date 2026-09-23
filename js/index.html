@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · /js</title>
+<link rel="icon" href="../assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/somethingchan.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../css/js.css">
+<!--
+  how this page knows if javascript is on, without using any javascript:
+  1. <noscript> content is only parsed when scripting is disabled,
+     so this <style> only applies when js is off and hides the big text.
+  2. css @media (scripting: enabled / none) does the same thing a second way.
+  the content-security-policy above still blocks every script. we just check
+  whether your browser *would* run one.
+-->
+<noscript><style>
+  .fjs { display: none !important; }
+  .nojs { display: block !important; }
+  .detect-noscript::after { content: "off ✔ (noscript fired)" !important; color: var(--ok) !important; }
+</style></noscript>
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="toggle terminal theme">
+
+<nav class="top" aria-label="site">
+  <a href="../index.html">home</a><a href="../lab.html">lab</a><a href="../game.html">dungeon</a><a href="#report">report</a><a href="../support.html">support</a><a href="../license.html">license</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<!-- shown only when javascript is enabled -->
+<section class="fjs" aria-live="polite">
+  <p class="fjs-pre">your browser has javascript enabled. we have a message for it:</p>
+  <h1 class="fjs-big"><span>FUCK</span><span>JAVASCRIPT</span></h1>
+  <p class="fjs-post">(this page contains 0 bytes of it. go to your browser settings and turn it off. we'll wait.)</p>
+</section>
+
+<!-- shown only when javascript is disabled -->
+<section class="nojs">
+  <h1 class="nojs-big">peace.</h1>
+  <p>you have javascript disabled. you are one of us. the big angry text is hidden for you.</p>
+</section>
+
+<main>
+  <section id="report">
+    <h2>environment report</h2>
+    <span class="tag">everything below is detected with css media queries. no scripts ran to produce this table.</span>
+    <div class="tablewrap">
+    <table class="env">
+      <caption>live readout of your browser, courtesy of @media</caption>
+      <thead><tr><th scope="col">probe</th><th scope="col">method</th><th scope="col">result</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">javascript</th><td><code>@media (scripting)</code></td><td class="r r-scripting"></td></tr>
+        <tr><th scope="row">javascript (backup)</th><td><code>&lt;noscript&gt;</code></td><td class="r detect-noscript"></td></tr>
+        <tr><th scope="row">color scheme</th><td><code>prefers-color-scheme</code></td><td class="r r-scheme"></td></tr>
+        <tr><th scope="row">motion</th><td><code>prefers-reduced-motion</code></td><td class="r r-motion"></td></tr>
+        <tr><th scope="row">contrast</th><td><code>prefers-contrast</code></td><td class="r r-contrast"></td></tr>
+        <tr><th scope="row">forced colors</th><td><code>forced-colors</code></td><td class="r r-forced"></td></tr>
+        <tr><th scope="row">hover</th><td><code>hover</code></td><td class="r r-hover"></td></tr>
+        <tr><th scope="row">pointer</th><td><code>pointer</code></td><td class="r r-pointer"></td></tr>
+        <tr><th scope="row">orientation</th><td><code>orientation</code></td><td class="r r-orient"></td></tr>
+        <tr><th scope="row">viewport</th><td><code>width</code> ranges</td><td class="r r-width"></td></tr>
+        <tr><th scope="row">pixel density</th><td><code>resolution</code></td><td class="r r-res"></td></tr>
+        <tr><th scope="row">color gamut</th><td><code>color-gamut</code></td><td class="r r-gamut"></td></tr>
+        <tr><th scope="row">refresh</th><td><code>update</code></td><td class="r r-update"></td></tr>
+        <tr><th scope="row">installed as app</th><td><code>display-mode</code></td><td class="r r-display"></td></tr>
+        <tr><th scope="row">terminal theme</th><td><code>:has(#theme-flip:checked)</code></td><td class="r r-theme"></td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section id="why">
+    <h2>why no javascript?</h2>
+    <div class="stack">
+      <details name="why"><summary>isn't this a bit much?</summary><p>yes.</p></details>
+      <details name="why"><summary>how does the big text work?</summary><p>it's visible by default. a <code>&lt;style&gt;</code> inside <code>&lt;noscript&gt;</code> hides it, and that style only exists when scripting is off. <code>@media (scripting: none)</code> backs it up. so the text shows only to browsers that would run javascript, and this page never runs any.</p></details>
+      <details name="why"><summary>what if i turn js off right now?</summary><p>reload the page. the angry text becomes "peace."</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan · <a href="../index.html">home</a>
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>

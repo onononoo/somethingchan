@@ -1,6 +1,6 @@
 /* =========================================================
    lab.css — extra machinery for game.html, lab.html, 404.html
-   still zero JavaScript
+   still zero javascript
    ========================================================= */
 
 @layer sections {
@@ -21,31 +21,31 @@
   .legend { display: flex; gap: 4px; align-items: center; font: 12px var(--mono); color: var(--muted); justify-content: flex-end;
     & i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; } }
 
-  /* ---------------- 3D commit cube ---------------- */
+  /* ---------------- 3d commit cube ---------------- */
   .cube-stage { perspective: 900px; display: grid; place-items: center; padding: 50px 0; }
   .cube { --s: 160px; width: var(--s); height: var(--s); position: relative; transform-style: preserve-3d;
     animation: tumble 14s linear infinite; }
   .cube-stage:hover .cube { animation-play-state: paused; }
   .cube > div { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 10px;
     font: 13px/1.4 var(--mono); color: #fff; border: 2px solid rgb(255 255 255 / .4); border-radius: 8px; backface-visibility: visible; opacity: .92; }
-  .cube .f1 { background: var(--git); transform: translateZ(calc(var(--s) / 2)); }
-  .cube .f2 { background: var(--hub); transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
-  .cube .f3 { background: var(--lab); transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
-  .cube .f4 { background: var(--ok); transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
-  .cube .f5 { background: var(--bad); transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
-  .cube .f6 { background: #333; transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
-  @keyframes tumble { to { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); } }
+  .cube .f1 { background: var(--git); transform: translatez(calc(var(--s) / 2)); }
+  .cube .f2 { background: var(--hub); transform: rotatey(180deg) translatez(calc(var(--s) / 2)); }
+  .cube .f3 { background: var(--lab); transform: rotatey(90deg) translatez(calc(var(--s) / 2)); }
+  .cube .f4 { background: var(--ok); transform: rotatey(-90deg) translatez(calc(var(--s) / 2)); }
+  .cube .f5 { background: var(--bad); transform: rotatex(90deg) translatez(calc(var(--s) / 2)); }
+  .cube .f6 { background: #333; transform: rotatex(-90deg) translatez(calc(var(--s) / 2)); }
+  @keyframes tumble { to { transform: rotatex(360deg) rotatey(720deg) rotatez(360deg); } }
   /* radio-driven face lock */
   .cube-ctl { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; font: 13px var(--mono);
     & input { position: absolute; opacity: 0; }
     & label { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
     & input:checked + label { background: var(--fg); color: var(--bg); } }
-  .cubebox:has(#cf1:checked) .cube { animation: none; transform: rotateY(0); transition: transform 1s; }
-  .cubebox:has(#cf2:checked) .cube { animation: none; transform: rotateY(180deg); transition: transform 1s; }
-  .cubebox:has(#cf3:checked) .cube { animation: none; transform: rotateY(-90deg); transition: transform 1s; }
-  .cubebox:has(#cf5:checked) .cube { animation: none; transform: rotateX(-90deg); transition: transform 1s; }
+  .cubebox:has(#cf1:checked) .cube { animation: none; transform: rotatey(0); transition: transform 1s; }
+  .cubebox:has(#cf2:checked) .cube { animation: none; transform: rotatey(180deg); transition: transform 1s; }
+  .cubebox:has(#cf3:checked) .cube { animation: none; transform: rotatey(-90deg); transition: transform 1s; }
+  .cubebox:has(#cf5:checked) .cube { animation: none; transform: rotatex(-90deg); transition: transform 1s; }
 
-  /* ---------------- CI pipeline ---------------- */
+  /* ---------------- ci pipeline ---------------- */
   .pipeline { display: flex; gap: 0; align-items: center; overflow-x: auto; padding: 20px 4px; }
   .stage { flex: 0 0 auto; width: 120px; text-align: center; font: 13px var(--mono); position: relative; }
   .stage .dot { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 8px; border: 3px solid var(--line); background: var(--card2);
@@ -69,15 +69,15 @@
     & input:focus-visible + label { outline: 2px solid var(--git); } }
   .hunk:has(.o:checked) .theirs, .hunk:has(.t:checked) .ours { opacity: .25; text-decoration: line-through; }
   .ci-result { margin-top: 16px; padding: 14px; border-radius: 10px; font: 14px var(--mono); background: var(--card2); }
-  .ci-result::before { content: "⏳ CI: waiting for you to resolve all hunks…"; }
-  .puzzle:has(.hunk input:checked) .ci-result::before { content: "🔄 CI: running… (resolve every hunk)"; }
+  .ci-result::before { content: "⏳ ci: waiting for you to resolve all hunks…"; }
+  .puzzle:has(.hunk input:checked) .ci-result::before { content: "🔄 ci: running… (resolve every hunk)"; }
   .puzzle:has(#h1b:checked):has(#h2a:checked):has(#h3c:checked) .ci-result { background: color-mix(in srgb, var(--ok) 25%, transparent); }
-  .puzzle:has(#h1b:checked):has(#h2a:checked):has(#h3c:checked) .ci-result::before { content: "✅ CI passed. Merged. You are now Senior Engineer."; }
+  .puzzle:has(#h1b:checked):has(#h2a:checked):has(#h3c:checked) .ci-result::before { content: "✅ ci passed. merged. you are now senior engineer."; }
   .puzzle:has(#h1a:checked, #h1c:checked):has(.h2 :checked):has(.h3 :checked) .ci-result::before,
   .puzzle:has(#h2b:checked, #h2c:checked):has(.h1 :checked):has(.h3 :checked) .ci-result::before,
-  .puzzle:has(#h3a:checked, #h3b:checked):has(.h1 :checked):has(.h2 :checked) .ci-result::before { content: "❌ CI failed: 1,204 tests red. Try again, intern."; }
+  .puzzle:has(#h3a:checked, #h3b:checked):has(.h1 :checked):has(.h2 :checked) .ci-result::before { content: "❌ ci failed: 1,204 tests red. try again, intern."; }
 
-  /* ---------------- SVG filter showcase ---------------- */
+  /* ---------------- svg filter showcase ---------------- */
   .corrupt svg { width: 100%; height: auto; display: block; }
 
   /* ---------------- man page ---------------- */
@@ -137,7 +137,7 @@
   .tree .note { color: var(--muted); font-size: 12px; }
   .tree .file:hover .note { color: var(--fg); }
 
-  /* ---------------- CSS analog clock ---------------- */
+  /* ---------------- css analog clock ---------------- */
   .clock { width: 220px; aspect-ratio: 1; border: 2px solid var(--line); border-radius: 50%; margin: 18px auto 0; position: relative;
     background: repeating-conic-gradient(from -1deg, var(--line) 0 2deg, transparent 2deg 30deg); }
   .clock::after { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: var(--bg); }
@@ -154,8 +154,8 @@
   .diff-toggle { position: absolute; opacity: 0; }
   .diffbar { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 2px solid var(--line); font: 13px var(--mono); gap: 10px; flex-wrap: wrap; }
   .diffbar label { cursor: pointer; border: 1px solid var(--line); padding: 2px 10px; }
-  .diffbar label::after { content: "view: unified"; }
-  .diff-toggle:checked ~ .diffbar label::after { content: "view: split"; }
+  .diffbar label[for="split"]::after { content: "view: unified"; }
+  .diff-toggle:checked ~ .diffbar label[for="split"]::after { content: "view: split"; }
   .diff-toggle:focus-visible ~ .diffbar label { outline: 2px solid var(--git); }
   .diffbody { display: grid; grid-template-columns: 1fr; font: 13px/1.6 var(--mono); overflow-x: auto; counter-reset: dl; }
   .diff-toggle:checked ~ .diffbody { grid-template-columns: 1fr 1fr; }
@@ -171,7 +171,7 @@
   .side .side-h { display: block; padding: 4px 10px; color: var(--muted); border-bottom: 1px dashed var(--dim, #444); }
   /* review checkbox approves the diff */
   .approve { position: absolute; opacity: 0; }
-  .diffbox:has(.approve:checked) .diffstatus::after { content: "✔ approved by kai — LGTM (didn't read it)"; color: var(--ok); }
+  .diffbox:has(.approve:checked) .diffstatus::after { content: "✔ approved by kai — lgtm (didn't read it)"; color: var(--ok); }
   .diffstatus::after { content: "⏳ review requested"; color: var(--warn); }
 
   /* ---------------- spinner museum ---------------- */
@@ -187,7 +187,7 @@
   .sp.f { font: bold 28px var(--mono); line-height: 36px; }
   .sp.f::before { content: "|"; animation: ascii .6s steps(1) infinite; }
   @keyframes dots { to { background-size: 48px 12px; } }
-  @keyframes flipbox { 50% { transform: perspective(80px) rotateX(180deg); } 100% { transform: perspective(80px) rotateX(180deg) rotateY(180deg); } }
+  @keyframes flipbox { 50% { transform: perspective(80px) rotatex(180deg); } 100% { transform: perspective(80px) rotatex(180deg) rotatey(180deg); } }
   @keyframes barslide { to { background-position: -200% 0; } }
   @keyframes ascii { 0% { content: "|"; } 25% { content: "/"; } 50% { content: "—"; } 75% { content: "\\"; } }
 }
