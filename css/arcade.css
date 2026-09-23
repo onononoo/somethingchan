@@ -6,16 +6,16 @@
    ========================================================= */
 
 @layer sections {
-  .game { border: 2px solid var(--line); padding: 14px; margin-top: 14px; }
+  .game { border: 1px solid var(--line); padding: 14px; margin-top: 14px; }
   .game-head { display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; align-items: center; font: 14px var(--mono); margin-bottom: 12px; }
-  .btn { font: bold 14px var(--serif); background: #111; color: var(--fg); border: 2px solid var(--line); padding: 3px 12px; cursor: pointer; }
+  .btn { font: bold 14px var(--serif); background: #111; color: var(--fg); border: 1px solid var(--line); padding: 3px 12px; cursor: pointer; }
   .btn:hover { background: var(--card2); }
-  .host { float: right; width: 90px; margin: 0 0 8px 12px; border: 2px solid var(--line); background: #fff; }
+  .host { float: right; width: 90px; margin: 0 0 8px 12px; border: 1px solid var(--line); background: #fff; }
 
   /* ---------- tic-tac-toe ---------- */
   .ttt { counter-reset: xs os; }
   .board { display: grid; grid-template-columns: repeat(3, 84px); gap: 6px; justify-content: center; }
-  .cell { position: relative; width: 84px; height: 84px; border: 2px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; }
+  .cell { position: relative; width: 84px; height: 84px; border: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; }
   .cell input { position: absolute; opacity: 0; }
   .cell label { display: grid; place-items: center; cursor: pointer; font: 12px var(--mono); color: var(--muted); }
   .cell label:hover { background: var(--card2); color: var(--fg); }
@@ -75,7 +75,7 @@
   .whack .w { position: absolute; opacity: 0; }
   .whack .w:checked { counter-increment: whacked; }
   .holes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 360px; margin: 0 auto; }
-  .hole { position: relative; aspect-ratio: 1; overflow: hidden; border: 2px solid var(--line); background: radial-gradient(ellipse at 50% 85%, #000 0 30%, #1d1a16 32%); }
+  .hole { position: relative; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); background: radial-gradient(ellipse at 50% 85%, #000 0 30%, #1d1a16 32%); }
   .hole label { position: absolute; left: 12%; right: 12%; top: 100%; aspect-ratio: 1; cursor: crosshair; display: grid; place-items: center;
     background: #f7df1e; color: #000; font: bold 26px arial, sans-serif; border: 2px solid #000;
     animation: popup var(--t, 2.2s) ease-in-out infinite; animation-delay: var(--d, 0s); }
@@ -86,7 +86,7 @@
   .w:checked + .hole::after { content: "bonk"; position: absolute; top: 4px; left: 50%; translate: -50% 0; font: bold 14px var(--serif); color: #f28b82; animation: bonk .5s forwards; }
   @keyframes bonk { to { translate: -50% -14px; opacity: 0; } }
   .score::after { content: "javascripts whacked: " counter(whacked) " / 9"; }
-  .timer { height: 10px; border: 2px solid var(--line); margin: 12px auto 0; max-width: 360px; }
+  .timer { height: 10px; border: 1px solid var(--line); margin: 12px auto 0; max-width: 360px; }
   .timer i { display: block; height: 100%; background: #f28b82; transform-origin: 0 50%; animation: countdown 30s linear forwards; }
   @keyframes countdown { to { transform: scaleX(0); } }
   @keyframes countdown2 { to { transform: scaleX(0); } }
@@ -105,7 +105,7 @@
   /* ---------- slot machine ---------- */
   .slots { display: flex; gap: 10px; justify-content: center; }
   .reel-wrap { text-align: center; }
-  .reel { width: 76px; height: 76px; overflow: hidden; border: 2px solid var(--line); background: #0b0b0b; }
+  .reel { width: 76px; height: 76px; overflow: hidden; border: 1px solid var(--line); background: #0b0b0b; }
   .strip { display: flex; flex-direction: column; animation: spin 0.9s steps(4) infinite; }
   .strip span { height: 76px; flex: none; display: grid; place-items: center; font-size: 40px; }
   .strip span img { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; }

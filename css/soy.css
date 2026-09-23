@@ -6,7 +6,7 @@
 
 @layer sections {
   .soy-hero { text-align: center; padding: 20px 16px 6px; }
-  .soy-hero img { width: 180px; height: 180px; display: block; margin: 0 auto 8px; border: 2px solid var(--line); animation: bob 1s ease-in-out infinite; }
+  .soy-hero img { width: 180px; height: 180px; display: block; margin: 0 auto 8px; border: 1px solid var(--line); animation: bob 1s ease-in-out infinite; }
   .soy-hero h1 { font: bold clamp(26px, 6vw, 40px) var(--serif); margin: 0; }
   .soy-hero p { color: var(--muted); margin: 6px auto 0; max-width: 54ch; }
   @keyframes bob { 50% { translate: 0 -5px; rotate: 1.5deg; } }
@@ -14,7 +14,7 @@
   /* ---------- filter chips (radio + :has) ---------- */
   .chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 14px 0; }
   .chips input { position: absolute; opacity: 0; }
-  .chips label { border: 2px solid var(--line); padding: 2px 10px; cursor: pointer; font: 14px var(--mono); }
+  .chips label { border: 1px solid var(--line); padding: 2px 10px; cursor: pointer; font: 14px var(--mono); }
   .chips input:checked + label { background: var(--fg); color: var(--bg); }
   .chips input:focus-visible + label { outline: 2px solid var(--link); }
   .dict:has(#f-git:checked)   .entry:not(.git),
@@ -24,7 +24,7 @@
   /* ---------- entries ---------- */
   .entries { display: grid; gap: 10px; }
   .dict { counter-reset: gem coal shown; }
-  .entry { border: 2px solid var(--line); padding: 10px 14px; counter-increment: shown; }
+  .entry { border: 1px solid var(--line); padding: 10px 14px; counter-increment: shown; }
   .entry dt { font: bold 17px var(--mono); }
   .entry dt small { font: 12px var(--mono); color: var(--muted); margin-left: 6px; }
   .entry dd { margin: 4px 0 0; }
@@ -42,7 +42,7 @@
   .entry:has(.g:checked) { border-color: #81c995; }
   .entry:has(.c:checked) { border-style: dashed; opacity: .75; }
 
-  .tally { position: sticky; top: 46px; z-index: 5; background: var(--bg); border: 2px solid var(--line); padding: 8px 12px; margin-top: 10px; font: 14px var(--mono);
+  .tally { position: sticky; top: 46px; z-index: 5; background: var(--bg); border: 1px solid var(--line); padding: 8px 12px; margin-top: 10px; font: 14px var(--mono);
     display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: space-between; }
   /* the tally sits after the entries in the dom (so counters are final) and is moved up visually */
   .dict { display: flex; flex-direction: column; }
@@ -57,21 +57,21 @@
   .dict:not(:has(.entry .g:not(:checked))) .tally .verdict::after { content: "verdict: all gems. gemerald status 💚"; color: #81c995; }
 
   /* ---------- nooo you can't / haha go brrr ---------- */
-  .meme { border: 2px solid var(--line); margin-top: 14px; }
-  .meme-pick { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; border-bottom: 2px solid var(--line); font: 13px var(--mono); }
+  .meme { border: 1px solid var(--line); margin-top: 14px; }
+  .meme-pick { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px; border-bottom: 1px solid var(--line); font: 13px var(--mono); }
   .meme-pick input { position: absolute; opacity: 0; }
   .meme-pick label { border: 1px solid var(--dim, #555); padding: 0 8px; cursor: pointer; }
   .meme-pick input:checked + label { background: var(--fg); color: var(--bg); }
   .panels { display: grid; grid-template-columns: 1fr 1fr; min-height: 220px; }
   .panel-l, .panel-r { padding: 14px; display: grid; align-content: space-between; gap: 10px; }
-  .panel-l { border-right: 2px solid var(--line); background: #1a1a1a; }
-  .panel-l img { width: 110px; height: 110px; border: 2px solid var(--line); background: #fff; }
-  .panel-r .chad { width: 110px; height: 110px; border: 2px solid var(--line); background: repeating-linear-gradient(135deg, #222 0 8px, #2a2a2a 8px 16px);
+  .panel-l { border-right: 1px solid var(--line); background: #1a1a1a; }
+  .panel-l img { width: 110px; height: 110px; border: 1px solid var(--line); background: #fff; }
+  .panel-r .chad { width: 110px; height: 110px; border: 1px solid var(--line); background: repeating-linear-gradient(135deg, #222 0 8px, #2a2a2a 8px 16px);
     display: grid; place-items: center; font: bold 44px var(--serif); color: #ddd; justify-self: end; }
   .line { display: none; font: 16px/1.4 var(--serif); }
   .line b { font-weight: bold; }
   .meme:has(#m1:checked) .m1, .meme:has(#m2:checked) .m2, .meme:has(#m3:checked) .m3, .meme:has(#m4:checked) .m4 { display: block; animation: fade .3s; }
-  @media (max-width: 520px) { .panels { grid-template-columns: 1fr; } .panel-l { border-right: 0; border-bottom: 2px solid var(--line); } }
+  @media (max-width: 520px) { .panels { grid-template-columns: 1fr; } .panel-l { border-right: 0; border-bottom: 1px solid var(--line); } }
 
   /* ---------- soyspeak translator (static rosetta table) ---------- */
   .rosetta td:first-child { color: var(--muted); }
@@ -81,7 +81,7 @@
 @layer sections {
   /* ---------- soyboard: a corkboard of tilted pictures ---------- */
   .soyboard { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; margin-top: 14px; padding: 14px;
-    border: 2px solid var(--line); background: repeating-linear-gradient(45deg, #1a1612 0 6px, #17130f 6px 12px); }
+    border: 1px solid var(--line); background: repeating-linear-gradient(45deg, #1a1612 0 6px, #17130f 6px 12px); }
   .soyboard figure { margin: 0; background: #fff; border: 2px solid #ccc; padding: 6px 6px 0; rotate: -3deg; transition: rotate .2s, scale .2s; position: relative; }
   .soyboard figure:nth-child(2n) { rotate: 2.5deg; } .soyboard figure:nth-child(3n) { rotate: -1.5deg; }
   .soyboard figure::after { content: ""; position: absolute; top: -7px; left: 50%; width: 12px; height: 12px; translate: -50% 0; border-radius: 50%; background: #d33; box-shadow: 0 2px 0 #0006; }

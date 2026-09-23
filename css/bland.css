@@ -1,0 +1,144 @@
+/* =========================================================
+   bland.css — loaded last on every page. unlayered on purpose,
+   so it wins over every @layer in the other stylesheets.
+   it only changes the look: muted greys, one plain font, thin
+   borders, no glitch/glow/tilt. every feature keeps working.
+   ========================================================= */
+
+/* ---------- tokens (main site) ---------- */
+:root:not(:has(.boardtitle)) {
+  color-scheme: light;
+  --bg: #f4f4f3; --fg: #2b2b2b; --muted: #6e6e6c; --card: #ffffff; --card2: #ededec;
+  --line: #d6d6d3; --dim: #d6d6d3; --link: #3d4f6b;
+  --git: #5a5a58; --hub: #6a6a68; --lab: #7a7a78; --ok: #55705a; --warn: #8a7c52; --bad: #8a5555;
+  --term: #2b2b2b; --termfg: #e6e6e4;
+  --serif: system-ui, -apple-system, "segoe ui", roboto, sans-serif;
+  --mono: ui-monospace, consolas, "courier new", monospace;
+  --r: 4px;
+}
+/* the theme toggle now switches to a plain dark grey instead of hacker green */
+:root:has(#theme-flip:checked) {
+  color-scheme: dark;
+  --bg: #1f1f1f; --fg: #dcdcda; --muted: #9a9a98; --card: #262626; --card2: #2e2e2e;
+  --line: #3a3a3a; --dim: #3a3a3a; --link: #9fb0c8; --git: #9a9a98;
+}
+
+body { font-family: var(--serif, var(--font, system-ui, sans-serif)); }
+body:not(:has(.boardtitle, .taskbar, .page)) { font-size: 16px; line-height: 1.6; }
+a, a:visited { color: var(--link); }
+::selection { background: #cfd6e0; color: #111; }
+
+/* ---------- remove the loud stuff ---------- */
+.glitch::before, .glitch::after, .ring, .orbit { display: none !important; }
+.progress { background: #9a9a98 !important; height: 2px !important; }
+.ticker { background: var(--card2) !important; color: var(--muted) !important; border-bottom: 1px solid var(--line) !important; }
+header.hero h1 { font: 600 28px/1.2 var(--serif) !important; letter-spacing: 0 !important; }
+header.hero p { color: var(--muted); }
+nav.top { background: var(--bg) !important; border-bottom: 1px solid var(--line) !important; font-family: var(--serif) !important; }
+nav.top label { border-color: var(--line) !important; }
+.badges .badge { border-color: var(--line) !important; }
+.badges b { background: var(--card2) !important; color: var(--muted) !important; }
+.badges i { background: var(--card) !important; color: var(--fg) !important; }
+.danger { color: var(--muted) !important; border-color: var(--line) !important; background: none !important; }
+mark { background: #e6e3d6; }
+.tabs > label, .front, summary, .h, .ftitle { font-family: var(--serif) !important; }
+main > section > h2 { font: 600 20px var(--serif) !important; }
+main > section > h2::before { color: var(--muted) !important; font-weight: 400 !important; }
+
+/* no tilting, no bouncing mascots */
+.sticker, .sticker.left, .pic, .soyboard figure, .soyboard figure:nth-child(n), .stone:hover, .host { rotate: 0deg !important; }
+.sticker { border: 1px solid var(--line) !important; box-shadow: 0 1px 3px rgb(0 0 0 / .08); }
+.sticker .say { background: var(--card) !important; color: var(--fg) !important; border: 1px solid var(--line) !important; }
+.pic { border: 1px solid var(--line) !important; }
+.pic figcaption { background: var(--card2) !important; color: var(--muted) !important; }
+.soyboard { background: var(--card2) !important; border: 1px solid var(--line) !important; }
+.soyboard figure { border: 1px solid var(--line) !important; }
+.soyboard figure::after { background: #9a9a98 !important; box-shadow: none !important; }
+.kara-logo { border-radius: 50%; }
+.shame-hero img, .soy-hero img { animation: none !important; }
+
+/* /js — the big text stays, but calm */
+.fjs-big span { animation: none !important; color: var(--fg) !important; }
+.fjs-big span + span { color: var(--muted) !important; }
+.nojs-big { color: var(--fg) !important; }
+
+/* /shame */
+.exhibit .verdict { background: var(--card2) !important; color: var(--fg) !important; border: 1px solid var(--line); rotate: 0deg !important; }
+.counter b { color: var(--fg) !important; }
+.hole { background: radial-gradient(circle at 50% 50%, #111 0 34px, #2a2a2a 35px, #333 70%) !important; }
+.hole::before { filter: blur(10px) grayscale(1) !important; opacity: .35 !important; }
+.graveyard { background: none !important; }
+.stone { background: var(--card) !important; border-radius: 40px 40px 4px 4px !important; }
+
+/* /soy, /kara, /arcade */
+.panel-l { background: var(--card2) !important; }
+.panel-r .chad { background: var(--card2) !important; color: var(--muted) !important; }
+.spot { background: rgb(120 120 118 / .7) !important; border-color: #fff !important; animation: none !important; }
+.hole label { background: #cfcfcc !important; border-color: #777 !important; }
+.lb[popover] { background: var(--card) !important; }
+.lb p { color: var(--fg) !important; }
+.lb button { background: var(--card2) !important; color: var(--fg) !important; }
+
+/* 404 */
+.four04 .big { background: none !important; color: var(--muted) !important; -webkit-text-fill-color: currentColor; animation: none !important; }
+
+/* ---------- /qa/ and /kai/ (qa.css). only the default theme goes bland;
+   the yotsuba and tomorrow buttons still work. ---------- */
+:root:not(:has(#th-y:checked, #th-t:checked)):has(.boardtitle) {
+  --bg: #f4f4f3; --fg: #2b2b2b; --post: #eaeae8; --post-border: #d6d6d3; --hl: #dfe3ea;
+  --subject: #2b2b2b; --name: #55705a; --link: #3d4f6b; --link-hover: #1f2a3a;
+  --quote: #6b7a55; --admin: #8a5555; --title: #2b2b2b; --hr: #d6d6d3; --muted: #6e6e6c;
+  --head-bg: #f4f4f3; --font: system-ui, -apple-system, "segoe ui", roboto, sans-serif;
+}
+.banner { background: var(--post) !important; }
+.banner span { color: var(--muted) !important; font-weight: 500 !important; }
+.boardtitle { font: 600 26px var(--font) !important; letter-spacing: 0 !important; }
+.postform th { background: var(--post) !important; color: var(--fg) !important; border: 1px solid var(--post-border) !important; }
+.jshate { border: 1px dashed var(--post-border) !important; color: var(--muted) !important; }
+.dev .name, .dev .capcode { color: #3d4f6b !important; }
+.dev-icon, .news-badge { background: #3d4f6b !important; }
+.banned { color: var(--admin) !important; }
+
+/* ---------- /os/ (os.css) ---------- */
+body:has(.taskbar) { background: #8c8f8f; }
+.wallpaper { background-color: #8c8f8f !important; }
+.wallpaper::after { color: #e6e6e4 !important; }
+.titlebar { background: #6e6e6c !important; }
+.startmenu .side { background: #6e6e6c !important; }
+.startmenu li a:hover, .startmenu li button:hover, .icon:hover span, .icon:focus-visible span, .files a:hover span { background: #6e6e6c !important; }
+.shutdown[popover] { color: #cfcfcc !important; }
+
+/* ---------- /map/ (map.css) ---------- */
+.threatmap { background: #262626 !important; }
+.threatmap::after { display: none !important; }
+.land circle, .land circle:nth-child(7n) { fill: #3a3a3a !important; }
+.arc { stroke: #8a8a88 !important; opacity: .6 !important; }
+.packet { fill: #d6d6d3 !important; filter: none !important; }
+.src circle { fill: #a8a8a6 !important; }
+.src text { fill: #b8b8b6 !important; }
+.hq circle { stroke: #e6e6e4 !important; }
+.hq circle:last-of-type, .hq-label { fill: #e6e6e4 !important; }
+.hq circle:first-of-type { fill: none !important; }
+.stat b, .s-blocked b, .s-ran b, .s-src b::after, .s-shield b::after { color: var(--fg) !important; }
+.feed { background: #262626 !important; }
+.feed::before { background: linear-gradient(#262626, transparent) !important; }
+.feed::after { background: linear-gradient(transparent, #262626) !important; }
+.feed b { color: #cfcfcc !important; }
+.feed .blocked { color: #a8a8a6 !important; }
+.legend i { background: #9a9a98 !important; }
+
+/* ---------- /ip/ (ip.css) ---------- */
+.glow { display: none !important; }
+.stars, .stars::before, .stars::after { opacity: .25 !important; }
+.ip iframe { animation: none !important; filter: invert(1) !important; }
+.ip-kara { rotate: 0deg !important; border-color: #555 !important; }
+.title span { animation: none !important; }
+
+/* ---------- leftover hard-coded darks from the old look ---------- */
+button.pop, a.pop, .btn { background: var(--card) !important; color: var(--fg) !important; }
+button.pop:hover, a.pop:hover, .btn:hover { background: var(--card2) !important; }
+.fake-form input, .fake-form select { background: var(--card) !important; color: var(--fg) !important; }
+.kg button { background: var(--card2) !important; }
+.tabs > label { background: var(--card2) !important; }
+.tabs > input:checked + label { background: var(--card) !important; }
+.stage .dot { border-width: 2px !important; }

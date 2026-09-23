@@ -27,6 +27,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `os/` | somethingos: a desktop made of `popover="manual"` windows — taskbar, start menu, notepad, ms-dos prompt, recycle bin, image viewer, minesweeper (css win/lose), a css uptime clock, and a recurring javascript.exe crash |
 | `map/` | a fake, decorative "ddos map": javascript-themed sources fire at somethingchan hq and the csp blocks them all. svg dot map, css arcs, smil packets, css counters |
 | `wiki/` | somethingwiki: articles with talk / edit / history tabs (all `:target`), infoboxes, footnotes, hover previews, and a random-article link that is 6 links cycling on a css timer |
+| `status/` | a plain status page: 90-day uptime bars with hover details, incident history, metrics. javascript is a component and is always "blocked" |
 | `support.html` | source + donate |
 | `license.html` | the mit license, rendered like a man page |
 | `404.html` | lost object |
@@ -51,7 +52,7 @@ two independent animations bounce it like a dvd logo.
 | language | where |
 | --- | --- |
 | html | every page |
-| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css` |
+| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css`, `css/status.css`, `css/bland.css` |
 | svg + smil | `assets/*.svg`, inline graphs |
 | mathml | the math section on the home page |
 | xml + xslt | `feed.xml`, `feed.xsl`, `sitemap.xml` |
@@ -63,7 +64,7 @@ two independent animations bounce it like a dvd logo.
 
 ## style
 
-- looks like [kaieklund.vercel.app](https://kaieklund.vercel.app/): `#111` background, times new roman, square `2px` boxes, blue links.
+- quiet by default: `css/bland.css` loads last on every page and sets muted greys, a system font and thin borders. the theme toggle switches to plain dark grey.
 - everything is lowercase, including code comments. the one exception is the text on `/js`.
 
 ## running it *locally*

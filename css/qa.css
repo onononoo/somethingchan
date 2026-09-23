@@ -52,9 +52,11 @@
   .banner { display: block; margin: 12px auto 0; width: 300px; max-width: 100%; height: 100px; border: 1px solid var(--post-border); overflow: hidden; position: relative;
     background: repeating-linear-gradient(45deg, var(--post) 0 12px, var(--bg) 12px 24px); }
   .banner span { position: absolute; inset: 0; display: grid; place-items: center; font: bold 22px var(--font); color: var(--title);
-    animation: bannerswap 9s steps(1) infinite; }
-  .banner span:nth-child(2) { animation-delay: -3s; } .banner span:nth-child(3) { animation-delay: -6s; }
-  @keyframes bannerswap { 0% { opacity: 1; } 33.33% { opacity: 0; } }
+    opacity: 0; animation: bannerswap 15s steps(1) infinite; }
+  /* one slogan at a time: 5 slogans, each visible for 1/5 of the cycle */
+  .banner span:nth-child(2) { animation-delay: -12s; } .banner span:nth-child(3) { animation-delay: -9s; }
+  .banner span:nth-child(4) { animation-delay: -6s; } .banner span:nth-child(5) { animation-delay: -3s; }
+  @keyframes bannerswap { 0% { opacity: 1; } 20% { opacity: 0; } }
 
   .boardtitle { text-align: center; color: var(--title); font: bold 28px tahoma, var(--font); letter-spacing: -2px; margin: 8px 0 0; }
   .boardsub { text-align: center; font-size: 11px; color: var(--muted); margin: 2px 0 10px; }

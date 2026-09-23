@@ -4,14 +4,14 @@
 
 @layer sections {
   /* big text: visible by default, hidden when scripting is off */
-  .fjs { display: grid; place-items: center; text-align: center; min-height: 78vh; padding: 40px 16px; border-bottom: 2px solid var(--line); }
+  .fjs { display: grid; place-items: center; text-align: center; min-height: 78vh; padding: 40px 16px; border-bottom: 1px solid var(--line); }
   .fjs-big { margin: 0; font: 900 clamp(2.2rem, 12.5vw, 11rem)/.95 var(--serif); display: grid; letter-spacing: -.02em; }
   .fjs-big span { display: block; animation: shake .18s steps(2) infinite; }
   .fjs-big span + span { color: var(--bad); animation-delay: .09s; }
   .fjs-pre, .fjs-post { font: 16px var(--serif); color: var(--muted); max-width: 40ch; margin: 18px auto; }
   @keyframes shake { 50% { translate: 2px -1px; } }
 
-  .nojs { display: none; text-align: center; padding: 80px 16px; border-bottom: 2px solid var(--line); }
+  .nojs { display: none; text-align: center; padding: 80px 16px; border-bottom: 1px solid var(--line); }
   .nojs-big { font: bold clamp(3rem, 12vw, 8rem) var(--serif); margin: 0; color: var(--ok); }
 
   @media (scripting: none) {

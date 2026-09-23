@@ -6,15 +6,15 @@
 
 @layer sections {
   /* ---------- profile card ---------- */
-  .kara-card { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; border: 2px solid var(--line); padding: 16px; margin-top: 14px; }
-  .kara-card img { width: 100%; border: 2px solid var(--line); display: block; }
+  .kara-card { display: grid; grid-template-columns: 180px 1fr; gap: 18px; align-items: start; border: 1px solid var(--line); padding: 16px; margin-top: 14px; }
+  .kara-card img { width: 100%; border: 1px solid var(--line); display: block; }
   .kara-card dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 15px; }
   .kara-card dt { color: var(--muted); font-family: var(--mono); font-size: 13px; }
   .kara-card dd { margin: 0; }
   @media (max-width: 560px) { .kara-card { grid-template-columns: 1fr; } .kara-card img { max-width: 200px; margin: 0 auto; } }
 
   /* ---------- speech bubble that cycles lines with steps() ---------- */
-  .kara-says { position: relative; border: 2px solid var(--line); padding: 10px 14px; margin: 14px 0 0 40px; min-height: 2.8em; font: 16px var(--serif); }
+  .kara-says { position: relative; border: 1px solid var(--line); padding: 10px 14px; margin: 14px 0 0 40px; min-height: 2.8em; font: 16px var(--serif); }
   .kara-says::before { content: ""; position: absolute; left: -12px; top: 14px; border: 10px solid transparent; border-right-color: var(--line); border-left: 0; }
   .kara-says::after { content: "hi. i'm kara. welcome to somethingchan.";
     animation: karaquote 24s steps(1) infinite; }
@@ -32,7 +32,7 @@
   /* ---------- gallery filter ---------- */
   .kfilter { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 14px 0; }
   .kfilter input { position: absolute; opacity: 0; }
-  .kfilter label { border: 2px solid var(--line); padding: 2px 10px; cursor: pointer; font: 14px var(--mono); }
+  .kfilter label { border: 1px solid var(--line); padding: 2px 10px; cursor: pointer; font: 14px var(--mono); }
   .kfilter input:checked + label { background: var(--fg); color: var(--bg); }
   .kfilter input:focus-visible + label { outline: 2px solid var(--link); }
   .kgallery:has(#kf-art:checked) .kg:not(.art),
@@ -42,7 +42,7 @@
 
   .kgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
   .kg { margin: 0; }
-  .kg button { all: unset; display: block; cursor: zoom-in; border: 2px solid var(--line); background: #1b1b1b; width: 100%; box-sizing: border-box; transition: translate .15s; }
+  .kg button { all: unset; display: block; cursor: zoom-in; border: 1px solid var(--line); background: #1b1b1b; width: 100%; box-sizing: border-box; transition: translate .15s; }
   .kg button:hover, .kg button:focus-visible { translate: 0 -4px; outline: 2px solid var(--link); }
   .kg img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 20%; }
   .kg figcaption { font: 13px var(--serif) !important; color: var(--muted); padding: 4px 2px 0; text-align: center; }
@@ -52,21 +52,21 @@
   .kgallery .kcount::after { content: "showing " counter(kshown) " of kara"; }
 
   /* ---------- popover lightbox ---------- */
-  .lb[popover] { padding: 10px; background: #111; border: 2px solid var(--line); max-width: min(92vw, 900px); max-height: 92vh; white-space: normal; text-transform: lowercase; }
+  .lb[popover] { padding: 10px; background: #111; border: 1px solid var(--line); max-width: min(92vw, 900px); max-height: 92vh; white-space: normal; text-transform: lowercase; }
   .lb[popover]::backdrop { background: rgb(0 0 0 / .85); }
   .lb img { display: block; max-width: 100%; max-height: calc(92vh - 80px); margin: 0 auto; }
   .lb p { margin: 8px 0 0; display: flex; justify-content: space-between; gap: 10px; align-items: center; font: 14px var(--serif); color: #ddd; }
-  .lb button { font: 13px var(--mono); background: #111; color: #ddd; border: 2px solid var(--line); padding: 2px 10px; cursor: pointer; }
+  .lb button { font: 13px var(--mono); background: #111; color: #ddd; border: 1px solid var(--line); padding: 2px 10px; cursor: pointer; }
   .lb[popover]:popover-open { animation: lbin .2s ease-out; }
   @keyframes lbin { from { opacity: 0; scale: .96; } }
 
   /* ---------- kara's inventory hotspots ---------- */
-  .inv-wrap { position: relative; max-width: 560px; margin: 14px auto 0; border: 2px solid var(--line); }
+  .inv-wrap { position: relative; max-width: 560px; margin: 14px auto 0; border: 1px solid var(--line); }
   .inv-wrap img { display: block; width: 100%; }
   .spot { position: absolute; width: 26px; height: 26px; translate: -50% -50%; border-radius: 50%; border: 2px solid #fff; background: rgb(242 139 130 / .8);
     cursor: help; animation: ping 1.6s ease-out infinite; }
   .spot:focus { outline: 2px solid var(--link); }
-  .spot span { position: absolute; left: 50%; bottom: 130%; translate: -50% 0; white-space: nowrap; background: #111; color: #ddd; border: 2px solid var(--line);
+  .spot span { position: absolute; left: 50%; bottom: 130%; translate: -50% 0; white-space: nowrap; background: #111; color: #ddd; border: 1px solid var(--line);
     font: 13px var(--serif); padding: 2px 8px; opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 3; }
   .spot:hover span, .spot:focus span { opacity: 1; }
   @keyframes ping { 0% { box-shadow: 0 0 0 0 rgb(242 139 130 / .7); } 100% { box-shadow: 0 0 0 12px rgb(242 139 130 / 0); } }

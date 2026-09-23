@@ -325,17 +325,17 @@
 
   .badges { font: 11px var(--mono);
     & .badge { border: 1px solid var(--line); border-radius: 0; }
-    & b { background: #222; } & i { background: #111 !important; color: var(--fg); } }
+    & b { background: var(--card2); color: var(--muted); } & i { background: var(--card) !important; color: var(--fg); } }
 
-  .ticker { background: #111; color: var(--muted); border-bottom: 2px solid var(--line); font: 12px var(--mono); }
+  .ticker { background: #111; color: var(--muted); border-bottom: 1px solid var(--line); font: 12px var(--mono); }
 
-  nav.top { background: #111; border-bottom: 2px solid var(--line); backdrop-filter: none; font: 14px var(--serif); gap: 2px 12px;
+  nav.top { background: #111; border-bottom: 1px solid var(--line); backdrop-filter: none; font: 14px var(--serif); gap: 2px 12px;
     & a { padding: 2px 0; border-radius: 0; &:hover { background: none; color: #fff; } &::before { content: "/"; } }
     & label { border-radius: 0; border: 1px solid var(--dim); padding: 0 8px; } }
 
   /* the signature box: 2px solid #ccc, square, bold summary */
   .card, details, .panel, .term, .man, .quiz, .hunk, .fake-form, .room .scene, iframe.embed, .inventory, [popover] {
-    border: 2px solid var(--line) !important; border-radius: 0 !important; background: var(--card); box-shadow: none; }
+    border: 1px solid var(--line) !important; border-radius: 0 !important; background: var(--card); box-shadow: none; }
   details { padding: 0 12px; &[open] { border-color: var(--line); } }
   summary { font: bold 15px var(--serif); padding: 10px 0; }
   summary::before { content: "▶"; font-size: 10px; transition: transform .15s; }
@@ -343,23 +343,23 @@
   summary::after { display: none; }
   .danger { border-radius: 0; font: 11px var(--mono); background: none !important; border: 1px solid currentcolor; color: var(--muted); }
 
-  .tabs > label { border: 2px solid var(--line); border-bottom: none; border-radius: 0; background: #111; font: bold 15px var(--serif); }
+  .tabs > label { border: 1px solid var(--line); border-bottom: none; border-radius: 0; background: #111; font: bold 15px var(--serif); }
   .tabs > input:not(:checked) + label { color: var(--muted); border-color: var(--dim); }
-  .face { border: 2px solid var(--line); border-radius: 0; }
+  .face { border: 1px solid var(--line); border-radius: 0; }
   .front { background: #1b1b1b; font: bold 18px var(--serif); }
 
-  button.pop, a.pop { border: 2px solid var(--line); border-radius: 0; background: #111; font: bold 14px var(--serif); color: var(--fg); }
+  button.pop, a.pop { border: 1px solid var(--line); border-radius: 0; background: #111; font: bold 14px var(--serif); color: var(--fg); }
   .q label, .choices a, .choices label, .cube-ctl label, .hunk .pick label { border-radius: 0 !important; font-family: var(--serif) !important; }
   .fake-form input, .fake-form select { border-radius: 0; border: 2px solid var(--dim); background: #0b0b0b; font-family: var(--serif); }
   table th, table td { border-bottom: 1px solid var(--dim); }
-  blockquote { border-left: 2px solid var(--line) !important; border-radius: 0 !important; }
+  blockquote { border-left: 1px solid var(--line) !important; border-radius: 0 !important; }
   .pie span { background: #111; }
   .contrib i, .legend i { border-radius: 0; }
   .cube > div { border-radius: 0; font-family: var(--serif); }
   .flip { height: 170px; }
   .facts { gap: 10px; }
 
-  footer.site { border-top: 2px solid var(--line); font: 13px var(--serif); & a { color: var(--link); } }
+  footer.site { border-top: 1px solid var(--line); font: 13px var(--serif); & a { color: var(--link); } }
   .tiny { font: 9px/1.4 var(--serif); }
   .tree summary { font: 14px var(--mono); }
   .tree summary::before { content: "[+] "; font-size: inherit; transform: none; color: var(--muted); }
@@ -393,18 +393,18 @@
    ========================================================= */
 @layer kai {
   .sticker { position: fixed; z-index: 15; width: 96px; bottom: -46px; right: 14px; transition: translate .25s cubic-bezier(.2,1.6,.4,1), rotate .25s;
-    border: 2px solid var(--line); background: #fff; rotate: -6deg; cursor: help; }
+    border: 1px solid var(--line); background: #fff; rotate: -6deg; cursor: help; }
   .sticker.left { right: auto; left: 14px; rotate: 6deg; }
   .sticker img { display: block; width: 100%; height: auto; }
   .sticker:hover, .sticker:focus { translate: 0 -54px; rotate: 0deg; outline: none; }
-  .sticker .say { position: absolute; bottom: 100%; left: 50%; translate: -50% -6px; white-space: nowrap; background: #111; color: #ddd; border: 2px solid var(--line);
+  .sticker .say { position: absolute; bottom: 100%; left: 50%; translate: -50% -6px; white-space: nowrap; background: #111; color: #ddd; border: 1px solid var(--line);
     font: 13px var(--serif); padding: 2px 8px; opacity: 0; transition: opacity .2s; pointer-events: none; }
   .sticker:hover .say, .sticker:focus .say { opacity: 1; }
   .sticker.peek { animation: peek 9s ease-in-out infinite; }
   @keyframes peek { 0%, 80%, 100% { translate: 0 0; } 85%, 92% { translate: 0 -30px; } }
   .sticker.peek:hover { animation: none; }
   /* inline "fun picture" frames */
-  .pic { float: right; width: 120px; margin: 0 0 10px 14px; border: 2px solid var(--line); background: #fff; rotate: 2deg; }
+  .pic { float: right; width: 120px; margin: 0 0 10px 14px; border: 1px solid var(--line); background: #fff; rotate: 2deg; }
   .pic img { display: block; width: 100%; height: auto; }
   .pic figcaption { background: #111; margin: 0; padding: 2px 6px; font-size: 12px !important; }
   .pic figcaption::before { content: none; }
