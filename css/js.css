@@ -28,8 +28,8 @@
   @media (scripting: initial-only)  { .r-scripting::after { content: "initial-only (printing?)"; color: var(--warn); } }
   @media (scripting: none)          { .r-scripting::after { content: "disabled ✔ based"; color: var(--ok); } }
 
-  @media (prefers-color-scheme: dark)  { .r-scheme::after { content: "dark ✔ correct"; color: var(--ok); } }
-  @media (prefers-color-scheme: light) { .r-scheme::after { content: "light (we forced dark anyway)"; color: var(--warn); } }
+  @media (prefers-color-scheme: dark)  { .r-scheme::after { content: "dark (the page stays light unless you hit theme)"; color: var(--fg); } }
+  @media (prefers-color-scheme: light) { .r-scheme::after { content: "light (matches the page)"; color: var(--fg); } }
 
   @media (prefers-reduced-motion: reduce)       { .r-motion::after { content: "reduced — animations calmed"; color: var(--ok); } }
   @media (prefers-reduced-motion: no-preference){ .r-motion::after { content: "full motion — enjoy the shaking"; color: var(--fg); } }
