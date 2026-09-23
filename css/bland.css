@@ -1,194 +1,146 @@
 /* =========================================================
-   bland.css — loaded last on every page. unlayered on purpose,
-   so it wins over every @layer in the other stylesheets.
-   it only changes the look: muted greys, one plain font, thin
-   borders, no glitch/glow/tilt. every feature keeps working.
+   bland.css — plain html look. loaded last on every page and
+   unlayered, so it wins over every @layer in the other files.
+   times new roman, black on white, underlined blue links,
+   grey default-looking buttons, 1px grey borders, left aligned.
+   only the look changes. every feature keeps working.
    ========================================================= */
 
-/* ---------- tokens (main site) ---------- */
+/* ---------- tokens ---------- */
 :root:not(:has(.boardtitle)) {
   color-scheme: light;
-  --bg: #f4f4f3; --fg: #2b2b2b; --muted: #6e6e6c; --card: #ffffff; --card2: #ededec;
-  --line: #d6d6d3; --dim: #d6d6d3; --link: #3d4f6b;
-  --git: #5a5a58; --hub: #6a6a68; --lab: #7a7a78; --ok: #55705a; --warn: #8a7c52; --bad: #8a5555;
-  --term: #2b2b2b; --termfg: #e6e6e4;
-  --serif: system-ui, -apple-system, "segoe ui", roboto, sans-serif;
-  --mono: ui-monospace, consolas, "courier new", monospace;
-  --r: 4px;
+  --bg: #ffffff; --fg: #000000; --muted: #555555; --card: #ffffff; --card2: #eeeeee;
+  --line: #808080; --dim: #808080; --link: #0000ee;
+  --git: #0000ee; --hub: #800080; --lab: #cc6600; --ok: #008000; --warn: #cc9900; --bad: #cc0000;
+  --term: #000000; --termfg: #c0c0c0;
+  --serif: "times new roman", times, serif;
+  --mono: "courier new", courier, monospace;
+  --r: 0px;
 }
-/* the theme toggle now switches to a plain dark grey instead of hacker green */
 :root:has(#theme-flip:checked) {
   color-scheme: dark;
-  --bg: #1f1f1f; --fg: #dcdcda; --muted: #9a9a98; --card: #262626; --card2: #2e2e2e;
-  --line: #3a3a3a; --dim: #3a3a3a; --link: #9fb0c8; --git: #9a9a98;
+  --bg: #000000; --fg: #ffffff; --muted: #aaaaaa; --card: #000000; --card2: #222222; --line: #808080; --link: #6699ff;
 }
 
-body { font-family: var(--serif, var(--font, system-ui, sans-serif)); }
-body:not(:has(.boardtitle, .taskbar, .page)) { font-size: 16px; line-height: 1.6; }
-a, a:visited { color: var(--link); }
-::selection { background: #cfd6e0; color: #111; }
-
-/* ---------- remove the loud stuff ---------- */
-.glitch::before, .glitch::after, .ring, .orbit { display: none !important; }
-.progress { background: #9a9a98 !important; height: 2px !important; }
-.ticker { background: var(--card2) !important; color: var(--muted) !important; border-bottom: 1px solid var(--line) !important; }
-header.hero h1 { font: 600 28px/1.2 var(--serif) !important; letter-spacing: 0 !important; }
-header.hero p { color: var(--muted); }
-nav.top { background: var(--bg) !important; border-bottom: 1px solid var(--line) !important; font-family: var(--serif) !important; }
-nav.top label { border-color: var(--line) !important; }
-.badges .badge { border-color: var(--line) !important; }
-.badges b { background: var(--card2) !important; color: var(--muted) !important; }
-.badges i { background: var(--card) !important; color: var(--fg) !important; }
-.danger { color: var(--muted) !important; border-color: var(--line) !important; background: none !important; }
-mark { background: #e6e3d6; }
-.tabs > label, .front, summary, .h, .ftitle { font-family: var(--serif) !important; }
-main > section > h2 { font: 600 20px var(--serif) !important; }
-main > section > h2::before { color: var(--muted) !important; font-weight: 400 !important; }
-
-/* no tilting, no bouncing mascots */
-.sticker, .sticker.left, .pic, .soyboard figure, .soyboard figure:nth-child(n), .stone:hover, .host { rotate: 0deg !important; }
-.sticker { border: 1px solid var(--line) !important; box-shadow: 0 1px 3px rgb(0 0 0 / .08); }
-.sticker .say { background: var(--card) !important; color: var(--fg) !important; border: 1px solid var(--line) !important; }
-.pic { border: 1px solid var(--line) !important; }
-.pic figcaption { background: var(--card2) !important; color: var(--muted) !important; }
-.soyboard { background: var(--card2) !important; border: 1px solid var(--line) !important; }
-.soyboard figure { border: 1px solid var(--line) !important; }
-.soyboard figure::after { background: #9a9a98 !important; box-shadow: none !important; }
-.kara-logo { border-radius: 50%; }
-.shame-hero img, .soy-hero img { animation: none !important; }
-
-/* /js — the big text stays, but calm */
-.fjs-big span { animation: none !important; color: var(--fg) !important; }
-.fjs-big span + span { color: var(--muted) !important; }
-.nojs-big { color: var(--fg) !important; }
-
-/* /shame */
-.exhibit .verdict { background: var(--card2) !important; color: var(--fg) !important; border: 1px solid var(--line); rotate: 0deg !important; }
-.counter b { color: var(--fg) !important; }
-.hole { background: radial-gradient(circle at 50% 50%, #111 0 34px, #2a2a2a 35px, #333 70%) !important; }
-.hole::before { filter: blur(10px) grayscale(1) !important; opacity: .35 !important; }
-.graveyard { background: none !important; }
-.stone { background: var(--card) !important; border-radius: 40px 40px 4px 4px !important; }
-
-/* /soy, /kara, /arcade */
-.panel-l { background: var(--card2) !important; }
-.panel-r .chad { background: var(--card2) !important; color: var(--muted) !important; }
-.spot { background: rgb(120 120 118 / .7) !important; border-color: #fff !important; animation: none !important; }
-.hole label { background: #cfcfcc !important; border-color: #777 !important; }
-.lb[popover] { background: var(--card) !important; }
-.lb p { color: var(--fg) !important; }
-.lb button { background: var(--card2) !important; color: var(--fg) !important; }
-
-/* 404 */
-.four04 .big { background: none !important; color: var(--muted) !important; -webkit-text-fill-color: currentColor; animation: none !important; }
-
-/* ---------- /qa/ and /kai/ (qa.css). only the default theme goes bland;
-   the yotsuba and tomorrow buttons still work. ---------- */
-:root:not(:has(#th-y:checked, #th-t:checked)):has(.boardtitle) {
-  --bg: #f4f4f3; --fg: #2b2b2b; --post: #eaeae8; --post-border: #d6d6d3; --hl: #dfe3ea;
-  --subject: #2b2b2b; --name: #55705a; --link: #3d4f6b; --link-hover: #1f2a3a;
-  --quote: #6b7a55; --admin: #8a5555; --title: #2b2b2b; --hr: #d6d6d3; --muted: #6e6e6c;
-  --head-bg: #f4f4f3; --font: system-ui, -apple-system, "segoe ui", roboto, sans-serif;
-}
-.banner { background: var(--post) !important; }
-.banner span { color: var(--muted) !important; font-weight: 500 !important; }
-.boardtitle { font: 600 26px var(--font) !important; letter-spacing: 0 !important; }
-.postform th { background: var(--post) !important; color: var(--fg) !important; border: 1px solid var(--post-border) !important; }
-.jshate { border: 1px dashed var(--post-border) !important; color: var(--muted) !important; }
-.dev .name, .dev .capcode { color: #3d4f6b !important; }
-.dev-icon, .news-badge { background: #3d4f6b !important; }
-.banned { color: var(--admin) !important; }
-
-/* ---------- /os/ (os.css) ---------- */
-body:has(.taskbar) { background: #8c8f8f; }
-.wallpaper { background-color: #8c8f8f !important; }
-.wallpaper::after { color: #e6e6e4 !important; }
-.titlebar { background: #6e6e6c !important; }
-.startmenu .side { background: #6e6e6c !important; }
-.startmenu li a:hover, .startmenu li button:hover, .icon:hover span, .icon:focus-visible span, .files a:hover span { background: #6e6e6c !important; }
-.shutdown[popover] { color: #cfcfcc !important; }
-
-/* ---------- /map/ (map.css) ---------- */
-.threatmap { background: #262626 !important; }
-.threatmap::after { display: none !important; }
-.land circle, .land circle:nth-child(7n) { fill: #3a3a3a !important; }
-.arc { stroke: #8a8a88 !important; opacity: .6 !important; }
-.packet { fill: #d6d6d3 !important; filter: none !important; }
-.src circle { fill: #a8a8a6 !important; }
-.src text { fill: #b8b8b6 !important; }
-.hq circle { stroke: #e6e6e4 !important; }
-.hq circle:last-of-type, .hq-label { fill: #e6e6e4 !important; }
-.hq circle:first-of-type { fill: none !important; }
-.stat b, .s-blocked b, .s-ran b, .s-src b::after, .s-shield b::after { color: var(--fg) !important; }
-.feed { background: #262626 !important; }
-.feed::before { background: linear-gradient(#262626, transparent) !important; }
-.feed::after { background: linear-gradient(transparent, #262626) !important; }
-.feed b { color: #cfcfcc !important; }
-.feed .blocked { color: #a8a8a6 !important; }
-.legend i { background: #9a9a98 !important; }
-
-/* ---------- /ip/ (ip.css) ---------- */
-.glow { display: none !important; }
-.stars, .stars::before, .stars::after { opacity: .25 !important; }
-.ip iframe { animation: none !important; filter: invert(1) !important; }
-.ip-kara { rotate: 0deg !important; border-color: #555 !important; }
-.title span { animation: none !important; }
-
-/* ---------- leftover hard-coded darks from the old look ---------- */
-button.pop, a.pop, .btn { background: var(--card) !important; color: var(--fg) !important; }
-button.pop:hover, a.pop:hover, .btn:hover { background: var(--card2) !important; }
-.fake-form input, .fake-form select { background: var(--card) !important; color: var(--fg) !important; }
-.kg button { background: var(--card2) !important; }
-.tabs > label { background: var(--card2) !important; }
-.tabs > input:checked + label { background: var(--card) !important; }
-.stage .dot { border-width: 2px !important; }
-
-/* =========================================================
-   bland, pass 2 — boring, not colorless. plain white pages, the
-   default-looking blue link, ordinary traffic-light status colors,
-   pictures in full color. no radius, no shadows, no decorative
-   motion. functional animation (games, timers, counters, typing,
-   bouncing ip) is left alone.
-   ========================================================= */
-:root:not(:has(.boardtitle)) {
-  --bg: #ffffff; --card: #ffffff; --card2: #f3f4f6; --line: #d9dce1; --dim: #d9dce1;
-  --fg: #1f2328; --muted: #5f6670; --link: #1a55a8;
-  --ok: #2e7d32; --warn: #b7791f; --bad: #b3261e; --git: #1a55a8; --hub: #6a4fb3; --lab: #c05a1a;
-}
-:root:has(#theme-flip:checked) { --bg: #1e1f22; --card: #26282c; --card2: #2e3035; --line: #3a3d42; --fg: #e3e5e8; --muted: #9aa0a8; --link: #7aa7e6; }
-a { text-decoration: underline; text-underline-offset: 2px; }
-nav.top a { text-decoration: none; }
-nav.top a::before { content: none !important; }
-nav.top { justify-content: flex-start !important; gap: 2px 14px !important; padding: 8px 16px !important; font-size: 14px !important; }
-
-/* flat everything */
+/* ---------- base ---------- */
+body { font: 16px/1.3 var(--serif, "times new roman"), times, serif; background: var(--bg); color: var(--fg); }
+a { color: var(--link, #0000ee); text-decoration: underline; text-underline-offset: auto; }
+a:visited { color: #551a8b; }
+a:hover { color: #ff0000; }
+code, kbd, samp { font-family: var(--mono, "courier new"), monospace; background: none !important; border: 0 !important; padding: 0 !important; font-size: .95em; }
+h1, h2, h3 { font-family: var(--serif, "times new roman"), serif !important; font-weight: bold !important; }
 *, *::before, *::after { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
 .kara-logo, .bulb, .clock, .clock .pin, .pie, .pie span, .stage .dot, .spot, .hq circle { border-radius: 50% !important; }
+::selection { background: #3399ff; color: #fff; }
 
-/* plain header, left aligned like an intranet page */
-header.hero { text-align: left !important; max-width: 960px; margin: 0 auto; padding: 18px 16px 8px !important; border-bottom: 0 !important; }
-header.hero h1 { font-weight: 500 !important; font-size: 24px !important; justify-content: flex-start; }
+/* ---------- page frame: left aligned, no chrome ---------- */
+header.hero { text-align: left !important; padding: 10px 12px 0 !important; border: 0 !important; max-width: none; margin: 0; }
+header.hero h1 { font: bold 32px var(--serif) !important; letter-spacing: 0 !important; display: block !important; }
+header.hero .logo, header.hero .kara-logo { width: 32px !important; height: 32px !important; vertical-align: middle; margin-left: 8px; }
+header.hero p, header.hero .tag { text-align: left !important; font: 16px var(--serif) !important; font-style: normal !important; color: var(--fg) !important; }
 header.hero .badges { justify-content: flex-start !important; }
-main > section > h2 { font-weight: 500 !important; font-size: 18px !important; text-align: left !important; }
+.glitch::before, .glitch::after, .ring, .orbit, .progress { display: none !important; }
+
+nav.top { position: static !important; display: block !important; background: none !important; border: 0 !important; border-bottom: 1px solid var(--line) !important;
+  padding: 6px 12px !important; font: 15px var(--serif) !important; backdrop-filter: none !important; }
+nav.top a { padding: 0 !important; margin: 0 !important; text-decoration: underline !important; background: none !important; display: inline !important; }
+nav.top a::before { content: none !important; }
+nav.top a + a::before { content: " | " !important; color: var(--fg) !important; text-decoration: none; display: inline-block; white-space: pre; }
+nav.top label { border: 0 !important; padding: 0 !important; margin-left: 6px; text-decoration: underline; color: var(--link); cursor: pointer; }
+nav.top label::before { content: "[ "; color: var(--fg); } nav.top label::after { content: " ]"; color: var(--fg); }
+
+main { max-width: 800px !important; margin: 0 !important; padding: 8px 12px 24px !important; }
+main > section { margin: 24px 0 !important; animation: none !important; opacity: 1 !important; translate: none !important; }
+main > section > h2 { font: bold 24px var(--serif) !important; text-align: left !important; border-bottom: 1px solid var(--line); padding-bottom: 2px; margin: 0 0 6px !important; }
 main > section > h2::before { content: none !important; }
-main > section > .tag, section > .tag { text-align: left !important; }
-b, strong { font-weight: 600; }
+.tag, .tag code, section > .tag, main > section > .tag { text-align: left !important; display: block; font: 14px var(--serif) !important; color: var(--muted) !important; }
+p, li, dd, td { max-width: none; }
 
-/* decorative motion off */
-main > section { animation: none !important; opacity: 1 !important; translate: none !important; }
-.progress { display: none !important; }
-.sticker { opacity: .85; }
+footer.site { text-align: left !important; font: 13px var(--serif) !important; border-top: 1px solid var(--line) !important; padding: 8px 12px 20px !important; }
+.tiny { font: 11px var(--serif) !important; opacity: 1 !important; }
+
+/* ---------- boxes, tables, forms ---------- */
+.card, .panel, .quiz, .fake-form, .meme, .comps, .metric, .subscribe, .versions, .book, .kara-card, .legend, .stat, .game, .demo, .code, .matrix, .overall, .inc, .pledge, .exhibit, .counter, .kara-says {
+  background: var(--card) !important; }
+table { border-collapse: collapse; }
+th, td { border-color: var(--line) !important; }
+details summary { display: list-item !important; list-style: disclosure-closed inside !important; font: bold 16px var(--serif) !important; padding: 4px 0 !important; }
+details[open] > summary { list-style-type: disclosure-open !important; }
+details > summary::before, details > summary::after { content: none !important; }
+details { padding: 0 8px !important; }
+
+form button, .pop, .btn, .dbtn, .bin-btn, .ok, label.btn, a.pop, button.pop {
+  font: 13px arial, helvetica, sans-serif !important; color: #000 !important; background: #e0e0e0 !important;
+  border: 2px outset #f4f4f4 !important; padding: 1px 8px !important; text-decoration: none !important; cursor: pointer; }
+form button:active, .pop:active, .btn:active { border-style: inset !important; }
+button:disabled { color: #808080 !important; }
+input[type="text"], input[type="search"], input[type="email"], select, textarea { font: 13px arial, sans-serif !important; border: 2px inset #f4f4f4 !important; background: #fff !important; color: #000 !important; }
+.grid td input { border: 0 !important; background: transparent !important; font: 13px "courier new", monospace !important; }
+
+/* tabs look like a row of buttons */
+.tabs > label { background: #e0e0e0 !important; border: 2px outset #f4f4f4 !important; font: 14px arial, sans-serif !important; color: #000 !important; }
+.tabs > input:checked + label { border-style: inset !important; background: #fff !important; }
+.front { background: #eee !important; font: bold 18px var(--serif) !important; }
+
+/* ---------- pictures + stickers ---------- */
+.sticker, .sticker.left, .pic, .soyboard figure, .soyboard figure:nth-child(n), .host { rotate: 0deg !important; }
 .sticker.peek { animation: none !important; }
-.kara-says::after { animation-duration: 48s !important; }
-.soyboard figure:hover { scale: 1 !important; }
-.kg button:hover, .kg button:focus-visible { translate: none !important; }
+.pic { border: 1px solid var(--line) !important; background: #fff !important; }
+.pic figcaption, .kg figcaption, .soyboard figcaption { background: none !important; color: var(--fg) !important; font: 12px var(--serif) !important; }
+.sticker .say { background: #ffffe1 !important; color: #000 !important; border: 1px solid #000 !important; font: 12px arial, sans-serif !important; }
+.soyboard { background: #fff !important; }
+.soyboard figure::after { content: none !important; }
+.badges .badge { border: 1px solid var(--line) !important; }
+.badges b { background: #eee !important; color: #000 !important; font-weight: normal !important; }
+.badges i { background: #fff !important; color: #000 !important; }
+.danger { background: none !important; color: var(--fg) !important; border: 1px solid var(--line) !important; }
+.ticker { background: #ffffcc !important; color: #000 !important; border-bottom: 1px solid var(--line) !important; font: 13px var(--serif) !important; }
 
-/* status page: normal status colors */
-.bars i { background: #3fa04a !important; }
-.bars i.minor { background: #e0a526 !important; }
-.bars i.blocked { background: #c9ccd1 !important; }
-.overall::before { background: var(--ok) !important; }
-.st.operational { color: var(--ok) !important; }
-.metric polyline { stroke: var(--link) !important; }
+/* ---------- /js ---------- */
+.fjs-big span { animation: none !important; color: #000 !important; }
+.fjs-big span + span { color: #cc0000 !important; }
+:root:has(#theme-flip:checked) .fjs-big span { color: #fff !important; }
 
-header.hero p, header.hero .tag { text-align: left !important; }
+/* ---------- /status ---------- */
+.bars i { background: #00a000 !important; }
+.bars i.minor { background: #ffcc00 !important; }
+.bars i.blocked { background: #c0c0c0 !important; }
+.overall::before { background: #00a000 !important; }
+.st.operational { color: #008000 !important; }
+.metric polyline { stroke: #0000ee !important; }
+
+/* ---------- /qa/ and /kai/: default theme becomes plain ---------- */
+:root:not(:has(#th-y:checked, #th-t:checked)):has(.boardtitle) {
+  --bg: #ffffff; --fg: #000000; --post: #eeeeee; --post-border: #808080; --hl: #ffffcc;
+  --subject: #000000; --name: #008000; --link: #0000ee; --link-hover: #ff0000;
+  --quote: #789922; --admin: #cc0000; --title: #000000; --hr: #808080; --muted: #555555;
+  --head-bg: #ffffff; --font: "times new roman", times, serif;
+}
+.banner { background: #eee !important; border: 1px solid #808080 !important; }
+.banner span { color: #000 !important; font: bold 20px "times new roman", serif !important; }
+.boardtitle { font: bold 32px "times new roman", serif !important; letter-spacing: 0 !important; }
+.postform th { background: #e0e0e0 !important; color: #000 !important; border: 1px solid #808080 !important; }
+.jshate { border: 1px solid #808080 !important; color: #cc0000 !important; }
+.dev .name, .dev .capcode { color: #0000cc !important; }
+.dev-icon, .news-badge { background: #0000cc !important; }
+
+/* ---------- /wiki/ ---------- */
+body:has(.page) { background: #fff; font-family: "times new roman", times, serif; }
+.page .content { border: 1px solid #808080 !important; }
+.tabs a { background: #e0e0e0 !important; border: 1px solid #808080 !important; color: #000 !important; }
+.tabs a.sel { background: #fff !important; }
+.infobox, .toc, .ambox, .cats, .welcome, .mpbox { border-color: #808080 !important; background: #fff !important; }
+.mpbox h2 { background: #eee !important; border-color: #808080 !important; }
+
+/* ---------- /map/ and /ip/ ---------- */
+.threatmap { background: #fff !important; border: 1px solid #808080 !important; }
+.threatmap::after { display: none !important; }
+.land circle, .land circle:nth-child(7n) { fill: #c0c0c0 !important; }
+.feed { background: #fff !important; }
+.feed::before { background: linear-gradient(#fff, transparent) !important; }
+.feed::after { background: linear-gradient(transparent, #fff) !important; }
+.feed time { color: #555 !important; }
+.feed .blocked { color: #008000 !important; }
+.src text { fill: #000 !important; }
+.hq-label { fill: #008000 !important; }
+.glow { display: none !important; }

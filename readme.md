@@ -66,7 +66,7 @@ two independent animations bounce it like a dvd logo.
 
 ## style
 
-- plain and boring on purpose: `css/bland.css` loads last on every page. white pages, a system font, standard blue links, thin borders, no decorative motion.
+- plain html look on purpose: `css/bland.css` loads last on every page. times new roman, black on white, underlined blue links, grey default buttons, 1px grey borders, left aligned.
 - everything is lowercase, including code comments. the one exception is the text on `/js`.
 
 ## running it *locally*
