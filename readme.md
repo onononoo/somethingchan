@@ -60,7 +60,7 @@ two independent animations bounce it like a dvd logo.
 - looks like [kaieklund.vercel.app](https://kaieklund.vercel.app/): `#111` background, times new roman, square `2px` boxes, blue links.
 - everything is lowercase, including code comments. the one exception is the text on `/js`.
 
-## running it
+## running it *locally*
 
 there is no build step. open `index.html` in a browser, or serve the folder:
 
@@ -68,10 +68,6 @@ there is no build step. open `index.html` in a browser, or serve the folder:
 python -m http.server 8765
 ```
 
-## license
-
-mit © 2026 kai. see [license](license).
-
-## support
+## *support* :3
 
 source code is on my github under the repo **somethingchan**. please donate: <https://kaieklund.vercel.app/>

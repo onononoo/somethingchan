@@ -1,0 +1,102 @@
+/* =========================================================
+   shame.css — /shame/, the hall of javascript shame.
+   counters, black holes and graveyards. all css. 0 bytes of js.
+   ========================================================= */
+
+@property --frameworks { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@property --deps       { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@property --mb         { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@property --npm        { syntax: "<integer>"; inherits: false; initial-value: 0; }
+@property --orbit      { syntax: "<angle>";   inherits: false; initial-value: 0deg; }
+
+@layer sections {
+  /* ---------- hero ---------- */
+  .shame-hero { text-align: center; padding: 26px 16px 10px; }
+  .shame-hero img { width: 150px; height: 150px; display: block; margin: 0 auto 10px; animation: throb 1.2s ease-in-out infinite; }
+  .shame-hero h1 { font: bold clamp(28px, 6vw, 44px)/1.1 var(--serif); margin: 0; }
+  .shame-hero p { color: var(--muted); max-width: 52ch; margin: 8px auto 0; }
+  @keyframes throb { 50% { scale: 1.06; rotate: -3deg; } }
+
+  /* ---------- live counters (integer @property animations → counter()) ---------- */
+  .counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 14px; }
+  .counter { border: 2px solid var(--line); padding: 14px; text-align: center; }
+  .counter b { display: block; font: bold 34px var(--mono); color: var(--bad); }
+  .counter span { font-size: 14px; color: var(--muted); }
+  .c-fw b  { animation: fw 600s linear forwards; counter-reset: n var(--frameworks); }
+  .c-fw b::after  { content: counter(n); }
+  @keyframes fw { to { --frameworks: 9999; } }
+  .c-dep b { animation: deps 40s cubic-bezier(.2,.8,.2,1) forwards; counter-reset: n var(--deps); }
+  .c-dep b::after { content: counter(n); }
+  @keyframes deps { to { --deps: 1402; } }
+  .c-mb b  { animation: mb 25s ease-out forwards; counter-reset: n var(--mb); }
+  .c-mb b::after  { content: counter(n) " mb"; }
+  @keyframes mb { to { --mb: 847; } }
+  .c-zero b::after { content: "0"; color: var(--ok); }
+
+  /* ---------- rap sheet ---------- */
+  .rapsheet { display: grid; gap: 12px; margin-top: 14px; counter-reset: exhibit; }
+  .exhibit { border: 2px solid var(--line); padding: 12px 14px; counter-increment: exhibit; position: relative; }
+  .exhibit::before { content: "exhibit " counter(exhibit, lower-alpha); font: 12px var(--mono); color: var(--muted); display: block; margin-bottom: 4px; }
+  .exhibit .expr { font: 15px var(--mono); display: block; }
+  .exhibit .res { font: 15px var(--mono); color: var(--bad); }
+  .exhibit .verdict { position: absolute; top: 10px; right: 12px; font: bold 12px var(--mono); color: #111; background: var(--bad); padding: 1px 8px; rotate: 6deg;
+    animation: stamp .4s cubic-bezier(.2,1.6,.4,1) backwards; animation-timeline: view(); animation-range: entry 20% cover 30%; }
+  @keyframes stamp { from { scale: 3; opacity: 0; rotate: -20deg; } }
+  .exhibit p { margin: 6px 0 0; font-size: 15px; }
+
+  /* ---------- node_modules black hole ---------- */
+  .hole { position: relative; height: 340px; overflow: hidden; border: 2px solid var(--line); background: radial-gradient(circle at 50% 50%, #000 0 34px, #1a0f22 35px, #111 70%); }
+  .hole::before { content: ""; position: absolute; left: 50%; top: 50%; width: 110px; height: 110px; translate: -50% -50%; border-radius: 50%;
+    background: conic-gradient(from var(--orbit), #f7df1e, #d00, #c58af9, #f7df1e); filter: blur(10px); opacity: .6; animation: disk 2.5s linear infinite; }
+  .hole::after { content: ""; position: absolute; left: 50%; top: 50%; width: 60px; height: 60px; translate: -50% -50%; border-radius: 50%; background: #000; box-shadow: 0 0 30px 10px #000; }
+  @keyframes disk { to { --orbit: 360deg; } }
+  /* each file orbits the center while its orbit radius shrinks to zero */
+  .hole i { position: absolute; left: 50%; top: 50%; font: 12px var(--mono); font-style: normal; color: #ddd; white-space: nowrap;
+    translate: -50% -50%; animation: spiral var(--d, 6s) cubic-bezier(.5,0,.9,.6) infinite; animation-delay: var(--dl, 0s); opacity: 0; }
+  @keyframes spiral {
+    0%   { transform: rotate(var(--a, 0deg)) translatex(170px) scale(1); opacity: 0; }
+    10%  { opacity: 1; }
+    100% { transform: rotate(calc(var(--a, 0deg) + 720deg)) translatex(0) scale(.05); opacity: 0; }
+  }
+  .hole .caption { position: absolute; bottom: 8px; left: 0; right: 0; text-align: center; font: 12px var(--mono); color: var(--muted); z-index: 2; }
+
+  /* ---------- npm install that never finishes ---------- */
+  .npm { background: #0a0a0a; color: #ddd; font: 13px/1.6 var(--mono); padding: 14px; border: 2px solid var(--line); overflow-x: auto; }
+  .npm .l { display: block; white-space: nowrap; overflow: hidden; width: 0; animation: type 0.8s steps(30, end) forwards; }
+  .npm .l:nth-child(1) { animation-delay: .2s } .npm .l:nth-child(2) { animation-delay: 1s } .npm .l:nth-child(3) { animation-delay: 1.8s }
+  .npm .l:nth-child(4) { animation-delay: 2.6s } .npm .l:nth-child(5) { animation-delay: 3.4s } .npm .l:nth-child(6) { animation-delay: 4.2s }
+  .npm .warn { color: #fdd663; } .npm .err { color: #f28b82; }
+  .npmbar { margin-top: 10px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; }
+  .npmbar .track { height: 14px; border: 1px solid #ddd; }
+  .npmbar .fill { height: 100%; background: repeating-linear-gradient(90deg, #ddd 0 6px, transparent 6px 8px); width: calc(var(--npm) * 1%);
+    animation: npmfill 20s cubic-bezier(.1,.9,.1,1) forwards; }
+  .npmbar .num { counter-reset: p var(--npm); animation: npmfill 20s cubic-bezier(.1,.9,.1,1) forwards; }
+  .npmbar .num::after { content: counter(p) "%"; }
+  @keyframes npmfill { to { --npm: 99; } }
+
+  /* ---------- framework graveyard ---------- */
+  .graveyard { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 12px; margin-top: 14px; padding: 20px 10px 0;
+    background: linear-gradient(transparent 80%, #1d2a1d 80%); }
+  .stone { text-align: center; padding: 22px 10px 16px; border: 2px solid var(--line); border-radius: 60px 60px 0 0 !important; background: #1b1b1b;
+    transform-origin: 50% 100%; transition: rotate .3s; }
+  .stone:hover { rotate: -3deg; }
+  .stone b { display: block; font: bold 15px var(--serif); }
+  .stone small { display: block; color: var(--muted); font: 12px var(--mono); margin: 4px 0; }
+  .stone em { font-size: 13px; }
+  .stone::before { content: "✝"; display: block; font-size: 20px; color: var(--muted); }
+
+  /* ---------- pledge ---------- */
+  .pledge { border: 2px solid var(--line); padding: 14px 16px; }
+  .pledge label { display: block; padding: 6px 0; cursor: pointer; font-size: 16px; }
+  .pledge input { accent-color: var(--bad); width: 16px; height: 16px; vertical-align: -2px; margin-right: 8px; }
+  .pledge .done { display: none; margin-top: 12px; border: 2px dashed var(--ok); padding: 12px; text-align: center; color: var(--ok); font: bold 18px var(--serif); }
+  .pledge:has(input:not(:checked)) .left::after { content: " (keep going)"; color: var(--muted); }
+  .pledge:not(:has(input:not(:checked))) .done { display: block; animation: stamp .5s cubic-bezier(.2,1.6,.4,1); }
+  .pledge { counter-reset: signed; } .pledge input:checked { counter-increment: signed; }
+  .pledge .left::before { content: counter(signed) " / 6 vows taken"; }
+
+  /* ---------- works-without-js checklist ---------- */
+  .works { columns: 2 220px; margin-top: 12px; padding-left: 20px; }
+  .works li { break-inside: avoid; margin-bottom: 4px; }
+  .works li::marker { content: "✔ "; color: var(--ok); }
+}

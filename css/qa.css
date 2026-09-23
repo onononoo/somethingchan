@@ -131,6 +131,8 @@
   .op:target { outline: 2px dotted var(--hl); }
 
   .quote { color: var(--quote); }
+  .banned { color: #f00; font-weight: bold; margin: 0 20px 10px 165px; clear: none; }
+  @media (max-width: 560px) { .banned { margin-left: 20px; } }
   .spoiler { background: #000; color: #000; } .spoiler:hover { color: #fff; }
   code.inline { font: 12px monospace; background: color-mix(in srgb, var(--post) 60%, var(--bg)); padding: 0 3px; border: 1px solid var(--post-border); }
 

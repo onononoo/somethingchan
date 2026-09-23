@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="no javascript sign">
+  <title>no javascript</title>
+  <!-- a yellow js square, forbidden. animated with smil, not with the thing it forbids. -->
+  <rect x="45" y="45" width="110" height="110" fill="#f7df1e"/>
+  <text x="140" y="140" text-anchor="end" font-family="arial, sans-serif" font-weight="bold" font-size="44" fill="#000">js</text>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#d00" stroke-width="16">
+    <animate attributeName="stroke-width" values="16;20;16" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+  <line x1="38" y1="38" x2="162" y2="162" stroke="#d00" stroke-width="16" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="176">
+    <animate attributeName="stroke-dashoffset" from="176" to="0" dur=".6s" begin=".2s" fill="freeze"/>
+  </line>
+</svg>

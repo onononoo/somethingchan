@@ -17,7 +17,7 @@
 <input type="checkbox" class="inv-box" id="inv-lease">
 
 <nav class="top" aria-label="site">
-  <a href="index.html">home</a><a href="lab.html">lab</a><a href="#lobby">restart room</a><a href="js/">js</a><a href="qa/">qa</a><a href="ip/">ip</a><a href="support.html">support</a>
+  <a href="index.html">home</a><a href="lab.html">lab</a><a href="#lobby">restart room</a><a href="js/">js</a><a href="qa/">qa</a><a href="ip/">ip</a><a href="shame/">shame</a><a href="support.html">support</a>
   <label for="theme-flip">◐ theme</label>
 </nav>
 
@@ -49,6 +49,7 @@ a door to the north hums with the sound of --force.</div>
       <a href="#crypt">walk east to the reflog crypt</a>
       <a href="#force">open the humming north door</a>
       <a href="#bridge">approach the rebase bridge</a>
+      <a href="#pit">peer into a hole labeled node_modules</a>
     </div>
   </section>
 
@@ -150,6 +151,41 @@ you are tired. you need your wits about you.</div>
     <div class="choices">
       <a href="#victory" class="locked needs-coffee">drink the cold coffee and resolve every conflict</a>
       <a href="#defeat">accept all "theirs" and pray</a>
+    </div>
+  </section>
+
+  <section class="room hurt" id="pit">
+    <h2>the node_modules pit</h2>
+<div class="scene">you peer into the hole. the hole peers back.
+you fall. and fall. and fall.
+
+  is-odd → is-even → is-number → kind-of → is-buffer → ...
+  1,402 packages later you land on a pile of package-lock.json.
+
+a small yellow goblin wearing a "js" badge scurries toward you.
+it offers you a framework. it is the fourth one this week.</div>
+    <div class="choices">
+      <a href="#goblin">confront the javascript goblin</a>
+      <a href="#lobby">run `rm -rf node_modules` and climb out</a>
+    </div>
+  </section>
+
+  <section class="room" id="goblin">
+    <h2>the javascript goblin</h2>
+<div class="scene">"hello," says the goblin. "i am javascript. i can do anything."
+"can you add 0.1 and 0.2?" you ask.
+"0.30000000000000004," it says proudly.
+
+"is null an object?"  "yes."
+"is not-a-number equal to itself?"  "no."
+"why do you exist?"  "a guy made me in ten days in 1995."
+
+the goblin tries to run itself. nothing happens.
+this dungeon has a content-security-policy.
+the goblin dissolves into a harmless string.</div>
+    <div class="choices">
+      <a href="shame/">read the goblin's full criminal record</a>
+      <a href="#lobby">return to the lobby, victorious</a>
     </div>
   </section>
 

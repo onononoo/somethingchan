@@ -57,11 +57,11 @@
 @layer dance {
   .dance { width: 100%; height: 100%; transform-origin: 30% 50%; animation: boogie 1.1s ease-in-out infinite; }
   @keyframes boogie {
-    0%   { transform: rotate(-8deg) scale(1) skewX(0deg); }
-    25%  { transform: rotate(6deg) scale(1.12) skewX(-8deg) translateY(-8px); }
-    50%  { transform: rotate(-4deg) scale(.94) skewX(6deg); }
-    75%  { transform: rotate(9deg) scale(1.08) skewX(-4deg) translateY(6px); }
-    100% { transform: rotate(-8deg) scale(1) skewX(0deg); }
+    0%   { transform: rotate(-8deg) scale(1) skewx(0deg); }
+    25%  { transform: rotate(6deg) scale(1.12) skewx(-8deg) translatey(-8px); }
+    50%  { transform: rotate(-4deg) scale(.94) skewx(6deg); }
+    75%  { transform: rotate(9deg) scale(1.08) skewx(-4deg) translatey(6px); }
+    100% { transform: rotate(-8deg) scale(1) skewx(0deg); }
   }
   .g1 .dance { animation-delay: -.2s; } .g2 .dance { animation-delay: -.4s; }
 

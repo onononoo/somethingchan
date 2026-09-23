@@ -4,6 +4,9 @@ license: mit (see license)
 site: https://kaieklund.vercel.app/
 repo: github -> somethingchan
 
+/* enemies */
+javascript. all of it. every version.
+
 /* thanks */
 the tanuki. the octocat. whoever invented git stash (we never got our stuff back).
 

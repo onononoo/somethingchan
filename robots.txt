@@ -3,3 +3,9 @@ user-agent: *
 allow: /
 disallow: /.git/
 sitemap: sitemap.xml
+
+# javascript-powered crawlers: stay out.
+user-agent: headlesschrome
+disallow: /
+user-agent: puppeteer
+disallow: /
