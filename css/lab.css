@@ -123,3 +123,71 @@
       -webkit-background-clip: text; background-clip: text; color: transparent; animation: slide 6s linear infinite; } }
   @keyframes slide { to { background-position: 300% 0; } }
 }
+
+@layer sections {
+  /* ---------------- .git directory explorer (nested details) ---------------- */
+  .tree { font: 14px/1.8 var(--mono); padding: 12px 16px; }
+  .tree ul { list-style: none; margin: 0; padding-left: 18px; border-left: 1px dashed var(--dim, #444); }
+  .tree li { position: relative; }
+  .tree li::before { content: ""; position: absolute; left: -18px; top: .9em; width: 12px; border-top: 1px dashed var(--dim, #444); }
+  .tree details { border: 0 !important; padding: 0; background: none; }
+  .tree summary { font: 14px var(--mono); padding: 0; display: inline; }
+  .tree summary::before { content: "📁 "; font-size: inherit; transform: none !important; }
+  .tree details[open] > summary::before { content: "📂 "; }
+  .tree .note { color: var(--muted); font-size: 12px; }
+  .tree .file:hover .note { color: var(--fg); }
+
+  /* ---------------- CSS analog clock ---------------- */
+  .clock { width: 220px; aspect-ratio: 1; border: 2px solid var(--line); border-radius: 50%; margin: 18px auto 0; position: relative;
+    background: repeating-conic-gradient(from -1deg, var(--line) 0 2deg, transparent 2deg 30deg); }
+  .clock::after { content: ""; position: absolute; inset: 10px; border-radius: 50%; background: var(--bg); }
+  .clock .lbl { position: absolute; inset: 0; display: grid; place-items: center; z-index: 1; padding-top: 90px; font: 11px var(--mono); color: var(--muted); }
+  .hand { position: absolute; left: 50%; bottom: 50%; transform-origin: 50% 100%; z-index: 2; translate: -50% 0; border-radius: 2px; }
+  .hand.h { width: 5px; height: 26%; background: var(--fg); animation: rot 43200s linear infinite; }
+  .hand.m { width: 3px; height: 36%; background: var(--fg); animation: rot 3600s linear infinite; }
+  .hand.s { width: 1px; height: 42%; background: var(--bad); animation: rot 60s steps(60) infinite; }
+  .hand.ci { width: 2px; height: 40%; background: var(--warn); animation: rot 7s cubic-bezier(.7,0,.3,1) infinite; opacity: .6; }
+  .clock .pin { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--fg); inset: 50% auto auto 50%; translate: -50% -50%; z-index: 3; }
+  @keyframes rot { to { transform: rotate(360deg); } }
+
+  /* ---------------- diff viewer: unified <-> split via checkbox ---------------- */
+  .diff-toggle { position: absolute; opacity: 0; }
+  .diffbar { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-bottom: 2px solid var(--line); font: 13px var(--mono); gap: 10px; flex-wrap: wrap; }
+  .diffbar label { cursor: pointer; border: 1px solid var(--line); padding: 2px 10px; }
+  .diffbar label::after { content: "view: unified"; }
+  .diff-toggle:checked ~ .diffbar label::after { content: "view: split"; }
+  .diff-toggle:focus-visible ~ .diffbar label { outline: 2px solid var(--git); }
+  .diffbody { display: grid; grid-template-columns: 1fr; font: 13px/1.6 var(--mono); overflow-x: auto; counter-reset: dl; }
+  .diff-toggle:checked ~ .diffbody { grid-template-columns: 1fr 1fr; }
+  .diffbody .side { min-width: 0; }
+  .diffbody .side + .side { border-top: 1px solid var(--dim, #444); }
+  .diff-toggle:checked ~ .diffbody .side + .side { border-top: 0; border-left: 1px solid var(--dim, #444); }
+  .dl { display: block; white-space: pre; padding: 0 10px; counter-increment: dl; }
+  .dl::before { content: counter(dl); display: inline-block; width: 3ch; color: var(--muted); margin-right: 8px; text-align: right; }
+  .dl.del { background: color-mix(in srgb, var(--bad) 18%, transparent); }
+  .dl.add { background: color-mix(in srgb, var(--ok) 18%, transparent); }
+  .dl.del::after { content: "  ← removed"; color: var(--bad); }
+  .dl.add::after { content: "  ← added"; color: var(--ok); }
+  .side .side-h { display: block; padding: 4px 10px; color: var(--muted); border-bottom: 1px dashed var(--dim, #444); }
+  /* review checkbox approves the diff */
+  .approve { position: absolute; opacity: 0; }
+  .diffbox:has(.approve:checked) .diffstatus::after { content: "✔ approved by kai — LGTM (didn't read it)"; color: var(--ok); }
+  .diffstatus::after { content: "⏳ review requested"; color: var(--warn); }
+
+  /* ---------------- spinner museum ---------------- */
+  .spinners { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-top: 14px; }
+  .spinners figure { margin: 0; border: 2px solid var(--line); padding: 16px 8px 10px; text-align: center; }
+  .spinners figcaption::before { content: none; }
+  .sp { width: 36px; height: 36px; margin: 0 auto 10px; }
+  .sp.a { border: 3px solid var(--dim, #444); border-top-color: var(--fg); border-radius: 50%; animation: rot .9s linear infinite; }
+  .sp.b { background: radial-gradient(circle, var(--fg) 30%, transparent 32%) 0 50% / 12px 12px repeat-x; animation: dots 1s steps(3) infinite; }
+  .sp.c { border: 3px solid var(--fg); animation: flipbox 1.6s ease-in-out infinite; }
+  .sp.d { background: linear-gradient(90deg, var(--fg) 50%, transparent 0) 0 0 / 200% 100%; border: 2px solid var(--fg); height: 12px; margin-top: 12px; animation: barslide 1.2s linear infinite; }
+  .sp.e { border-radius: 50%; background: conic-gradient(var(--fg) 0 25%, transparent 0 50%, var(--fg) 0 75%, transparent 0); animation: rot 2s linear infinite; }
+  .sp.f { font: bold 28px var(--mono); line-height: 36px; }
+  .sp.f::before { content: "|"; animation: ascii .6s steps(1) infinite; }
+  @keyframes dots { to { background-size: 48px 12px; } }
+  @keyframes flipbox { 50% { transform: perspective(80px) rotateX(180deg); } 100% { transform: perspective(80px) rotateX(180deg) rotateY(180deg); } }
+  @keyframes barslide { to { background-position: -200% 0; } }
+  @keyframes ascii { 0% { content: "|"; } 25% { content: "/"; } 50% { content: "—"; } 75% { content: "\\"; } }
+}

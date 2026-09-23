@@ -14,14 +14,13 @@
 <div class="progress" aria-hidden="true"></div>
 <nav class="top" aria-label="Site">
   <a href="index.html">home</a><a href="#contrib">contrib</a><a href="#cube">cube</a><a href="#pipeline">pipeline</a>
-  <a href="#puzzle">puzzle</a><a href="#corrupt">corrupt</a><a href="#man">man</a><a href="game.html">dungeon</a><a href="support.html">support</a>
+  <a href="#puzzle">puzzle</a><a href="#corrupt">corrupt</a><a href="#diff">review</a><a href="#spinners">waiting</a><a href="#man">man</a><a href="game.html">dungeon</a><a href="support.html">support</a>
   <label for="theme-flip">◐ theme</label>
 </nav>
 
 <header class="hero" style="padding:56px 16px 40px">
   <div class="ring" aria-hidden="true"></div>
-  <img class="logo" src="assets/logo.svg" alt="" width="120" height="120">
-  <h1><span class="glitch" data-t="the lab">the lab</span></h1>
+  <h1><span class="glitch" data-t="the lab">the lab</span><img class="logo" src="assets/logo.svg" alt="" width="44" height="44"></h1>
   <p>experimental apparatus for the study of version control, powered by 0 bytes of JavaScript</p>
 </header>
 
@@ -135,6 +134,51 @@ allow_force_push: false  # safety
   </figure>
 </section>
 
+<section id="diff">
+  <h2>Code Review Simulator</h2>
+  <span class="tag">toggle unified/split with a checkbox. approve with another. line numbers are CSS counters.</span>
+  <div class="card diffbox" style="margin-top:14px;padding:0">
+    <input type="checkbox" class="diff-toggle" id="split">
+    <input type="checkbox" class="approve" id="approve">
+    <div class="diffbar">
+      <span>.gitlab-ci.yml <span class="tag">+3 −2</span></span>
+      <label for="split"></label>
+      <label for="approve">✔ approve</label>
+    </div>
+    <div class="diffbody">
+      <div class="side"><span class="side-h">before</span>
+        <span class="dl">stages:</span>
+        <span class="dl">  - build</span>
+        <span class="dl del">  - test</span>
+        <span class="dl del">  - deploy</span>
+        <span class="dl">cache: {}</span>
+      </div>
+      <div class="side"><span class="side-h">after</span>
+        <span class="dl">stages:</span>
+        <span class="dl">  - build</span>
+        <span class="dl add">  - vibes</span>
+        <span class="dl add">  - pray</span>
+        <span class="dl add">  - deploy_on_friday</span>
+        <span class="dl">cache: {}</span>
+      </div>
+    </div>
+    <div class="diffbar" style="border-top:2px solid var(--line);border-bottom:0"><span class="diffstatus"></span><span class="tag">reviewer: kai</span></div>
+  </div>
+</section>
+
+<section id="spinners">
+  <h2>Museum of Waiting</h2>
+  <span class="tag">six loading spinners, each pure CSS, each representing something you've waited on.</span>
+  <div class="spinners">
+    <figure><div class="sp a"></div><figcaption>git clone (linux kernel)</figcaption></figure>
+    <figure><div class="sp b"></div><figcaption>CI queue</figcaption></figure>
+    <figure><div class="sp c"></div><figcaption>npm install</figcaption></figure>
+    <figure><div class="sp d"></div><figcaption>code review from kai</figcaption></figure>
+    <figure><div class="sp e"></div><figcaption>GitLab runner boot</figcaption></figure>
+    <figure><div class="sp f"></div><figcaption>git gc --aggressive</figcaption></figure>
+  </div>
+</section>
+
 <section id="man">
   <h2>Manual Page</h2>
   <div class="tag">The official documentation for a command that does not exist.</div>
@@ -156,7 +200,7 @@ allow_force_push: false  # safety
 </main>
 
 <footer class="site">
-  © somethingchan lab · <a href="index.html">home</a> · <a href="game.html">play the dungeon</a>
+  © 2026 kai · <a href="license.html">MIT license</a> · somethingchan lab · <a href="index.html">home</a> · <a href="game.html">play the dungeon</a>
   <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
 </footer>
 </body>

@@ -21,6 +21,10 @@ An authoritative and entirely wrong field guide to Git, GitHub, and GitLab.
 
 HTML · CSS · SVG · SMIL · MathML · XML · XSLT · JSON · iCalendar · Markdown · plain text
 
+## License
+
+MIT © 2026 kai. See [LICENSE](LICENSE).
+
 ## Support
 
 Source code is on my GitHub under the repo **somethingchan**. Please donate: <https://kaieklund.vercel.app/>

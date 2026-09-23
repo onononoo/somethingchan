@@ -1,5 +1,6 @@
 /* TEAM */
-Creator: the somethingchan dev
+Creator: kai
+License: MIT (see LICENSE)
 Site: https://kaieklund.vercel.app/
 Repo: github -> somethingchan
 

@@ -5,6 +5,7 @@
     <title>somethingchan changelog</title>
     <link>https://kaieklund.vercel.app/</link>
     <description>Release notes nobody reads, rendered by XSLT.</description>
+    <item><title>v5.0.0 — kai edition</title><pubDate>Wed, 23 Sep 2026 14:00:00 GMT</pubDate><description>New look matching kaieklund.vercel.app. MIT license (c) 2026 kai. Added .git explorer, CSS clock, /qa/, code review simulator, museum of waiting. Still 0 bytes of JavaScript.</description></item>
     <item><title>v4.0.0 — the extreme update</title><pubDate>Wed, 23 Sep 2026 13:00:00 GMT</pubDate><description>Added the lab (3D cube, pipeline, merge resolver, SVG filters), Rebase Dungeon text adventure, 404 page, iCalendar holidays, certificate SVG. Still 0 bytes of JavaScript.</description></item>
     <item><title>v3.0.0 — the complexity update</title><pubDate>Wed, 23 Sep 2026 12:00:00 GMT</pubDate><description>Added MathML, SMIL, XSLT, popovers, image maps, and a CSP that bans scripts outright.</description></item>
     <item><title>v2.0.0 — CSS only</title><pubDate>Wed, 23 Sep 2026 11:00:00 GMT</pubDate><description>Removed JavaScript that never existed. Added flip cards.</description></item>

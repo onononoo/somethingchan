@@ -4,7 +4,7 @@
    :has(), counters, scroll-driven animations, color-mix()
    ========================================================= */
 
-@layer reset, tokens, base, components, sections, utilities;
+@layer reset, tokens, base, components, sections, utilities, kai;
 
 @property --spin { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
 @property --pct  { syntax: "<number>"; inherits: false; initial-value: 0; }
@@ -281,4 +281,87 @@
     body { background: #fff; color: #000; }
     a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; }
   }
+}
+
+/* =========================================================
+   @layer kai — restyles everything to match kaieklund.vercel.app
+   #111 background · #ddd text · Times New Roman · 2px #ccc boxes
+   square corners · blue underlined links · narrow centered column
+   ========================================================= */
+@layer kai {
+  :root, :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #111; --fg: #ddd; --muted: #999; --card: #111; --card2: #1b1b1b; --line: #ccc; --dim: #444;
+    --link: #8ab4f8; --git: #8ab4f8; --hub: #c58af9; --lab: #f6ae6b; --ok: #81c995; --warn: #fdd663; --bad: #f28b82;
+    --term: #0a0a0a; --termfg: #ddd;
+    --serif: "Times New Roman", Times, serif;
+    --mono: "Courier New", Courier, monospace;
+    --r: 0px;
+  }
+  :root:has(#theme-flip:checked) { --bg: #000; --fg: #33ff66; --muted: #1f9e3f; --card: #000; --card2: #031a08; --line: #33ff66; --link: #33ff66; --git: #33ff66; }
+
+  body { font: 16px/1.5 var(--serif); background: var(--bg); color: var(--fg); }
+  a { color: var(--link); text-decoration: underline; }
+  a:visited { color: #c58af9; }
+  code, kbd, samp { background: none; border: 1px solid var(--dim); border-radius: 0; padding: 0 4px; }
+  ::selection { background: #ddd; color: #111; }
+
+  /* column */
+  main { max-width: 680px; padding: 8px 16px 40px; }
+  main > section { margin: 24px 0; }
+  main > section > h2 { font: bold 20px var(--serif); margin: 32px 0 6px; text-align: center; }
+  main > section > h2::before { content: "[" counter(sec) "] "; font: 14px var(--serif); color: var(--muted); }
+  h3 { font: bold 17px var(--serif); }
+  .tag, .tag code { font: 13px var(--serif); color: var(--muted); text-align: center; }
+  section > .tag { display: block; }
+
+  /* header — small bold title like "kaieklund 🖼" */
+  header.hero { padding: 22px 16px 10px; border: 0;
+    & h1 { font: bold 32px var(--serif); letter-spacing: 0; display: inline-flex; align-items: center; gap: 10px; }
+    & .logo { width: 44px; height: 44px; display: inline-block; margin: 0 0 0 8px; vertical-align: middle; }
+    & p { font: 13px var(--serif); font-style: normal; color: var(--fg); } }
+  .ring, .orbit { display: none; }
+  .glitch::before, .glitch::after { opacity: .5; }
+
+  .badges { font: 11px var(--mono);
+    & .badge { border: 1px solid var(--line); border-radius: 0; }
+    & b { background: #222; } & i { background: #111 !important; color: var(--fg); } }
+
+  .ticker { background: #111; color: var(--muted); border-bottom: 2px solid var(--line); font: 12px var(--mono); }
+
+  nav.top { background: #111; border-bottom: 2px solid var(--line); backdrop-filter: none; font: 14px var(--serif); gap: 2px 12px;
+    & a { padding: 2px 0; border-radius: 0; &:hover { background: none; color: #fff; } &::before { content: "/"; } }
+    & label { border-radius: 0; border: 1px solid var(--dim); padding: 0 8px; } }
+
+  /* the signature box: 2px solid #ccc, square, bold summary */
+  .card, details, .panel, .term, .man, .quiz, .hunk, .fake-form, .room .scene, iframe.embed, .inventory, [popover] {
+    border: 2px solid var(--line) !important; border-radius: 0 !important; background: var(--card); box-shadow: none; }
+  details { padding: 0 12px; &[open] { border-color: var(--line); } }
+  summary { font: bold 15px var(--serif); padding: 10px 0; }
+  summary::before { content: "▶"; font-size: 10px; transition: transform .15s; }
+  details[open] > summary::before { transform: rotate(90deg); }
+  summary::after { display: none; }
+  .danger { border-radius: 0; font: 11px var(--mono); background: none !important; border: 1px solid currentColor; color: var(--muted); }
+
+  .tabs > label { border: 2px solid var(--line); border-bottom: none; border-radius: 0; background: #111; font: bold 15px var(--serif); }
+  .tabs > input:not(:checked) + label { color: var(--muted); border-color: var(--dim); }
+  .face { border: 2px solid var(--line); border-radius: 0; }
+  .front { background: #1b1b1b; font: bold 18px var(--serif); }
+
+  button.pop, a.pop { border: 2px solid var(--line); border-radius: 0; background: #111; font: bold 14px var(--serif); color: var(--fg); }
+  .q label, .choices a, .choices label, .cube-ctl label, .hunk .pick label { border-radius: 0 !important; font-family: var(--serif) !important; }
+  .fake-form input, .fake-form select { border-radius: 0; border: 2px solid var(--dim); background: #0b0b0b; font-family: var(--serif); }
+  table th, table td { border-bottom: 1px solid var(--dim); }
+  blockquote { border-left: 2px solid var(--line) !important; border-radius: 0 !important; }
+  .pie span { background: #111; }
+  .contrib i, .legend i { border-radius: 0; }
+  .cube > div { border-radius: 0; font-family: var(--serif); }
+  .flip { height: 170px; }
+  .facts { gap: 10px; }
+
+  footer.site { border-top: 2px solid var(--line); font: 13px var(--serif); & a { color: var(--link); } }
+  .tiny { font: 9px/1.4 var(--serif); }
+  .tree summary { font: 14px var(--mono); }
+  .tree summary::before { content: "[+] "; font-size: inherit; transform: none; color: var(--muted); }
+  .tree details[open] > summary::before { content: "[-] "; transform: none; }
 }

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="css/somethingchan.css"/>
       </head>
       <body>
-        <nav class="top"><a href="index.html">home</a><a href="support.html">support</a></nav>
+        <nav class="top"><a href="index.html">home</a><a href="support.html">support</a> · <a href="license.html">license</a></nav>
         <main>
           <h1><xsl:value-of select="title"/></h1>
           <p class="tag"><xsl:value-of select="description"/> (<xsl:value-of select="count(item)"/> releases)</p>

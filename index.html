@@ -11,6 +11,8 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="somethingchan changelog" href="feed.xml">
 <link rel="stylesheet" href="css/somethingchan.css">
+<link rel="stylesheet" href="css/lab.css">
+<link rel="license" href="LICENSE">
 </head>
 <body>
 <input type="checkbox" id="theme-flip" aria-label="Toggle terminal theme">
@@ -23,8 +25,7 @@
 
 <header class="hero">
   <div class="ring" aria-hidden="true"></div>
-  <img class="logo" src="assets/logo.svg" alt="" width="120" height="120">
-  <h1><span class="glitch" data-t="somethingchan">somethingchan</span></h1>
+  <h1><span class="glitch" data-t="somethingchan">somethingchan</span><img class="logo" src="assets/logo.svg" alt="" width="44" height="44"></h1>
   <p>An authoritative and entirely wrong field guide to <ruby>Git<rt>/sigh/</rt></ruby>, GitHub, and GitLab</p>
   <div class="badges">
     <span class="badge"><b>build</b><i style="background:var(--ok)">passing (vibes)</i></span>
@@ -39,8 +40,8 @@
   <a href="#species">species</a><a href="#graph">graph</a><a href="#terminal">terminal</a>
   <a href="#commands">commands</a><a href="#math">math</a><a href="#danger">danger</a>
   <a href="#bestiary">bestiary</a><a href="#atlas">atlas</a><a href="#history">history</a>
-  <a href="#compare">compare</a><a href="#quiz">quiz</a><a href="#hooks">hooks</a><a href="#faq">faq</a>
-  <a href="lab.html">lab</a><a href="game.html">dungeon</a><a href="support.html">support</a>
+  <a href="#compare">compare</a><a href="#quiz">quiz</a><a href="#hooks">hooks</a><a href="#explorer">.git</a><a href="#clock">clock</a><a href="#qa">qa</a><a href="#faq">faq</a>
+  <a href="lab.html">lab</a><a href="game.html">dungeon</a><a href="support.html">support</a><a href="license.html">license</a>
   <label for="theme-flip" title="CSS-only theme toggle">◐ theme</label>
 </nav>
 
@@ -324,7 +325,65 @@
   </form>
 </section>
 
-<!-- ============ 13 FAQ ============ -->
+<!-- ============ 13 .GIT EXPLORER (nested details) ============ -->
+<section id="explorer">
+  <h2>Inside the .git Folder</h2>
+  <span class="tag">a real file tree, annotated incorrectly. folders open with nested <code>&lt;details&gt;</code>.</span>
+  <div class="card tree" style="margin-top:14px">
+    <details open><summary>.git/</summary>
+      <ul>
+        <li class="file">HEAD <span class="note">— a sticky note that says "you are here". often lies.</span></li>
+        <li class="file">config <span class="note">— where your email from 2014 still lives</span></li>
+        <li class="file">description <span class="note">— nobody has ever edited this file</span></li>
+        <li class="file">index <span class="note">— the staging area. a waiting room with no chairs.</span></li>
+        <li class="file">ORIG_HEAD <span class="note">— HEAD's ex. keeps showing up after resets.</span></li>
+        <li><details><summary>hooks/</summary>
+          <ul>
+            <li class="file">pre-commit.sample <span class="note">— a sample. forever a sample.</span></li>
+            <li class="file">pre-push.sample <span class="note">— would have stopped the --force. was never enabled.</span></li>
+          </ul></details></li>
+        <li><details><summary>objects/</summary>
+          <ul>
+            <li><details><summary>de/</summary><ul><li class="file">adbeef… <span class="note">— corrupted. see <a href="lab.html#corrupt">the lab</a>.</span></li></ul></details></li>
+            <li><details><summary>4b/</summary><ul><li class="file">825dc6… <span class="note">— the empty tree. it is in every repo. it watches.</span></li></ul></details></li>
+            <li><details><summary>pack/</summary><ul><li class="file">pack-a1b2.pack <span class="note">— 2GB. contains the PSD from 2014.</span></li><li class="file">pack-a1b2.idx <span class="note">— the map to the PSD.</span></li></ul></details></li>
+          </ul></details></li>
+        <li><details><summary>refs/</summary>
+          <ul>
+            <li><details><summary>heads/</summary><ul><li class="file">main</li><li class="file">fix-final-2-REAL</li><li class="file">please-work</li><li class="file">yolo <span class="note">— merged at 4:59pm friday</span></li></ul></details></li>
+            <li><details><summary>stash/</summary><ul><li class="file">stash <span class="note">— 212 entries. none popped.</span></li></ul></details></li>
+            <li><details><summary>tags/</summary><ul><li class="file">v1.0.0 <span class="note">— points to "stuff"</span></li></ul></details></li>
+          </ul></details></li>
+        <li><details><summary>logs/</summary><ul><li class="file">HEAD <span class="note">— the reflog. the crypt. see <a href="game.html#crypt">the dungeon</a>.</span></li></ul></details></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<!-- ============ 14 CLOCK ============ -->
+<section id="clock">
+  <h2>Merge O'Clock</h2>
+  <span class="tag">a working CSS clock. the yellow hand is CI; it laps the others and still finishes last. (starts at 12:00 on page load. CSS can't read the time, and we don't do JS.)</span>
+  <div class="clock" role="img" aria-label="Animated clock">
+    <div class="hand h"></div><div class="hand m"></div><div class="hand ci"></div><div class="hand s"></div><div class="pin"></div>
+    <div class="lbl">time since last push</div>
+  </div>
+</section>
+
+<!-- ============ 15 /QA/ ============ -->
+<section id="qa">
+  <h2>/qa/ (nobody asked these)</h2>
+  <span class="tag">in the style of the /qa/ section on <a href="https://kaieklund.vercel.app/">kaieklund.vercel.app</a></span>
+  <div class="stack">
+    <details><summary>who made this?</summary><p>kai. by hand. with no JavaScript, on purpose.</p></details>
+    <details><summary>why?</summary><p>because a site about git should be as needlessly complex as git itself.</p></details>
+    <details><summary>is it open source?</summary><p>yes, MIT licensed. see <a href="license.html">license</a>. source is on github in the <code>somethingchan</code> repo.</p></details>
+    <details><summary>how many languages?</summary><p>HTML, CSS, SVG, SMIL, MathML, XML, XSLT, JSON, iCalendar, Markdown, plain text. JavaScript: 0.</p></details>
+    <details><summary>can i donate?</summary><p>please. <a href="https://kaieklund.vercel.app/">kaieklund.vercel.app</a></p></details>
+  </div>
+</section>
+
+<!-- ============ 16 FAQ ============ -->
 <section id="faq">
   <h2>Frequently Asked Questions</h2>
   <div class="stack">
@@ -360,7 +419,7 @@ Resolved: kept HEAD. Branch deleted.
 <button class="pop" popovertarget="conflict" popovertargetaction="hide">[ git merge --abort ]</button></div>
 
 <footer class="site">
-  © somethingchan · no branches were harmed · 0 lines of JavaScript · last commit: "ok actually final"
+  © 2026 kai · <a href="license.html">MIT license</a> · somethingchan · no branches were harmed · 0 lines of JavaScript · last commit: "ok actually final"
   <br><a href="support.html">support &amp; source</a> · <a href="lab.html">lab</a> · <a href="game.html">dungeon</a> · <a href="events.ics">holidays (.ics)</a> · <a href="feed.xml">changelog (XSLT)</a> · <a href="sitemap.xml">sitemap</a> · <a href="humans.txt">humans.txt</a>
   <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
 </footer>
