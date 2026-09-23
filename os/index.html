@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingos</title>
+<link rel="icon" href="../assets/kara/favicon.png" type="image/png">
+<link rel="stylesheet" href="../css/os.css">
+<!--
+  /os/ — somethingos. a whole desktop made of html popovers and css.
+  windows are popover="manual" so several can be open; the browser's top layer handles stacking.
+  minesweeper numbers are precomputed; win/lose is detected with :has(). the uptime clock is a css counter.
+  there is no javascript in this operating system.
+-->
+</head>
+<body>
+<div class="wallpaper" aria-hidden="true"></div>
+
+<nav class="icons" aria-label="desktop">
+  <button class="icon" popovertarget="w-pc" popovertargetaction="show"><b class="ico">🖥️</b><span>my computer</span></button>
+  <button class="icon" popovertarget="w-notes" popovertargetaction="show"><b class="ico">📝</b><span>readme.txt</span></button>
+  <button class="icon" popovertarget="w-term" popovertargetaction="show"><b class="ico">⬛</b><span>terminal</span></button>
+  <button class="icon" popovertarget="w-mines" popovertargetaction="show"><b class="ico">💣</b><span>minesweeper</span></button>
+  <button class="icon" popovertarget="w-kara" popovertargetaction="show"><img class="ico" src="../assets/kara/portrait.webp" alt=""><span>kara.webp</span></button>
+  <button class="icon" popovertarget="w-bin" popovertargetaction="show"><b class="ico">🗑️</b><span>recycle bin</span></button>
+</nav>
+
+<div class="win bevel" id="w-pc" popover="manual" style="--w:440px;left:14%;top:8%">
+  <div class="titlebar"><span>my computer</span><button class="bevel" popovertarget="w-pc" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-pc" popovertargetaction="hide" aria-label="close">×</button></div>
+  <div class="menubar"><u>file</u><u>edit</u><u>view</u><u>help</u></div>
+  <div class="winbody sunk"><div class="files"><a href="../index.html"><b>🏠</b><span>home</span></a><a href="../qa/"><b>💬</b><span>qa</span></a><a href="../arcade/"><b>🕹️</b><span>arcade</span></a><a href="../kara/"><b>👧</b><span>kara</span></a><a href="../soy/"><b>💎</b><span>soy</span></a><a href="../shame/"><b>🚫</b><span>shame</span></a><a href="../js/"><b>🟨</b><span>js</span></a><a href="../ip/"><b>🌐</b><span>ip</span></a><a href="../lab.html"><b>🧪</b><span>lab</span></a><a href="../game.html"><b>🐉</b><span>dungeon</span></a><a href="../support.html"><b>❤️</b><span>support</span></a><a href="../license.html"><b>📜</b><span>license</span></a></div></div>
+  <div class="statusbar sunk">12 object(s) · 0 bytes of javascript</div>
+</div>
+<div class="win bevel" id="w-notes" popover="manual" style="--w:420px;left:30%;top:14%">
+  <div class="titlebar"><span>readme.txt - notepad</span><button class="bevel" popovertarget="w-notes" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-notes" popovertargetaction="hide" aria-label="close">×</button></div>
+  <div class="menubar"><u>file</u><u>edit</u><u>view</u><u>help</u></div>
+  <div class="winbody sunk"><div class="notepad"><textarea spellcheck="false" aria-label="readme.txt">welcome to somethingos.
+
+this desktop is made of html popovers.
+- windows open from the icons or the taskbar
+- several can be open at once (popover="manual")
+- the last one you open sits on top
+- the clock in the tray is a css counter
+- minesweeper checks win/lose with :has()
+
+there is no javascript in this operating system.
+there never was. there never will be.
+
+you can type in this notepad. it won't save.
+saving would need javascript. and we don't do that here.
+
+- kai (mascot supervision: kara)</textarea></div></div>
+  
+</div>
+<div class="win bevel" id="w-term" popover="manual" style="--w:460px;left:22%;top:30%">
+  <div class="titlebar"><span>ms-dos prompt</span><button class="bevel" popovertarget="w-term" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-term" popovertargetaction="hide" aria-label="close">×</button></div>
+  
+  <div class="winbody sunk"><div class="term98">
+<span class="l">c:\somethingos&gt; dir node_modules</span>
+<span class="l r">file not found. good.</span>
+<span class="l">c:\somethingos&gt; npm install</span>
+<span class="l r">bad command or file name</span>
+<span class="l">c:\somethingos&gt; javascript.exe</span>
+<span class="l r">access denied: content-security-policy script-src 'none'</span>
+<span class="l">c:\somethingos&gt; echo %javascript_bytes%</span>
+<span class="l g">0</span>
+<span>c:\somethingos&gt; <i class="caret"></i></span>
+</div></div>
+  
+</div>
+<div class="win bevel" id="w-mines" popover="manual" style="--w:260px;left:55%;top:10%">
+  <div class="titlebar"><span>minesweeper (javascript edition)</span><button class="bevel" popovertarget="w-mines" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-mines" popovertargetaction="hide" aria-label="close">×</button></div>
+  
+  <div class="winbody sunk"><form class="mines" action="#">
+  <div class="msbar sunk"><span class="msstat"></span><span class="face"></span><span>🟨 ×10</span></div>
+  <div class="grid"><input type="checkbox" class="ms safe" id="m0"><label for="m0" class="mc n0" data-n="" aria-label="cell 0"></label><input type="checkbox" class="ms safe" id="m1"><label for="m1" class="mc n0" data-n="" aria-label="cell 1"></label><input type="checkbox" class="ms safe" id="m2"><label for="m2" class="mc n1" data-n="1" aria-label="cell 2"></label><input type="checkbox" class="ms mine" id="m3"><label for="m3" class="mc" aria-label="cell 3"></label><input type="checkbox" class="ms safe" id="m4"><label for="m4" class="mc n1" data-n="1" aria-label="cell 4"></label><input type="checkbox" class="ms safe" id="m5"><label for="m5" class="mc n1" data-n="1" aria-label="cell 5"></label><input type="checkbox" class="ms safe" id="m6"><label for="m6" class="mc n1" data-n="1" aria-label="cell 6"></label><input type="checkbox" class="ms safe" id="m7"><label for="m7" class="mc n1" data-n="1" aria-label="cell 7"></label><input type="checkbox" class="ms safe" id="m8"><label for="m8" class="mc n1" data-n="1" aria-label="cell 8"></label><input type="checkbox" class="ms safe" id="m9"><label for="m9" class="mc n1" data-n="1" aria-label="cell 9"></label><input type="checkbox" class="ms safe" id="m10"><label for="m10" class="mc n2" data-n="2" aria-label="cell 10"></label><input type="checkbox" class="ms safe" id="m11"><label for="m11" class="mc n1" data-n="1" aria-label="cell 11"></label><input type="checkbox" class="ms safe" id="m12"><label for="m12" class="mc n1" data-n="1" aria-label="cell 12"></label><input type="checkbox" class="ms safe" id="m13"><label for="m13" class="mc n1" data-n="1" aria-label="cell 13"></label><input type="checkbox" class="ms mine" id="m14"><label for="m14" class="mc" aria-label="cell 14"></label><input type="checkbox" class="ms safe" id="m15"><label for="m15" class="mc n1" data-n="1" aria-label="cell 15"></label><input type="checkbox" class="ms safe" id="m16"><label for="m16" class="mc n1" data-n="1" aria-label="cell 16"></label><input type="checkbox" class="ms mine" id="m17"><label for="m17" class="mc" aria-label="cell 17"></label><input type="checkbox" class="ms safe" id="m18"><label for="m18" class="mc n1" data-n="1" aria-label="cell 18"></label><input type="checkbox" class="ms safe" id="m19"><label for="m19" class="mc n1" data-n="1" aria-label="cell 19"></label><input type="checkbox" class="ms safe" id="m20"><label for="m20" class="mc n1" data-n="1" aria-label="cell 20"></label><input type="checkbox" class="ms safe" id="m21"><label for="m21" class="mc n2" data-n="2" aria-label="cell 21"></label><input type="checkbox" class="ms safe" id="m22"><label for="m22" class="mc n1" data-n="1" aria-label="cell 22"></label><input type="checkbox" class="ms safe" id="m23"><label for="m23" class="mc n1" data-n="1" aria-label="cell 23"></label><input type="checkbox" class="ms safe" id="m24"><label for="m24" class="mc n2" data-n="2" aria-label="cell 24"></label><input type="checkbox" class="ms safe" id="m25"><label for="m25" class="mc n2" data-n="2" aria-label="cell 25"></label><input type="checkbox" class="ms safe" id="m26"><label for="m26" class="mc n1" data-n="1" aria-label="cell 26"></label><input type="checkbox" class="ms safe" id="m27"><label for="m27" class="mc n1" data-n="1" aria-label="cell 27"></label><input type="checkbox" class="ms mine" id="m28"><label for="m28" class="mc" aria-label="cell 28"></label><input type="checkbox" class="ms safe" id="m29"><label for="m29" class="mc n1" data-n="1" aria-label="cell 29"></label><input type="checkbox" class="ms safe" id="m30"><label for="m30" class="mc n1" data-n="1" aria-label="cell 30"></label><input type="checkbox" class="ms safe" id="m31"><label for="m31" class="mc n1" data-n="1" aria-label="cell 31"></label><input type="checkbox" class="ms mine" id="m32"><label for="m32" class="mc" aria-label="cell 32"></label><input type="checkbox" class="ms safe" id="m33"><label for="m33" class="mc n1" data-n="1" aria-label="cell 33"></label><input type="checkbox" class="ms safe" id="m34"><label for="m34" class="mc n1" data-n="1" aria-label="cell 34"></label><input type="checkbox" class="ms safe" id="m35"><label for="m35" class="mc n2" data-n="2" aria-label="cell 35"></label><input type="checkbox" class="ms safe" id="m36"><label for="m36" class="mc n2" data-n="2" aria-label="cell 36"></label><input type="checkbox" class="ms safe" id="m37"><label for="m37" class="mc n1" data-n="1" aria-label="cell 37"></label><input type="checkbox" class="ms safe" id="m38"><label for="m38" class="mc n1" data-n="1" aria-label="cell 38"></label><input type="checkbox" class="ms mine" id="m39"><label for="m39" class="mc" aria-label="cell 39"></label><input type="checkbox" class="ms safe" id="m40"><label for="m40" class="mc n1" data-n="1" aria-label="cell 40"></label><input type="checkbox" class="ms safe" id="m41"><label for="m41" class="mc n1" data-n="1" aria-label="cell 41"></label><input type="checkbox" class="ms safe" id="m42"><label for="m42" class="mc n1" data-n="1" aria-label="cell 42"></label><input type="checkbox" class="ms mine" id="m43"><label for="m43" class="mc" aria-label="cell 43"></label><input type="checkbox" class="ms safe" id="m44"><label for="m44" class="mc n2" data-n="2" aria-label="cell 44"></label><input type="checkbox" class="ms safe" id="m45"><label for="m45" class="mc n1" data-n="1" aria-label="cell 45"></label><input type="checkbox" class="ms safe" id="m46"><label for="m46" class="mc n2" data-n="2" aria-label="cell 46"></label><input type="checkbox" class="ms safe" id="m47"><label for="m47" class="mc n1" data-n="1" aria-label="cell 47"></label><input type="checkbox" class="ms safe" id="m48"><label for="m48" class="mc n1" data-n="1" aria-label="cell 48"></label><input type="checkbox" class="ms safe" id="m49"><label for="m49" class="mc n1" data-n="1" aria-label="cell 49"></label><input type="checkbox" class="ms safe" id="m50"><label for="m50" class="mc n2" data-n="2" aria-label="cell 50"></label><input type="checkbox" class="ms safe" id="m51"><label for="m51" class="mc n1" data-n="1" aria-label="cell 51"></label><input type="checkbox" class="ms safe" id="m52"><label for="m52" class="mc n2" data-n="2" aria-label="cell 52"></label><input type="checkbox" class="ms mine" id="m53"><label for="m53" class="mc" aria-label="cell 53"></label><input type="checkbox" class="ms safe" id="m54"><label for="m54" class="mc n2" data-n="2" aria-label="cell 54"></label><input type="checkbox" class="ms safe" id="m55"><label for="m55" class="mc n1" data-n="1" aria-label="cell 55"></label><input type="checkbox" class="ms safe" id="m56"><label for="m56" class="mc n1" data-n="1" aria-label="cell 56"></label><input type="checkbox" class="ms mine" id="m57"><label for="m57" class="mc" aria-label="cell 57"></label><input type="checkbox" class="ms safe" id="m58"><label for="m58" class="mc n1" data-n="1" aria-label="cell 58"></label><input type="checkbox" class="ms safe" id="m59"><label for="m59" class="mc n0" data-n="" aria-label="cell 59"></label><input type="checkbox" class="ms safe" id="m60"><label for="m60" class="mc n1" data-n="1" aria-label="cell 60"></label><input type="checkbox" class="ms safe" id="m61"><label for="m61" class="mc n2" data-n="2" aria-label="cell 61"></label><input type="checkbox" class="ms mine" id="m62"><label for="m62" class="mc" aria-label="cell 62"></label><input type="checkbox" class="ms safe" id="m63"><label for="m63" class="mc n1" data-n="1" aria-label="cell 63"></label></div>
+  <p class="msnote">avoid the javascript. numbers count adjacent js. no flood fill, because flood fill would need javascript</p>
+  <p style="text-align:center"><button type="reset" class="bevel" style="border:0;padding:2px 10px;cursor:pointer">new game</button></p>
+</form></div>
+  
+</div>
+<div class="win bevel" id="w-kara" popover="manual" style="--w:360px;left:48%;top:20%">
+  <div class="titlebar"><span>kara.webp - image viewer</span><button class="bevel" popovertarget="w-kara" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-kara" popovertargetaction="hide" aria-label="close">×</button></div>
+  <div class="menubar"><u>file</u><u>edit</u><u>view</u><u>help</u></div>
+  <div class="winbody sunk"><div class="viewer"><img src="../assets/kara/portrait.webp" alt="kara eklund portrait"></div></div>
+  <div class="statusbar sunk">mascot: kara eklund · art: hitsuji goods</div>
+</div>
+<div class="win bevel" id="w-bin" popover="manual" style="--w:380px;left:8%;top:34%">
+  <div class="titlebar"><span>recycle bin</span><button class="bevel" popovertarget="w-bin" popovertargetaction="hide" aria-label="minimize">_</button><button class="bevel" popovertarget="w-bin" popovertargetaction="hide" aria-label="close">×</button></div>
+  <div class="menubar"><u>file</u><u>edit</u><u>view</u><u>help</u></div>
+  <div class="winbody sunk"><div class="bin">
+  <ul class="trash">
+    <li><b>🟨</b>javascript.exe<small>9.3 mb</small></li>
+    <li><b>📁</b>node_modules<small>847 mb</small></li>
+    <li><b>📦</b>react-19.zip<small>you didn't need it</small></li>
+    <li><b>📦</b>webpack.config.js<small>1,204 lines</small></li>
+    <li><b>📄</b>package-lock.json<small>41,000 lines</small></li>
+    <li><b>🍪</b>cookie_banner.js<small>nobody asked</small></li>
+    <li><b>🌀</b>infinite_scroll.js<small>never ends</small></li>
+  </ul>
+  <div class="emptied">🗑️ recycle bin emptied. javascript is gone.<br><small>reload the page to bring it back, if you hate yourself.</small></div>
+  <input type="checkbox" id="empty-bin"><label for="empty-bin" class="bin-btn bevel">empty recycle bin</label>
+</div></div>
+  <div class="statusbar sunk">7 object(s)</div>
+</div>
+
+<input type="checkbox" id="dismiss-err">
+<div class="errbox bevel" role="alertdialog" aria-label="javascript error">
+  <div class="titlebar"><span>javascript.exe</span></div>
+  <div class="winbody"><span class="x">⛔</span><div>javascript.exe has stopped working.<br>and it's not coming back.<br><label for="dismiss-err" class="ok bevel">good</label></div></div>
+</div>
+
+<div class="startmenu bevel" id="startmenu" popover>
+  <div class="side">somethingos</div>
+  <ul>
+    <li><a href="../index.html"><b>🏠</b>home</a></li>
+    <li><a href="../qa/"><b>💬</b>/qa/</a></li>
+    <li><a href="../arcade/"><b>🕹️</b>arcade</a></li>
+    <li><a href="../kara/"><b>👧</b>kara</a></li>
+    <li><a href="../shame/"><b>🚫</b>hall of shame</a></li>
+    <li><button popovertarget="w-mines" popovertargetaction="show"><b>💣</b>minesweeper</button></li>
+    <li><button popovertarget="w-term" popovertargetaction="show"><b>⬛</b>ms-dos prompt</button></li>
+    <li><hr></li>
+    <li><button popovertarget="shutdown" popovertargetaction="show"><b>⏻</b>shut down…</button></li>
+  </ul>
+</div>
+
+<div class="shutdown" id="shutdown" popover>
+  <div><img src="../assets/kara/smile.webp" alt="kara smiling">it's now safe to turn off your computer.<small>somethingos shut down cleanly. no javascript was running, so nothing needed to be saved.</small>
+  <button popovertarget="shutdown" popovertargetaction="hide">turn it back on</button></div>
+</div>
+
+<div class="taskbar bevel">
+  <button class="start bevel" popovertarget="startmenu"><img src="../assets/kara/favicon.png" alt="">start</button>
+  <div class="tasks">
+    <button class="task bevel" popovertarget="w-pc">my computer</button>
+    <button class="task bevel" popovertarget="w-notes">readme.txt</button>
+    <button class="task bevel" popovertarget="w-term">terminal</button>
+    <button class="task bevel" popovertarget="w-mines">minesweeper</button>
+    <button class="task bevel" popovertarget="w-kara">kara.webp</button>
+    <button class="task bevel" popovertarget="w-bin">recycle bin</button>
+  </div>
+  <div class="tray sunk"><span title="javascript: off">🚫🟨</span><span class="uptime"></span></div>
+</div>
+
+<p class="tiny98">© 2026 kai · <a href="../license.html">mit</a> · source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</body>
+</html>
