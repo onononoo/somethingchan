@@ -144,3 +144,16 @@ body:has(.page) { background: #fff; font-family: "times new roman", times, serif
 .src text { fill: #000 !important; }
 .hq-label { fill: #008000 !important; }
 .glow { display: none !important; }
+
+/* ---------- /ip/ on a white page ----------
+   the old dark page used "screen" blending, which turns white to nothing.
+   on white we flip it: invert, tint, invert back = colored text on white,
+   then "multiply" makes the frame's white background vanish. */
+.ip, .ip iframe { mix-blend-mode: multiply !important; }
+.ip iframe { filter: invert(1) sepia(1) saturate(8) hue-rotate(var(--hue)) invert(1) contrast(1.3) !important; }
+.ip:not(.ghost)::after { border-color: #000 !important; }
+.stars { display: none !important; }
+.hud { background: #fff !important; border-top: 1px solid #808080; color: #000 !important; }
+.hud .note, .hud .tiny, .hud .tiny a, .secret-dot { color: #555 !important; }
+.title { color: #000; }
+.freeze-lbl { background: #e0e0e0; border: 2px outset #f4f4f4 !important; color: #000; font: 13px arial, sans-serif; }
