@@ -1,0 +1,123 @@
+/* =========================================================
+   wiki.css — somethingwiki. a wikipedia-shaped encyclopedia. 0 javascript.
+   articles/talk/edit/history: :target. hover previews: nested spans.
+   footnote highlight: :target. random article: 6 links stacked,
+   each visible for 1/6 of a fast cycle, so the click lands on whichever
+   one is showing at that instant.
+   ========================================================= */
+
+@layer base, layout, article, parts;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { text-transform: lowercase; scroll-behavior: smooth; }
+  body { margin: 0; background: #f6f6f6; color: #202122; font: 15px/1.6 sans-serif; }
+  a { color: #3366cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:visited { color: #795cb2; }
+  code { background: #f8f9fa; border: 1px solid #eaecf0; padding: 0 4px; font-size: .9em; }
+}
+
+@layer layout {
+  .page { display: grid; grid-template-columns: 170px 1fr; max-width: 1180px; margin: 0 auto; }
+  .side { padding: 14px 10px; font-size: 13px; }
+  .side .logo { display: block; text-align: center; margin-bottom: 14px; color: #202122; }
+  .side .logo img { width: 110px; height: 110px; border-radius: 50%; display: block; margin: 0 auto 6px; border: 3px solid #fff; box-shadow: 0 0 0 1px #a2a9b1; }
+  .side .logo b { font: 20px "times new roman", serif; letter-spacing: .02em; }
+  .side .logo small { display: block; color: #54595d; }
+  .side h3 { font-size: 12px; color: #54595d; border-bottom: 1px solid #c8ccd1; margin: 14px 0 4px; font-weight: normal; }
+  .side ul { list-style: none; margin: 0; padding: 0; }
+  .side li { padding: 2px 0; }
+  .content { background: #fff; border: 1px solid #a7d7f9; border-right: 0; margin-top: 40px; padding: 16px 24px 30px; min-height: 80vh; position: relative; }
+  .topbar { position: absolute; top: -36px; left: 0; right: 0; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+  .search { display: flex; }
+  .search input { width: 220px; padding: 4px 8px; border: 1px solid #a2a9b1; font: inherit; }
+  .search button { border: 1px solid #a2a9b1; background: #f8f9fa; padding: 0 10px; cursor: not-allowed; }
+  .userlinks { font-size: 13px; }
+  @media (max-width: 760px) { .page { grid-template-columns: 1fr; } .side { display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: center; } .side .logo { display: flex; gap: 8px; align-items: center; margin: 0; } .side .logo img { width: 44px; height: 44px; margin: 0; } .side h3 { display: none; } .side ul { display: flex; flex-wrap: wrap; gap: 4px 12px; } .topbar { position: static; margin-bottom: 10px; flex-wrap: wrap; } .content { margin-top: 0; padding: 12px; } .search input { width: 150px; } }
+  .footer { font-size: 12px; color: #54595d; padding: 16px 24px 30px 194px; }
+  .footer .tiny { font-size: 10px; }
+  @media (max-width: 760px) { .footer { padding-left: 16px; } }
+}
+
+@layer article {
+  .art { display: none; }
+  .art:target, .art:has(:target), body:not(:has(.art:target, .art :target)) #main-page { display: block; }
+  .tabs { display: flex; gap: 2px; border-bottom: 1px solid #a7d7f9; margin: -6px 0 12px; font-size: 13px; }
+  .tabs a { padding: 4px 10px; background: linear-gradient(#fff, #eaf3ff); border: 1px solid #a7d7f9; border-bottom: 0; }
+  .tabs a.sel { background: #fff; color: #202122; margin-bottom: -1px; }
+  .ftitle { font: 28px/1.3 "times new roman", serif; margin: 0; border-bottom: 1px solid #a2a9b1; padding-bottom: 2px; }
+  .from { font-size: 13px; color: #54595d; margin: 4px 0 12px; }
+  .h { font: 22px/1.3 "times new roman", serif; border-bottom: 1px solid #a2a9b1; margin: 20px 0 8px; clear: none; }
+  .art p { margin: 8px 0; }
+
+  .infobox { float: right; width: 260px; margin: 0 0 12px 18px; border: 1px solid #a2a9b1; background: #f8f9fa; font-size: 13px; border-collapse: collapse; }
+  .infobox caption { font-weight: bold; font-size: 16px; padding: 4px; }
+  .infobox th { text-align: left; padding: 3px 6px; vertical-align: top; width: 42%; }
+  .infobox td { padding: 3px 6px; }
+  .infobox .ibimg { text-align: center; }
+  .infobox .ibimg img { max-width: 100%; max-height: 220px; display: block; margin: 0 auto; background: #fff; }
+  .infobox .ibimg div { font-size: 12px; color: #54595d; padding: 4px 0; }
+  @media (max-width: 600px) { .infobox { float: none; width: 100%; margin: 0 0 12px; } }
+
+  .toc { display: inline-block; border: 1px solid #a2a9b1; background: #f8f9fa; padding: 6px 14px 6px 10px; font-size: 13px; margin: 8px 0; }
+  .toc ol { margin: 4px 0 0; padding-left: 20px; }
+
+  .ambox { border: 1px solid #a2a9b1; border-left: 10px solid #36c; background: #fbfbfb; padding: 6px 10px; margin: 8px 0; font-size: 14px; }
+  .ambox.warn { border-left-color: #f28500; }
+  .ambox.good { border-left-color: #00af89; }
+}
+
+@layer parts {
+  /* citation needed with a tooltip */
+  .cn { color: #3366cc; font-size: 11px; white-space: nowrap; cursor: help; position: relative; }
+  .cn span { font-style: italic; }
+  .cn:hover::after { content: "this claim needs a reliable source. the source is kai. that's enough."; position: absolute; left: 0; top: 1.6em; z-index: 5; width: 240px; white-space: normal;
+    background: #fff; border: 1px solid #a2a9b1; box-shadow: 0 2px 8px rgb(0 0 0 / .15); padding: 6px 8px; font: 12px sans-serif; color: #202122; }
+
+  /* page previews */
+  .wl { position: relative; }
+  .wl .pv { display: none; position: absolute; left: 0; top: 1.5em; z-index: 6; width: 280px; background: #fff; border: 1px solid #a2a9b1;
+    box-shadow: 0 4px 14px rgb(0 0 0 / .2); padding: 10px 12px; color: #202122; font-size: 13px; line-height: 1.5; text-decoration: none; }
+  .wl .pv b { display: block; font: 18px "times new roman", serif; margin-bottom: 4px; }
+  .wl:hover .pv, .wl:focus .pv { display: block; animation: pvin .15s ease-out; }
+  @keyframes pvin { from { opacity: 0; translate: 0 4px; } }
+
+  /* footnotes: :target highlight + back links */
+  .fn { font-size: 11px; vertical-align: super; line-height: 0; scroll-margin-top: 80px; }
+  .refs { font-size: 13px; }
+  .refs li { scroll-margin-top: 80px; }
+  .refs li:target { background: #eaf3ff; outline: 2px solid #a7d7f9; }
+  .refs .up { font-weight: bold; }
+  .fn:target { background: #eaf3ff; }
+  .cats { clear: both; border: 1px solid #a2a9b1; background: #f8f9fa; padding: 6px 10px; font-size: 13px; margin-top: 20px; }
+
+  /* talk, edit, history */
+  .talkpost { margin: 0 0 10px; }
+  .talkpost dt { font-weight: bold; }
+  .talkpost dd { margin: 2px 0 0 18px; border-left: 2px solid #eaecf0; padding-left: 10px; }
+  .sig { color: #54595d; font-size: 13px; }
+  .wikitext { width: 100%; height: 220px; font: 13px monospace; border: 1px solid #a2a9b1; padding: 8px; text-transform: lowercase; }
+  .hist { font-size: 14px; }
+  .hist li { padding: 3px 0; }
+  .hdate { color: #54595d; }
+
+  /* main page */
+  .welcome { border: 1px solid #a2a9b1; background: #f8f9fa; padding: 12px; text-align: center; font-size: 17px; margin: 10px 0; }
+  .welcome span { display: block; font-size: 13px; color: #54595d; }
+  .mp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 760px) { .mp { grid-template-columns: 1fr; } }
+  .mpbox { border: 1px solid #a2a9b1; padding: 0 12px 10px; overflow: visible; }
+  .mpbox h2 { font: bold 15px sans-serif; background: #cef2e0; margin: 0 -12px 8px; padding: 4px 12px; border-bottom: 1px solid #a3bfb1; }
+  .mpbox:nth-child(2) h2, .mpbox:nth-child(4) h2 { background: #cedff2; border-color: #a3b0bf; }
+  .mpbox img { float: left; width: 90px; margin: 4px 10px 4px 0; border: 1px solid #a2a9b1; }
+  .mpbox ul { padding-left: 18px; margin: 0; }
+
+  /* random article: 6 links in one spot, each visible for 1/6 of a 0.6s cycle */
+  .random { position: relative; display: inline-block; }
+  .random a { visibility: hidden; }
+  .random a + a { position: absolute; left: 0; top: 0; }
+  .random a { animation: rnd .6s steps(1) infinite; animation-delay: calc(var(--i) * -.1s); }
+  @keyframes rnd { 0% { visibility: visible; } 16.667% { visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .random a { animation-duration: 1.2s; } }
+}
