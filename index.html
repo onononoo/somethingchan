@@ -7,11 +7,12 @@
 <meta name="description" content="somethingchan — an authoritative and entirely wrong field guide to git, github, and gitlab. zero javascript.">
 <meta name="theme-color" content="#f05033">
 <title>somethingchan</title>
-<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/kara/favicon.png" type="image/png">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="alternate" type="application/rss+xml" title="somethingchan changelog" href="feed.xml">
 <link rel="stylesheet" href="css/somethingchan.css">
 <link rel="stylesheet" href="css/lab.css">
+<link rel="stylesheet" href="css/kara.css">
 <link rel="license" href="license">
 </head>
 <body>
@@ -24,8 +25,9 @@
 </marquee></div>
 
 <header class="hero">
+  <p class="tag">a site by kai · mascot: kara eklund</p>
   <div class="ring" aria-hidden="true"></div>
-  <h1><span class="glitch" data-t="somethingchan">somethingchan</span><img class="logo" src="assets/logo.svg" alt="" width="44" height="44"></h1>
+  <h1><span class="glitch" data-t="somethingchan">somethingchan</span><img class="logo kara-logo" src="assets/kara/avatar.webp" alt="kara eklund, mascot" width="44" height="44"></h1>
   <p>an authoritative and entirely wrong field guide to <ruby>git<rt>/sigh/</rt></ruby>, github, and gitlab</p>
   <div class="badges">
     <span class="badge"><b>build</b><i style="background:var(--ok)">passing (gem)</i></span>
@@ -40,12 +42,28 @@
   <a href="#species">species</a><a href="#graph">graph</a><a href="#terminal">terminal</a>
   <a href="#commands">commands</a><a href="#math">math</a><a href="#danger">danger</a>
   <a href="#bestiary">bestiary</a><a href="#atlas">atlas</a><a href="#history">history</a>
-  <a href="#compare">compare</a><a href="#quiz">quiz</a><a href="#hooks">hooks</a><a href="#explorer">.git</a><a href="#clock">clock</a><a href="#against">against js</a><a href="qa/">qa</a><a href="ip/">ip</a><a href="shame/">shame</a><a href="soy/">soy</a><a href="#faq">faq</a>
+  <a href="#compare">compare</a><a href="#quiz">quiz</a><a href="#hooks">hooks</a><a href="#explorer">.git</a><a href="#clock">clock</a><a href="#against">against js</a><a href="qa/">qa</a><a href="ip/">ip</a><a href="shame/">shame</a><a href="soy/">soy</a><a href="kara/">kara</a><a href="#faq">faq</a>
   <a href="lab.html">lab</a><a href="game.html">dungeon</a><a href="js/">js</a><a href="support.html">support</a><a href="license.html">license</a>
   <label for="theme-flip" title="css-only theme toggle">◐ theme</label>
 </nav>
 
 <main>
+
+<!-- ============ 00 mascot ============ -->
+<section id="mascot">
+  <h2>meet the mascot</h2>
+  <span class="tag">somethingchan is supervised by kara eklund. art by hitsuji goods.</span>
+  <div class="kara-card">
+    <img src="assets/kara/portrait.webp" alt="kara eklund portrait">
+    <dl>
+      <dt>name</dt><dd>kara eklund</dd>
+      <dt>job</dt><dd>mascot, /qa/ admin, javascript bouncer</dd>
+      <dt>stance on js</dt><dd>0 bytes. no exceptions.</dd>
+      <dt>more</dt><dd><a href="kara/">profile, gallery, and the contents of her bag →</a></dd>
+    </dl>
+  </div>
+  <p class="kara-says" aria-live="off"></p>
+</section>
 
 <!-- ============ 01 species ============ -->
 <section id="species">
@@ -421,7 +439,7 @@
 resolved: kept head. branch deleted.
 <button class="pop" popovertarget="conflict" popovertargetaction="hide">[ git merge --abort ]</button></div>
 
-<a class="sticker peek" href="qa/" tabindex="0"><span class="say">it's a gem!!</span><img src="assets/soy/gapejak.png" alt="" loading="lazy"></a>
+<a class="sticker peek" href="qa/" tabindex="0"><span class="say">hi. i'm kara. no js here.</span><img src="assets/kara/smile.webp" alt="" loading="lazy"></a>
 <footer class="site">
   © 2026 kai · <a href="license.html">mit license</a> · somethingchan · no branches were harmed · 0 lines of javascript · last commit: "ok actually final"
   <br><a href="support.html">support &amp; source</a> · <a href="lab.html">lab</a> · <a href="game.html">dungeon</a> · <a href="events.ics">holidays (.ics)</a> · <a href="feed.xml">changelog (xslt)</a> · <a href="sitemap.xml">sitemap</a> · <a href="humans.txt">humans.txt</a>

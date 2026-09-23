@@ -106,3 +106,9 @@
     .dance, .ip iframe, .stars, .stars::before, .stars::after, .glow, .title span { animation: none; }
   }
 }
+
+/* kara watches your ip from the corner */
+.ip-kara { position: fixed; top: 44px; right: 12px; z-index: 11; width: 110px; border: 2px solid #ccc; background: #fff; rotate: 4deg; transition: rotate .2s, scale .2s; }
+.ip-kara:hover { rotate: 0deg; scale: 1.1; }
+.ip-kara img { display: block; width: 100%; }
+@media (max-width: 600px) { .ip-kara { width: 70px; } }

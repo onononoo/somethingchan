@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · kara eklund</title>
+<link rel="icon" href="../assets/kara/favicon.png" type="image/png">
+<link rel="stylesheet" href="../css/somethingchan.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../css/kara.css">
+<!--
+  /kara/ — kara eklund, the official mascot of somethingchan. art by hitsuji goods.
+  gallery filter = radios + :has(). lightbox = native [popover]. speech bubble = animated content.
+  no scripts. kara would not allow it.
+-->
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="toggle terminal theme">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="top" aria-label="site">
+  <a href="../index.html">home</a><a href="#profile">profile</a><a href="#gallery">gallery</a><a href="#bag">bag</a>
+  <a href="../qa/">qa</a><a href="../soy/">soy</a><a href="../shame/">shame</a><a href="../js/">js</a><a href="../ip/">ip</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="hero">
+  <h1><span class="glitch" data-t="kara eklund">kara eklund</span><img class="logo" src="../assets/kara/avatar.webp" alt="" width="44" height="44"></h1>
+  <p>the official mascot of somethingchan. art by hitsuji goods.</p>
+</header>
+
+<main>
+
+<section id="profile">
+  <h2>mascot profile</h2>
+  <span class="tag">everything below is sourced from the drawings. anything else is classified.</span>
+  <div class="kara-card">
+    <img src="../assets/kara/portrait.webp" alt="kara eklund portrait: brown hair, freckles, a small smile">
+    <dl>
+      <dt>name</dt><dd>kara eklund</dd>
+      <dt>role</dt><dd>mascot of somethingchan. admin of <a href="../qa/">/qa/</a>.</dd>
+      <dt>hair</dt><dd>brown, messy, bangs</dd>
+      <dt>wardrobe</dt><dd>band tees, an "actionable threat" shirt, <a href="#gallery">vintage valve merch</a>, maroon gym shorts, the occasional maid dress</dd>
+      <dt>habitat</dt><dd>in front of a crt tv</dd>
+      <dt>hobbies</dt><dd>gmod, radiohead, hugging plushies, carrying too much stuff in one bag</dd>
+      <dt>javascript</dt><dd>0 bytes. strongly against.</dd>
+      <dt>rating</dt><dd>gemerald</dd>
+    </dl>
+  </div>
+  <p class="kara-says" aria-live="off"></p>
+</section>
+
+<section id="gallery">
+  <h2>the kara gallery</h2>
+  <span class="tag">click a picture to open it. filter by type. the count updates itself.</span>
+  <div class="kgallery">
+    <div class="kfilter">
+      <input type="radio" name="kf" id="kf-all" checked><label for="kf-all">all</label>
+      <input type="radio" name="kf" id="kf-art"><label for="kf-art">finished art</label>
+      <input type="radio" name="kf" id="kf-sketch"><label for="kf-sketch">sketches</label>
+      <input type="radio" name="kf" id="kf-comic"><label for="kf-comic">comics</label>
+      <input type="radio" name="kf" id="kf-extra"><label for="kf-extra">extras</label>
+    </div>
+    <div class="kgrid">
+      <figure class="kg art"><button popovertarget="lb-portrait" aria-label="open the official portrait"><img src="../assets/kara/portrait.webp" alt="the official portrait" loading="lazy"></button><figcaption>the official portrait</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-smile" aria-label="open smile"><img src="../assets/kara/smile.webp" alt="smile" loading="lazy"></button><figcaption>smile</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-maid-cafe" aria-label="open maid cafe kara"><img src="../assets/kara/maid-cafe.webp" alt="maid cafe kara" loading="lazy"></button><figcaption>maid cafe kara</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-televisual" aria-label="open televisual parade"><img src="../assets/kara/televisual.webp" alt="televisual parade" loading="lazy"></button><figcaption>televisual parade</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-televisual-alt-2" aria-label="open televisual (alt)"><img src="../assets/kara/televisual-alt-2.webp" alt="televisual (alt)" loading="lazy"></button><figcaption>televisual (alt)</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-televisual-alt" aria-label="open televisual (lineart)"><img src="../assets/kara/televisual-alt.webp" alt="televisual (lineart)" loading="lazy"></button><figcaption>televisual (lineart)</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-lain" aria-label="open lain kara, radiohead tv"><img src="../assets/kara/lain.webp" alt="lain kara, radiohead tv" loading="lazy"></button><figcaption>lain kara, radiohead tv</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-valve-merch" aria-label="open vintage valve merch"><img src="../assets/kara/valve-merch.webp" alt="vintage valve merch" loading="lazy"></button><figcaption>vintage valve merch</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-aux-cord" aria-label="open aux cord kara"><img src="../assets/kara/aux-cord.webp" alt="aux cord kara" loading="lazy"></button><figcaption>aux cord kara</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-gmod" aria-label="open gmod kara"><img src="../assets/kara/gmod.webp" alt="gmod kara" loading="lazy"></button><figcaption>gmod kara</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-pose-tool" aria-label="open kara wit da pose tool"><img src="../assets/kara/pose-tool.webp" alt="kara wit da pose tool" loading="lazy"></button><figcaption>kara wit da pose tool</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-friday-night" aria-label="open friday night kara"><img src="../assets/kara/friday-night.webp" alt="friday night kara" loading="lazy"></button><figcaption>friday night kara</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-plushie" aria-label="open hugs the plushie"><img src="../assets/kara/plushie.webp" alt="hugs the plushie" loading="lazy"></button><figcaption>hugs the plushie</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-christmas" aria-label="open merry x-mas"><img src="../assets/kara/christmas.webp" alt="merry x-mas" loading="lazy"></button><figcaption>merry x-mas</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-office" aria-label="open office attire, a or b"><img src="../assets/kara/office.webp" alt="office attire, a or b" loading="lazy"></button><figcaption>office attire, a or b</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-outfits" aria-label="open inside and outside outfits"><img src="../assets/kara/outfits.webp" alt="inside and outside outfits" loading="lazy"></button><figcaption>inside and outside outfits</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-lounging" aria-label="open lounging kara"><img src="../assets/kara/lounging.webp" alt="lounging kara" loading="lazy"></button><figcaption>lounging kara</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-comfort-object" aria-label="open kara&#x27;s comfort object"><img src="../assets/kara/comfort-object.webp" alt="kara&#x27;s comfort object" loading="lazy"></button><figcaption>kara&#x27;s comfort object</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-m16-alt" aria-label="open m16 kara (alt)"><img src="../assets/kara/m16-alt.webp" alt="m16 kara (alt)" loading="lazy"></button><figcaption>m16 kara (alt)</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-hitsuji-box" aria-label="open hitsuji goods delivery"><img src="../assets/kara/hitsuji-box.webp" alt="hitsuji goods delivery" loading="lazy"></button><figcaption>hitsuji goods delivery</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-inventory" aria-label="open what&#x27;s in kara&#x27;s bag"><img src="../assets/kara/inventory.webp" alt="what&#x27;s in kara&#x27;s bag" loading="lazy"></button><figcaption>what&#x27;s in kara&#x27;s bag</figcaption></figure>
+      <figure class="kg art"><button popovertarget="lb-sim" aria-label="open sim kara"><img src="../assets/kara/sim.webp" alt="sim kara" loading="lazy"></button><figcaption>sim kara</figcaption></figure>
+      <figure class="kg comic"><button popovertarget="lb-comic" aria-label="open how to treat depression"><img src="../assets/kara/comic.webp" alt="how to treat depression" loading="lazy"></button><figcaption>how to treat depression</figcaption></figure>
+      <figure class="kg comic"><button popovertarget="lb-manga" aria-label="open oooo it&#x27;s a kara manga"><img src="../assets/kara/manga.webp" alt="oooo it&#x27;s a kara manga" loading="lazy"></button><figcaption>oooo it&#x27;s a kara manga</figcaption></figure>
+      <figure class="kg comic"><button popovertarget="lb-frustrated" aria-label="open frustrated kara"><img src="../assets/kara/frustrated.webp" alt="frustrated kara" loading="lazy"></button><figcaption>frustrated kara</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-sprites" aria-label="open kara sprites"><img src="../assets/kara/sprites.webp" alt="kara sprites" loading="lazy"></button><figcaption>kara sprites</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-pacing" aria-label="open pacing kara"><img src="../assets/kara/pacing.webp" alt="pacing kara" loading="lazy"></button><figcaption>pacing kara</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-perfect" aria-label="open perfect perfect kara"><img src="../assets/kara/perfect.webp" alt="perfect perfect kara" loading="lazy"></button><figcaption>perfect perfect kara</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-new-kara" aria-label="open there&#x27;s a new kara on the way"><img src="../assets/kara/new-kara.webp" alt="there&#x27;s a new kara on the way" loading="lazy"></button><figcaption>there&#x27;s a new kara on the way</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-karapilled" aria-label="open karapilled"><img src="../assets/kara/karapilled.webp" alt="karapilled" loading="lazy"></button><figcaption>karapilled</figcaption></figure>
+      <figure class="kg sketch"><button popovertarget="lb-height-comparison" aria-label="open height comparison: kai and kara"><img src="../assets/kara/height-comparison.webp" alt="height comparison: kai and kara" loading="lazy"></button><figcaption>height comparison: kai and kara</figcaption></figure>
+      <figure class="kg extra"><button popovertarget="lb-extra-lucky-star" aria-label="open kara&#x27;s favorite anime (probably)"><img src="../assets/kara/extra-lucky-star.webp" alt="kara&#x27;s favorite anime (probably)" loading="lazy"></button><figcaption>kara&#x27;s favorite anime (probably)</figcaption></figure>
+      <figure class="kg extra"><button popovertarget="lb-extra-konata" aria-label="open konata, kara&#x27;s rival"><img src="../assets/kara/extra-konata.webp" alt="konata, kara&#x27;s rival" loading="lazy"></button><figcaption>konata, kara&#x27;s rival</figcaption></figure>
+      <figure class="kg extra"><button popovertarget="lb-extra-kagami" aria-label="open kagami disapproves of javascript"><img src="../assets/kara/extra-kagami.webp" alt="kagami disapproves of javascript" loading="lazy"></button><figcaption>kagami disapproves of javascript</figcaption></figure>
+      <figure class="kg extra"><button popovertarget="lb-extra-at-the" aria-label="open look at the site"><img src="../assets/kara/extra-at-the.webp" alt="look at the site" loading="lazy"></button><figcaption>look at the site</figcaption></figure>
+    </div>
+    <p class="kcount"></p>
+  </div>
+</section>
+
+<section id="bag">
+  <h2>what's in kara's bag</h2>
+  <span class="tag">hover or tab to the dots. item names are best guesses from the drawing.</span>
+  <div class="inv-wrap">
+    <img src="../assets/kara/inventory.webp" alt="kara with her tote bag and the contents laid out beside her">
+    <a class="spot" href="#bag" style="left:84%;top:17%"><span>id card</span></a>
+    <a class="spot" href="#bag" style="left:66%;top:21%"><span>charm keychain</span></a>
+    <a class="spot" href="#bag" style="left:54%;top:31%"><span>wallet</span></a>
+    <a class="spot" href="#bag" style="left:57%;top:53%"><span>phone + earbuds (no js installed)</span></a>
+    <a class="spot" href="#bag" style="left:70%;top:55%"><span>pepper spray</span></a>
+    <a class="spot" href="#bag" style="left:88%;top:41%"><span>coin purse</span></a>
+    <a class="spot" href="#bag" style="left:88%;top:66%"><span>the reason nobody force-pushes near her</span></a>
+    <a class="spot" href="#bag" style="left:56%;top:87%"><span>pills</span></a>
+    <a class="spot" href="#bag" style="left:72%;top:89%"><span>flashlight</span></a>
+  </div>
+</section>
+
+</main>
+
+<div class="lb" id="lb-portrait" popover><img src="../assets/kara/portrait.webp" alt="the official portrait" loading="lazy"><p><span>the official portrait</span><button popovertarget="lb-portrait" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-smile" popover><img src="../assets/kara/smile.webp" alt="smile" loading="lazy"><p><span>smile</span><button popovertarget="lb-smile" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-maid-cafe" popover><img src="../assets/kara/maid-cafe.webp" alt="maid cafe kara" loading="lazy"><p><span>maid cafe kara</span><button popovertarget="lb-maid-cafe" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-televisual" popover><img src="../assets/kara/televisual.webp" alt="televisual parade" loading="lazy"><p><span>televisual parade</span><button popovertarget="lb-televisual" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-televisual-alt-2" popover><img src="../assets/kara/televisual-alt-2.webp" alt="televisual (alt)" loading="lazy"><p><span>televisual (alt)</span><button popovertarget="lb-televisual-alt-2" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-televisual-alt" popover><img src="../assets/kara/televisual-alt.webp" alt="televisual (lineart)" loading="lazy"><p><span>televisual (lineart)</span><button popovertarget="lb-televisual-alt" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-lain" popover><img src="../assets/kara/lain.webp" alt="lain kara, radiohead tv" loading="lazy"><p><span>lain kara, radiohead tv</span><button popovertarget="lb-lain" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-valve-merch" popover><img src="../assets/kara/valve-merch.webp" alt="vintage valve merch" loading="lazy"><p><span>vintage valve merch</span><button popovertarget="lb-valve-merch" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-aux-cord" popover><img src="../assets/kara/aux-cord.webp" alt="aux cord kara" loading="lazy"><p><span>aux cord kara</span><button popovertarget="lb-aux-cord" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-gmod" popover><img src="../assets/kara/gmod.webp" alt="gmod kara" loading="lazy"><p><span>gmod kara</span><button popovertarget="lb-gmod" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-pose-tool" popover><img src="../assets/kara/pose-tool.webp" alt="kara wit da pose tool" loading="lazy"><p><span>kara wit da pose tool</span><button popovertarget="lb-pose-tool" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-friday-night" popover><img src="../assets/kara/friday-night.webp" alt="friday night kara" loading="lazy"><p><span>friday night kara</span><button popovertarget="lb-friday-night" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-plushie" popover><img src="../assets/kara/plushie.webp" alt="hugs the plushie" loading="lazy"><p><span>hugs the plushie</span><button popovertarget="lb-plushie" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-christmas" popover><img src="../assets/kara/christmas.webp" alt="merry x-mas" loading="lazy"><p><span>merry x-mas</span><button popovertarget="lb-christmas" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-office" popover><img src="../assets/kara/office.webp" alt="office attire, a or b" loading="lazy"><p><span>office attire, a or b</span><button popovertarget="lb-office" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-outfits" popover><img src="../assets/kara/outfits.webp" alt="inside and outside outfits" loading="lazy"><p><span>inside and outside outfits</span><button popovertarget="lb-outfits" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-lounging" popover><img src="../assets/kara/lounging.webp" alt="lounging kara" loading="lazy"><p><span>lounging kara</span><button popovertarget="lb-lounging" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-comfort-object" popover><img src="../assets/kara/comfort-object.webp" alt="kara&#x27;s comfort object" loading="lazy"><p><span>kara&#x27;s comfort object</span><button popovertarget="lb-comfort-object" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-m16-alt" popover><img src="../assets/kara/m16-alt.webp" alt="m16 kara (alt)" loading="lazy"><p><span>m16 kara (alt)</span><button popovertarget="lb-m16-alt" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-hitsuji-box" popover><img src="../assets/kara/hitsuji-box.webp" alt="hitsuji goods delivery" loading="lazy"><p><span>hitsuji goods delivery</span><button popovertarget="lb-hitsuji-box" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-inventory" popover><img src="../assets/kara/inventory.webp" alt="what&#x27;s in kara&#x27;s bag" loading="lazy"><p><span>what&#x27;s in kara&#x27;s bag</span><button popovertarget="lb-inventory" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-sim" popover><img src="../assets/kara/sim.webp" alt="sim kara" loading="lazy"><p><span>sim kara</span><button popovertarget="lb-sim" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-comic" popover><img src="../assets/kara/comic.webp" alt="how to treat depression" loading="lazy"><p><span>how to treat depression</span><button popovertarget="lb-comic" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-manga" popover><img src="../assets/kara/manga.webp" alt="oooo it&#x27;s a kara manga" loading="lazy"><p><span>oooo it&#x27;s a kara manga</span><button popovertarget="lb-manga" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-frustrated" popover><img src="../assets/kara/frustrated.webp" alt="frustrated kara" loading="lazy"><p><span>frustrated kara</span><button popovertarget="lb-frustrated" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-sprites" popover><img src="../assets/kara/sprites.webp" alt="kara sprites" loading="lazy"><p><span>kara sprites</span><button popovertarget="lb-sprites" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-pacing" popover><img src="../assets/kara/pacing.webp" alt="pacing kara" loading="lazy"><p><span>pacing kara</span><button popovertarget="lb-pacing" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-perfect" popover><img src="../assets/kara/perfect.webp" alt="perfect perfect kara" loading="lazy"><p><span>perfect perfect kara</span><button popovertarget="lb-perfect" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-new-kara" popover><img src="../assets/kara/new-kara.webp" alt="there&#x27;s a new kara on the way" loading="lazy"><p><span>there&#x27;s a new kara on the way</span><button popovertarget="lb-new-kara" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-karapilled" popover><img src="../assets/kara/karapilled.webp" alt="karapilled" loading="lazy"><p><span>karapilled</span><button popovertarget="lb-karapilled" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-height-comparison" popover><img src="../assets/kara/height-comparison.webp" alt="height comparison: kai and kara" loading="lazy"><p><span>height comparison: kai and kara</span><button popovertarget="lb-height-comparison" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-extra-lucky-star" popover><img src="../assets/kara/extra-lucky-star.webp" alt="kara&#x27;s favorite anime (probably)" loading="lazy"><p><span>kara&#x27;s favorite anime (probably)</span><button popovertarget="lb-extra-lucky-star" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-extra-konata" popover><img src="../assets/kara/extra-konata.webp" alt="konata, kara&#x27;s rival" loading="lazy"><p><span>konata, kara&#x27;s rival</span><button popovertarget="lb-extra-konata" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-extra-kagami" popover><img src="../assets/kara/extra-kagami.webp" alt="kagami disapproves of javascript" loading="lazy"><p><span>kagami disapproves of javascript</span><button popovertarget="lb-extra-kagami" popovertargetaction="hide">close ✕</button></p></div>
+<div class="lb" id="lb-extra-at-the" popover><img src="../assets/kara/extra-at-the.webp" alt="look at the site" loading="lazy"><p><span>look at the site</span><button popovertarget="lb-extra-at-the" popovertargetaction="hide">close ✕</button></p></div>
+
+<a class="sticker peek" href="../qa/" tabindex="0"><span class="say">hi. i'm the mascot.</span><img src="../assets/kara/smile.webp" alt="" loading="lazy"></a>
+<footer class="site">
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan · <a href="../index.html">home</a> · mascot: kara eklund · art: hitsuji goods
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>
