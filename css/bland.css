@@ -144,48 +144,51 @@ button.pop:hover, a.pop:hover, .btn:hover { background: var(--card2) !important;
 .stage .dot { border-width: 2px !important; }
 
 /* =========================================================
-   bland, pass 2 — even quieter. greys only, pictures in
-   grayscale until you hover them, no radius, no shadows,
-   no decorative motion. functional animation (games, timers,
-   counters, typing, bouncing ip) is left alone.
+   bland, pass 2 — boring, not colorless. plain white pages, the
+   default-looking blue link, ordinary traffic-light status colors,
+   pictures in full color. no radius, no shadows, no decorative
+   motion. functional animation (games, timers, counters, typing,
+   bouncing ip) is left alone.
    ========================================================= */
 :root:not(:has(.boardtitle)) {
-  --link: #444; --ok: #555; --warn: #777; --bad: #444; --git: #555; --hub: #666; --lab: #777;
-  --line: #dddddb; --dim: #dddddb; --card2: #efefee; --muted: #767674;
+  --bg: #ffffff; --card: #ffffff; --card2: #f3f4f6; --line: #d9dce1; --dim: #d9dce1;
+  --fg: #1f2328; --muted: #5f6670; --link: #1a55a8;
+  --ok: #2e7d32; --warn: #b7791f; --bad: #b3261e; --git: #1a55a8; --hub: #6a4fb3; --lab: #c05a1a;
 }
-:root:has(#theme-flip:checked) { --link: #c8c8c6; --ok: #b0b0ae; --bad: #c8c8c6; --line: #3a3a3a; }
-
-/* pictures: grey until hovered or focused */
-img:not(.ico):not([src$=".svg"]), .ip iframe + * { filter: grayscale(1) contrast(.95); transition: filter .2s; }
-img:not(.ico):hover, a:focus img, button:focus img, label:hover img { filter: none; }
+:root:has(#theme-flip:checked) { --bg: #1e1f22; --card: #26282c; --card2: #2e3035; --line: #3a3d42; --fg: #e3e5e8; --muted: #9aa0a8; --link: #7aa7e6; }
+a { text-decoration: underline; text-underline-offset: 2px; }
+nav.top a { text-decoration: none; }
+nav.top a::before { content: none !important; }
+nav.top { justify-content: flex-start !important; gap: 2px 14px !important; padding: 8px 16px !important; font-size: 14px !important; }
 
 /* flat everything */
 *, *::before, *::after { border-radius: 0 !important; box-shadow: none !important; text-shadow: none !important; }
 .kara-logo, .bulb, .clock, .clock .pin, .pie, .pie span, .stage .dot, .spot, .hq circle { border-radius: 50% !important; }
 
-/* headings and weights */
-header.hero h1 { font-weight: 500 !important; font-size: 24px !important; }
-main > section > h2 { font-weight: 500 !important; font-size: 18px !important; }
+/* plain header, left aligned like an intranet page */
+header.hero { text-align: left !important; max-width: 960px; margin: 0 auto; padding: 18px 16px 8px !important; border-bottom: 0 !important; }
+header.hero h1 { font-weight: 500 !important; font-size: 24px !important; justify-content: flex-start; }
+header.hero .badges { justify-content: flex-start !important; }
+main > section > h2 { font-weight: 500 !important; font-size: 18px !important; text-align: left !important; }
 main > section > h2::before { content: none !important; }
+main > section > .tag, section > .tag { text-align: left !important; }
 b, strong { font-weight: 600; }
 
 /* decorative motion off */
 main > section { animation: none !important; opacity: 1 !important; translate: none !important; }
 .progress { display: none !important; }
+.sticker { opacity: .85; }
 .sticker.peek { animation: none !important; }
 .kara-says::after { animation-duration: 48s !important; }
-.flip:hover .flip-in, .flip:focus-within .flip-in { transition-duration: .01s; }
 .soyboard figure:hover { scale: 1 !important; }
 .kg button:hover, .kg button:focus-visible { translate: none !important; }
 
-/* status + map + qa: drop the last tints */
-.bars i { background: #c4c4c2 !important; }
-.bars i.minor { background: #8f8f8d !important; }
-.bars i.blocked { background: #e2e2e0 !important; }
-.overall::before { background: #888 !important; }
-.st.operational { color: var(--muted) !important; }
-.legend-st i { filter: grayscale(1); }
-.metric polyline { stroke: #777 !important; }
-:root:not(:has(#th-y:checked, #th-t:checked)):has(.boardtitle) { --name: #444; --quote: #6a6a68; --admin: #444; --link: #444; }
-.admin-icon, .dev-icon, .news-badge { background: #777 !important; }
-.dev .name, .dev .capcode { color: #444 !important; }
+/* status page: normal status colors */
+.bars i { background: #3fa04a !important; }
+.bars i.minor { background: #e0a526 !important; }
+.bars i.blocked { background: #c9ccd1 !important; }
+.overall::before { background: var(--ok) !important; }
+.st.operational { color: var(--ok) !important; }
+.metric polyline { stroke: var(--link) !important; }
+
+header.hero p, header.hero .tag { text-align: left !important; }

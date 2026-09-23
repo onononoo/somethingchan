@@ -1,0 +1,456 @@
+/* =========================================================
+   sheet.css — /sheet/, somethingsheets. a spreadsheet with no javascript.
+   every cell is a real <input>. the name box and header highlights are
+   generated :has(#cell:focus) rules. counts come from css counters on
+   :not(:placeholder-shown) and :valid. formulas are, honestly, text.
+   ========================================================= */
+
+@layer sections {
+  .book { --sel: #e3e3e1; --grid: #e2e2e0; border: 1px solid var(--line); background: var(--card); margin-top: 12px; }
+  :root:has(#theme-flip:checked) .book { --sel: #333; --grid: #333; }
+  .toolbar-s { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; padding: 6px 8px; border-bottom: 1px solid var(--line); font-size: 13px; }
+  .toolbar-s input { position: absolute; opacity: 0; }
+  .toolbar-s label { cursor: pointer; padding: 1px 6px; border: 1px solid transparent; }
+  .toolbar-s input:checked + label { border-color: var(--line); background: var(--card2); }
+  .toolbar-s input:focus-visible + label { outline: 1px solid var(--fg); }
+  .toolbar-s .sep { color: var(--line); }
+  .fbar { display: flex; border-bottom: 1px solid var(--line); font: 13px var(--mono); }
+  .namebox { width: 70px; padding: 4px 8px; border-right: 1px solid var(--line); color: var(--muted); }
+  .namebox::after { content: "—"; }
+  .fx { padding: 4px 8px; color: var(--muted); flex: 1; }
+  .fx::before { content: "fx  "; }
+  .fx::after { content: "select a cell. formulas are unavailable (they would need javascript)."; }
+  .book:has(td input:focus) .fx::after { content: "editing. what you type stays until you reload. nothing is saved."; }
+
+  .grid-wrap { overflow: auto; max-height: 70vh; }
+  table.grid { border-collapse: separate; border-spacing: 0; font: 13px var(--mono); counter-reset: filled numeric; }
+  .grid th { position: sticky; background: var(--card2); color: var(--muted); font-weight: 400; z-index: 1; border-right: 1px solid var(--grid); border-bottom: 1px solid var(--grid); }
+  .grid thead th { top: 0; height: 22px; min-width: 96px; }
+  .grid .rowh { left: 0; min-width: 36px; text-align: right; padding: 0 6px; }
+  .grid .corner { left: 0; top: 0; z-index: 2; min-width: 36px; }
+  .grid td { padding: 0; border-right: 1px solid var(--grid); border-bottom: 1px solid var(--grid); }
+  .grid td input { width: 96px; border: 0; padding: 3px 6px; font: inherit; background: transparent; color: var(--fg); text-transform: lowercase; }
+  .grid td input:focus { outline: 2px solid var(--fg); outline-offset: -2px; background: var(--card); }
+  .grid td input:not(:placeholder-shown) { counter-increment: filled; }
+  .grid td input:not(:placeholder-shown):valid { counter-increment: filled numeric; text-align: right; }
+  .grid tbody tr:first-child input { font-weight: 600; }
+
+  /* view toggles */
+  .book:has(#v-nogrid:checked) .grid td, .book:has(#v-nogrid:checked) .grid th { border-color: transparent; }
+  .book:has(#v-zebra:checked) .grid tbody tr:nth-child(even) td { background: var(--card2); }
+  .book:has(#z-s:checked) .grid { font-size: 11px; } .book:has(#z-s:checked) .grid td input, .book:has(#z-s:checked) .grid thead th { width: 76px; min-width: 76px; }
+  .book:has(#z-l:checked) .grid { font-size: 15px; } .book:has(#z-l:checked) .grid td input, .book:has(#z-l:checked) .grid thead th { width: 120px; min-width: 120px; }
+  .book:has(#v-wrap:checked) .grid td input { width: 160px; }
+
+  .statusbar-s { display: flex; flex-wrap: wrap; gap: 4px 18px; padding: 4px 8px; border-top: 1px solid var(--line); font: 12px var(--mono); color: var(--muted); }
+  .st-filled::after { content: "filled: " counter(filled); }
+  .st-num::after { content: "numeric: " counter(numeric); }
+  .st-sum::after { content: "sum: unavailable (needs javascript)"; }
+  .sheettabs { display: flex; gap: 0; border-top: 1px solid var(--line); font-size: 13px; }
+  .sheettabs span { padding: 3px 12px; border-right: 1px solid var(--line); color: var(--muted); }
+  .sheettabs span:first-child { background: var(--card); color: var(--fg); }
+
+  /* generated: name box + header highlight for the focused cell */
+  .book:has(td:nth-child(2) input:focus) #h-a { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(3) input:focus) #h-b { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(4) input:focus) #h-c { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(5) input:focus) #h-d { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(6) input:focus) #h-e { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(7) input:focus) #h-f { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(8) input:focus) #h-g { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(9) input:focus) #h-h { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(10) input:focus) #h-i { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(11) input:focus) #h-j { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(12) input:focus) #h-k { background: var(--sel); color: var(--fg); }
+  .book:has(td:nth-child(13) input:focus) #h-l { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(1) input:focus) #r-1 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(2) input:focus) #r-2 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(3) input:focus) #r-3 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(4) input:focus) #r-4 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(5) input:focus) #r-5 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(6) input:focus) #r-6 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(7) input:focus) #r-7 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(8) input:focus) #r-8 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(9) input:focus) #r-9 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(10) input:focus) #r-10 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(11) input:focus) #r-11 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(12) input:focus) #r-12 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(13) input:focus) #r-13 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(14) input:focus) #r-14 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(15) input:focus) #r-15 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(16) input:focus) #r-16 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(17) input:focus) #r-17 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(18) input:focus) #r-18 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(19) input:focus) #r-19 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(20) input:focus) #r-20 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(21) input:focus) #r-21 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(22) input:focus) #r-22 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(23) input:focus) #r-23 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(24) input:focus) #r-24 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(25) input:focus) #r-25 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(26) input:focus) #r-26 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(27) input:focus) #r-27 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(28) input:focus) #r-28 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(29) input:focus) #r-29 { background: var(--sel); color: var(--fg); }
+  .book:has(tr:nth-child(30) input:focus) #r-30 { background: var(--sel); color: var(--fg); }
+  .book:has(#a1:focus) .namebox::after { content: "a1"; }
+  .book:has(#b1:focus) .namebox::after { content: "b1"; }
+  .book:has(#c1:focus) .namebox::after { content: "c1"; }
+  .book:has(#d1:focus) .namebox::after { content: "d1"; }
+  .book:has(#e1:focus) .namebox::after { content: "e1"; }
+  .book:has(#f1:focus) .namebox::after { content: "f1"; }
+  .book:has(#g1:focus) .namebox::after { content: "g1"; }
+  .book:has(#h1:focus) .namebox::after { content: "h1"; }
+  .book:has(#i1:focus) .namebox::after { content: "i1"; }
+  .book:has(#j1:focus) .namebox::after { content: "j1"; }
+  .book:has(#k1:focus) .namebox::after { content: "k1"; }
+  .book:has(#l1:focus) .namebox::after { content: "l1"; }
+  .book:has(#a2:focus) .namebox::after { content: "a2"; }
+  .book:has(#b2:focus) .namebox::after { content: "b2"; }
+  .book:has(#c2:focus) .namebox::after { content: "c2"; }
+  .book:has(#d2:focus) .namebox::after { content: "d2"; }
+  .book:has(#e2:focus) .namebox::after { content: "e2"; }
+  .book:has(#f2:focus) .namebox::after { content: "f2"; }
+  .book:has(#g2:focus) .namebox::after { content: "g2"; }
+  .book:has(#h2:focus) .namebox::after { content: "h2"; }
+  .book:has(#i2:focus) .namebox::after { content: "i2"; }
+  .book:has(#j2:focus) .namebox::after { content: "j2"; }
+  .book:has(#k2:focus) .namebox::after { content: "k2"; }
+  .book:has(#l2:focus) .namebox::after { content: "l2"; }
+  .book:has(#a3:focus) .namebox::after { content: "a3"; }
+  .book:has(#b3:focus) .namebox::after { content: "b3"; }
+  .book:has(#c3:focus) .namebox::after { content: "c3"; }
+  .book:has(#d3:focus) .namebox::after { content: "d3"; }
+  .book:has(#e3:focus) .namebox::after { content: "e3"; }
+  .book:has(#f3:focus) .namebox::after { content: "f3"; }
+  .book:has(#g3:focus) .namebox::after { content: "g3"; }
+  .book:has(#h3:focus) .namebox::after { content: "h3"; }
+  .book:has(#i3:focus) .namebox::after { content: "i3"; }
+  .book:has(#j3:focus) .namebox::after { content: "j3"; }
+  .book:has(#k3:focus) .namebox::after { content: "k3"; }
+  .book:has(#l3:focus) .namebox::after { content: "l3"; }
+  .book:has(#a4:focus) .namebox::after { content: "a4"; }
+  .book:has(#b4:focus) .namebox::after { content: "b4"; }
+  .book:has(#c4:focus) .namebox::after { content: "c4"; }
+  .book:has(#d4:focus) .namebox::after { content: "d4"; }
+  .book:has(#e4:focus) .namebox::after { content: "e4"; }
+  .book:has(#f4:focus) .namebox::after { content: "f4"; }
+  .book:has(#g4:focus) .namebox::after { content: "g4"; }
+  .book:has(#h4:focus) .namebox::after { content: "h4"; }
+  .book:has(#i4:focus) .namebox::after { content: "i4"; }
+  .book:has(#j4:focus) .namebox::after { content: "j4"; }
+  .book:has(#k4:focus) .namebox::after { content: "k4"; }
+  .book:has(#l4:focus) .namebox::after { content: "l4"; }
+  .book:has(#a5:focus) .namebox::after { content: "a5"; }
+  .book:has(#b5:focus) .namebox::after { content: "b5"; }
+  .book:has(#c5:focus) .namebox::after { content: "c5"; }
+  .book:has(#d5:focus) .namebox::after { content: "d5"; }
+  .book:has(#e5:focus) .namebox::after { content: "e5"; }
+  .book:has(#f5:focus) .namebox::after { content: "f5"; }
+  .book:has(#g5:focus) .namebox::after { content: "g5"; }
+  .book:has(#h5:focus) .namebox::after { content: "h5"; }
+  .book:has(#i5:focus) .namebox::after { content: "i5"; }
+  .book:has(#j5:focus) .namebox::after { content: "j5"; }
+  .book:has(#k5:focus) .namebox::after { content: "k5"; }
+  .book:has(#l5:focus) .namebox::after { content: "l5"; }
+  .book:has(#a6:focus) .namebox::after { content: "a6"; }
+  .book:has(#b6:focus) .namebox::after { content: "b6"; }
+  .book:has(#c6:focus) .namebox::after { content: "c6"; }
+  .book:has(#d6:focus) .namebox::after { content: "d6"; }
+  .book:has(#e6:focus) .namebox::after { content: "e6"; }
+  .book:has(#f6:focus) .namebox::after { content: "f6"; }
+  .book:has(#g6:focus) .namebox::after { content: "g6"; }
+  .book:has(#h6:focus) .namebox::after { content: "h6"; }
+  .book:has(#i6:focus) .namebox::after { content: "i6"; }
+  .book:has(#j6:focus) .namebox::after { content: "j6"; }
+  .book:has(#k6:focus) .namebox::after { content: "k6"; }
+  .book:has(#l6:focus) .namebox::after { content: "l6"; }
+  .book:has(#a7:focus) .namebox::after { content: "a7"; }
+  .book:has(#b7:focus) .namebox::after { content: "b7"; }
+  .book:has(#c7:focus) .namebox::after { content: "c7"; }
+  .book:has(#d7:focus) .namebox::after { content: "d7"; }
+  .book:has(#e7:focus) .namebox::after { content: "e7"; }
+  .book:has(#f7:focus) .namebox::after { content: "f7"; }
+  .book:has(#g7:focus) .namebox::after { content: "g7"; }
+  .book:has(#h7:focus) .namebox::after { content: "h7"; }
+  .book:has(#i7:focus) .namebox::after { content: "i7"; }
+  .book:has(#j7:focus) .namebox::after { content: "j7"; }
+  .book:has(#k7:focus) .namebox::after { content: "k7"; }
+  .book:has(#l7:focus) .namebox::after { content: "l7"; }
+  .book:has(#a8:focus) .namebox::after { content: "a8"; }
+  .book:has(#b8:focus) .namebox::after { content: "b8"; }
+  .book:has(#c8:focus) .namebox::after { content: "c8"; }
+  .book:has(#d8:focus) .namebox::after { content: "d8"; }
+  .book:has(#e8:focus) .namebox::after { content: "e8"; }
+  .book:has(#f8:focus) .namebox::after { content: "f8"; }
+  .book:has(#g8:focus) .namebox::after { content: "g8"; }
+  .book:has(#h8:focus) .namebox::after { content: "h8"; }
+  .book:has(#i8:focus) .namebox::after { content: "i8"; }
+  .book:has(#j8:focus) .namebox::after { content: "j8"; }
+  .book:has(#k8:focus) .namebox::after { content: "k8"; }
+  .book:has(#l8:focus) .namebox::after { content: "l8"; }
+  .book:has(#a9:focus) .namebox::after { content: "a9"; }
+  .book:has(#b9:focus) .namebox::after { content: "b9"; }
+  .book:has(#c9:focus) .namebox::after { content: "c9"; }
+  .book:has(#d9:focus) .namebox::after { content: "d9"; }
+  .book:has(#e9:focus) .namebox::after { content: "e9"; }
+  .book:has(#f9:focus) .namebox::after { content: "f9"; }
+  .book:has(#g9:focus) .namebox::after { content: "g9"; }
+  .book:has(#h9:focus) .namebox::after { content: "h9"; }
+  .book:has(#i9:focus) .namebox::after { content: "i9"; }
+  .book:has(#j9:focus) .namebox::after { content: "j9"; }
+  .book:has(#k9:focus) .namebox::after { content: "k9"; }
+  .book:has(#l9:focus) .namebox::after { content: "l9"; }
+  .book:has(#a10:focus) .namebox::after { content: "a10"; }
+  .book:has(#b10:focus) .namebox::after { content: "b10"; }
+  .book:has(#c10:focus) .namebox::after { content: "c10"; }
+  .book:has(#d10:focus) .namebox::after { content: "d10"; }
+  .book:has(#e10:focus) .namebox::after { content: "e10"; }
+  .book:has(#f10:focus) .namebox::after { content: "f10"; }
+  .book:has(#g10:focus) .namebox::after { content: "g10"; }
+  .book:has(#h10:focus) .namebox::after { content: "h10"; }
+  .book:has(#i10:focus) .namebox::after { content: "i10"; }
+  .book:has(#j10:focus) .namebox::after { content: "j10"; }
+  .book:has(#k10:focus) .namebox::after { content: "k10"; }
+  .book:has(#l10:focus) .namebox::after { content: "l10"; }
+  .book:has(#a11:focus) .namebox::after { content: "a11"; }
+  .book:has(#b11:focus) .namebox::after { content: "b11"; }
+  .book:has(#c11:focus) .namebox::after { content: "c11"; }
+  .book:has(#d11:focus) .namebox::after { content: "d11"; }
+  .book:has(#e11:focus) .namebox::after { content: "e11"; }
+  .book:has(#f11:focus) .namebox::after { content: "f11"; }
+  .book:has(#g11:focus) .namebox::after { content: "g11"; }
+  .book:has(#h11:focus) .namebox::after { content: "h11"; }
+  .book:has(#i11:focus) .namebox::after { content: "i11"; }
+  .book:has(#j11:focus) .namebox::after { content: "j11"; }
+  .book:has(#k11:focus) .namebox::after { content: "k11"; }
+  .book:has(#l11:focus) .namebox::after { content: "l11"; }
+  .book:has(#a12:focus) .namebox::after { content: "a12"; }
+  .book:has(#b12:focus) .namebox::after { content: "b12"; }
+  .book:has(#c12:focus) .namebox::after { content: "c12"; }
+  .book:has(#d12:focus) .namebox::after { content: "d12"; }
+  .book:has(#e12:focus) .namebox::after { content: "e12"; }
+  .book:has(#f12:focus) .namebox::after { content: "f12"; }
+  .book:has(#g12:focus) .namebox::after { content: "g12"; }
+  .book:has(#h12:focus) .namebox::after { content: "h12"; }
+  .book:has(#i12:focus) .namebox::after { content: "i12"; }
+  .book:has(#j12:focus) .namebox::after { content: "j12"; }
+  .book:has(#k12:focus) .namebox::after { content: "k12"; }
+  .book:has(#l12:focus) .namebox::after { content: "l12"; }
+  .book:has(#a13:focus) .namebox::after { content: "a13"; }
+  .book:has(#b13:focus) .namebox::after { content: "b13"; }
+  .book:has(#c13:focus) .namebox::after { content: "c13"; }
+  .book:has(#d13:focus) .namebox::after { content: "d13"; }
+  .book:has(#e13:focus) .namebox::after { content: "e13"; }
+  .book:has(#f13:focus) .namebox::after { content: "f13"; }
+  .book:has(#g13:focus) .namebox::after { content: "g13"; }
+  .book:has(#h13:focus) .namebox::after { content: "h13"; }
+  .book:has(#i13:focus) .namebox::after { content: "i13"; }
+  .book:has(#j13:focus) .namebox::after { content: "j13"; }
+  .book:has(#k13:focus) .namebox::after { content: "k13"; }
+  .book:has(#l13:focus) .namebox::after { content: "l13"; }
+  .book:has(#a14:focus) .namebox::after { content: "a14"; }
+  .book:has(#b14:focus) .namebox::after { content: "b14"; }
+  .book:has(#c14:focus) .namebox::after { content: "c14"; }
+  .book:has(#d14:focus) .namebox::after { content: "d14"; }
+  .book:has(#e14:focus) .namebox::after { content: "e14"; }
+  .book:has(#f14:focus) .namebox::after { content: "f14"; }
+  .book:has(#g14:focus) .namebox::after { content: "g14"; }
+  .book:has(#h14:focus) .namebox::after { content: "h14"; }
+  .book:has(#i14:focus) .namebox::after { content: "i14"; }
+  .book:has(#j14:focus) .namebox::after { content: "j14"; }
+  .book:has(#k14:focus) .namebox::after { content: "k14"; }
+  .book:has(#l14:focus) .namebox::after { content: "l14"; }
+  .book:has(#a15:focus) .namebox::after { content: "a15"; }
+  .book:has(#b15:focus) .namebox::after { content: "b15"; }
+  .book:has(#c15:focus) .namebox::after { content: "c15"; }
+  .book:has(#d15:focus) .namebox::after { content: "d15"; }
+  .book:has(#e15:focus) .namebox::after { content: "e15"; }
+  .book:has(#f15:focus) .namebox::after { content: "f15"; }
+  .book:has(#g15:focus) .namebox::after { content: "g15"; }
+  .book:has(#h15:focus) .namebox::after { content: "h15"; }
+  .book:has(#i15:focus) .namebox::after { content: "i15"; }
+  .book:has(#j15:focus) .namebox::after { content: "j15"; }
+  .book:has(#k15:focus) .namebox::after { content: "k15"; }
+  .book:has(#l15:focus) .namebox::after { content: "l15"; }
+  .book:has(#a16:focus) .namebox::after { content: "a16"; }
+  .book:has(#b16:focus) .namebox::after { content: "b16"; }
+  .book:has(#c16:focus) .namebox::after { content: "c16"; }
+  .book:has(#d16:focus) .namebox::after { content: "d16"; }
+  .book:has(#e16:focus) .namebox::after { content: "e16"; }
+  .book:has(#f16:focus) .namebox::after { content: "f16"; }
+  .book:has(#g16:focus) .namebox::after { content: "g16"; }
+  .book:has(#h16:focus) .namebox::after { content: "h16"; }
+  .book:has(#i16:focus) .namebox::after { content: "i16"; }
+  .book:has(#j16:focus) .namebox::after { content: "j16"; }
+  .book:has(#k16:focus) .namebox::after { content: "k16"; }
+  .book:has(#l16:focus) .namebox::after { content: "l16"; }
+  .book:has(#a17:focus) .namebox::after { content: "a17"; }
+  .book:has(#b17:focus) .namebox::after { content: "b17"; }
+  .book:has(#c17:focus) .namebox::after { content: "c17"; }
+  .book:has(#d17:focus) .namebox::after { content: "d17"; }
+  .book:has(#e17:focus) .namebox::after { content: "e17"; }
+  .book:has(#f17:focus) .namebox::after { content: "f17"; }
+  .book:has(#g17:focus) .namebox::after { content: "g17"; }
+  .book:has(#h17:focus) .namebox::after { content: "h17"; }
+  .book:has(#i17:focus) .namebox::after { content: "i17"; }
+  .book:has(#j17:focus) .namebox::after { content: "j17"; }
+  .book:has(#k17:focus) .namebox::after { content: "k17"; }
+  .book:has(#l17:focus) .namebox::after { content: "l17"; }
+  .book:has(#a18:focus) .namebox::after { content: "a18"; }
+  .book:has(#b18:focus) .namebox::after { content: "b18"; }
+  .book:has(#c18:focus) .namebox::after { content: "c18"; }
+  .book:has(#d18:focus) .namebox::after { content: "d18"; }
+  .book:has(#e18:focus) .namebox::after { content: "e18"; }
+  .book:has(#f18:focus) .namebox::after { content: "f18"; }
+  .book:has(#g18:focus) .namebox::after { content: "g18"; }
+  .book:has(#h18:focus) .namebox::after { content: "h18"; }
+  .book:has(#i18:focus) .namebox::after { content: "i18"; }
+  .book:has(#j18:focus) .namebox::after { content: "j18"; }
+  .book:has(#k18:focus) .namebox::after { content: "k18"; }
+  .book:has(#l18:focus) .namebox::after { content: "l18"; }
+  .book:has(#a19:focus) .namebox::after { content: "a19"; }
+  .book:has(#b19:focus) .namebox::after { content: "b19"; }
+  .book:has(#c19:focus) .namebox::after { content: "c19"; }
+  .book:has(#d19:focus) .namebox::after { content: "d19"; }
+  .book:has(#e19:focus) .namebox::after { content: "e19"; }
+  .book:has(#f19:focus) .namebox::after { content: "f19"; }
+  .book:has(#g19:focus) .namebox::after { content: "g19"; }
+  .book:has(#h19:focus) .namebox::after { content: "h19"; }
+  .book:has(#i19:focus) .namebox::after { content: "i19"; }
+  .book:has(#j19:focus) .namebox::after { content: "j19"; }
+  .book:has(#k19:focus) .namebox::after { content: "k19"; }
+  .book:has(#l19:focus) .namebox::after { content: "l19"; }
+  .book:has(#a20:focus) .namebox::after { content: "a20"; }
+  .book:has(#b20:focus) .namebox::after { content: "b20"; }
+  .book:has(#c20:focus) .namebox::after { content: "c20"; }
+  .book:has(#d20:focus) .namebox::after { content: "d20"; }
+  .book:has(#e20:focus) .namebox::after { content: "e20"; }
+  .book:has(#f20:focus) .namebox::after { content: "f20"; }
+  .book:has(#g20:focus) .namebox::after { content: "g20"; }
+  .book:has(#h20:focus) .namebox::after { content: "h20"; }
+  .book:has(#i20:focus) .namebox::after { content: "i20"; }
+  .book:has(#j20:focus) .namebox::after { content: "j20"; }
+  .book:has(#k20:focus) .namebox::after { content: "k20"; }
+  .book:has(#l20:focus) .namebox::after { content: "l20"; }
+  .book:has(#a21:focus) .namebox::after { content: "a21"; }
+  .book:has(#b21:focus) .namebox::after { content: "b21"; }
+  .book:has(#c21:focus) .namebox::after { content: "c21"; }
+  .book:has(#d21:focus) .namebox::after { content: "d21"; }
+  .book:has(#e21:focus) .namebox::after { content: "e21"; }
+  .book:has(#f21:focus) .namebox::after { content: "f21"; }
+  .book:has(#g21:focus) .namebox::after { content: "g21"; }
+  .book:has(#h21:focus) .namebox::after { content: "h21"; }
+  .book:has(#i21:focus) .namebox::after { content: "i21"; }
+  .book:has(#j21:focus) .namebox::after { content: "j21"; }
+  .book:has(#k21:focus) .namebox::after { content: "k21"; }
+  .book:has(#l21:focus) .namebox::after { content: "l21"; }
+  .book:has(#a22:focus) .namebox::after { content: "a22"; }
+  .book:has(#b22:focus) .namebox::after { content: "b22"; }
+  .book:has(#c22:focus) .namebox::after { content: "c22"; }
+  .book:has(#d22:focus) .namebox::after { content: "d22"; }
+  .book:has(#e22:focus) .namebox::after { content: "e22"; }
+  .book:has(#f22:focus) .namebox::after { content: "f22"; }
+  .book:has(#g22:focus) .namebox::after { content: "g22"; }
+  .book:has(#h22:focus) .namebox::after { content: "h22"; }
+  .book:has(#i22:focus) .namebox::after { content: "i22"; }
+  .book:has(#j22:focus) .namebox::after { content: "j22"; }
+  .book:has(#k22:focus) .namebox::after { content: "k22"; }
+  .book:has(#l22:focus) .namebox::after { content: "l22"; }
+  .book:has(#a23:focus) .namebox::after { content: "a23"; }
+  .book:has(#b23:focus) .namebox::after { content: "b23"; }
+  .book:has(#c23:focus) .namebox::after { content: "c23"; }
+  .book:has(#d23:focus) .namebox::after { content: "d23"; }
+  .book:has(#e23:focus) .namebox::after { content: "e23"; }
+  .book:has(#f23:focus) .namebox::after { content: "f23"; }
+  .book:has(#g23:focus) .namebox::after { content: "g23"; }
+  .book:has(#h23:focus) .namebox::after { content: "h23"; }
+  .book:has(#i23:focus) .namebox::after { content: "i23"; }
+  .book:has(#j23:focus) .namebox::after { content: "j23"; }
+  .book:has(#k23:focus) .namebox::after { content: "k23"; }
+  .book:has(#l23:focus) .namebox::after { content: "l23"; }
+  .book:has(#a24:focus) .namebox::after { content: "a24"; }
+  .book:has(#b24:focus) .namebox::after { content: "b24"; }
+  .book:has(#c24:focus) .namebox::after { content: "c24"; }
+  .book:has(#d24:focus) .namebox::after { content: "d24"; }
+  .book:has(#e24:focus) .namebox::after { content: "e24"; }
+  .book:has(#f24:focus) .namebox::after { content: "f24"; }
+  .book:has(#g24:focus) .namebox::after { content: "g24"; }
+  .book:has(#h24:focus) .namebox::after { content: "h24"; }
+  .book:has(#i24:focus) .namebox::after { content: "i24"; }
+  .book:has(#j24:focus) .namebox::after { content: "j24"; }
+  .book:has(#k24:focus) .namebox::after { content: "k24"; }
+  .book:has(#l24:focus) .namebox::after { content: "l24"; }
+  .book:has(#a25:focus) .namebox::after { content: "a25"; }
+  .book:has(#b25:focus) .namebox::after { content: "b25"; }
+  .book:has(#c25:focus) .namebox::after { content: "c25"; }
+  .book:has(#d25:focus) .namebox::after { content: "d25"; }
+  .book:has(#e25:focus) .namebox::after { content: "e25"; }
+  .book:has(#f25:focus) .namebox::after { content: "f25"; }
+  .book:has(#g25:focus) .namebox::after { content: "g25"; }
+  .book:has(#h25:focus) .namebox::after { content: "h25"; }
+  .book:has(#i25:focus) .namebox::after { content: "i25"; }
+  .book:has(#j25:focus) .namebox::after { content: "j25"; }
+  .book:has(#k25:focus) .namebox::after { content: "k25"; }
+  .book:has(#l25:focus) .namebox::after { content: "l25"; }
+  .book:has(#a26:focus) .namebox::after { content: "a26"; }
+  .book:has(#b26:focus) .namebox::after { content: "b26"; }
+  .book:has(#c26:focus) .namebox::after { content: "c26"; }
+  .book:has(#d26:focus) .namebox::after { content: "d26"; }
+  .book:has(#e26:focus) .namebox::after { content: "e26"; }
+  .book:has(#f26:focus) .namebox::after { content: "f26"; }
+  .book:has(#g26:focus) .namebox::after { content: "g26"; }
+  .book:has(#h26:focus) .namebox::after { content: "h26"; }
+  .book:has(#i26:focus) .namebox::after { content: "i26"; }
+  .book:has(#j26:focus) .namebox::after { content: "j26"; }
+  .book:has(#k26:focus) .namebox::after { content: "k26"; }
+  .book:has(#l26:focus) .namebox::after { content: "l26"; }
+  .book:has(#a27:focus) .namebox::after { content: "a27"; }
+  .book:has(#b27:focus) .namebox::after { content: "b27"; }
+  .book:has(#c27:focus) .namebox::after { content: "c27"; }
+  .book:has(#d27:focus) .namebox::after { content: "d27"; }
+  .book:has(#e27:focus) .namebox::after { content: "e27"; }
+  .book:has(#f27:focus) .namebox::after { content: "f27"; }
+  .book:has(#g27:focus) .namebox::after { content: "g27"; }
+  .book:has(#h27:focus) .namebox::after { content: "h27"; }
+  .book:has(#i27:focus) .namebox::after { content: "i27"; }
+  .book:has(#j27:focus) .namebox::after { content: "j27"; }
+  .book:has(#k27:focus) .namebox::after { content: "k27"; }
+  .book:has(#l27:focus) .namebox::after { content: "l27"; }
+  .book:has(#a28:focus) .namebox::after { content: "a28"; }
+  .book:has(#b28:focus) .namebox::after { content: "b28"; }
+  .book:has(#c28:focus) .namebox::after { content: "c28"; }
+  .book:has(#d28:focus) .namebox::after { content: "d28"; }
+  .book:has(#e28:focus) .namebox::after { content: "e28"; }
+  .book:has(#f28:focus) .namebox::after { content: "f28"; }
+  .book:has(#g28:focus) .namebox::after { content: "g28"; }
+  .book:has(#h28:focus) .namebox::after { content: "h28"; }
+  .book:has(#i28:focus) .namebox::after { content: "i28"; }
+  .book:has(#j28:focus) .namebox::after { content: "j28"; }
+  .book:has(#k28:focus) .namebox::after { content: "k28"; }
+  .book:has(#l28:focus) .namebox::after { content: "l28"; }
+  .book:has(#a29:focus) .namebox::after { content: "a29"; }
+  .book:has(#b29:focus) .namebox::after { content: "b29"; }
+  .book:has(#c29:focus) .namebox::after { content: "c29"; }
+  .book:has(#d29:focus) .namebox::after { content: "d29"; }
+  .book:has(#e29:focus) .namebox::after { content: "e29"; }
+  .book:has(#f29:focus) .namebox::after { content: "f29"; }
+  .book:has(#g29:focus) .namebox::after { content: "g29"; }
+  .book:has(#h29:focus) .namebox::after { content: "h29"; }
+  .book:has(#i29:focus) .namebox::after { content: "i29"; }
+  .book:has(#j29:focus) .namebox::after { content: "j29"; }
+  .book:has(#k29:focus) .namebox::after { content: "k29"; }
+  .book:has(#l29:focus) .namebox::after { content: "l29"; }
+  .book:has(#a30:focus) .namebox::after { content: "a30"; }
+  .book:has(#b30:focus) .namebox::after { content: "b30"; }
+  .book:has(#c30:focus) .namebox::after { content: "c30"; }
+  .book:has(#d30:focus) .namebox::after { content: "d30"; }
+  .book:has(#e30:focus) .namebox::after { content: "e30"; }
+  .book:has(#f30:focus) .namebox::after { content: "f30"; }
+  .book:has(#g30:focus) .namebox::after { content: "g30"; }
+  .book:has(#h30:focus) .namebox::after { content: "h30"; }
+  .book:has(#i30:focus) .namebox::after { content: "i30"; }
+  .book:has(#j30:focus) .namebox::after { content: "j30"; }
+  .book:has(#k30:focus) .namebox::after { content: "k30"; }
+  .book:has(#l30:focus) .namebox::after { content: "l30"; }
+}

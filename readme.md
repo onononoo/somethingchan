@@ -29,6 +29,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `wiki/` | somethingwiki: articles with talk / edit / history tabs (all `:target`), infoboxes, footnotes, hover previews, and a random-article link that is 6 links cycling on a css timer |
 | `status/` | a plain status page: 90-day uptime bars with hover details, incident history, metrics. javascript is a component and is always "blocked" |
 | `docs/` | how every technique works: code tabs, live demos, a page × technique matrix, and a changelog stepper generated from `feed.xml` |
+| `sheet/` | somethingsheets: 360 editable cells, a name box and row/column highlights from generated `:has(:focus)` rules, filled/numeric counts from css counters, prefilled with real measurements of the site |
 | `support.html` | source + donate |
 | `license.html` | the mit license, rendered like a man page |
 | `404.html` | lost object |
@@ -53,7 +54,7 @@ two independent animations bounce it like a dvd logo.
 | language | where |
 | --- | --- |
 | html | every page |
-| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css`, `css/status.css`, `css/bland.css`, `css/docs.css` |
+| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css`, `css/os.css`, `css/map.css`, `css/wiki.css`, `css/status.css`, `css/bland.css`, `css/docs.css`, `css/sheet.css` |
 | svg + smil | `assets/*.svg`, inline graphs |
 | mathml | the math section on the home page |
 | xml + xslt | `feed.xml`, `feed.xsl`, `sitemap.xml` |
@@ -65,7 +66,7 @@ two independent animations bounce it like a dvd logo.
 
 ## style
 
-- quiet by default: `css/bland.css` loads last on every page and sets muted greys, a system font and thin borders. the theme toggle switches to plain dark grey.
+- plain and boring on purpose: `css/bland.css` loads last on every page. white pages, a system font, standard blue links, thin borders, no decorative motion.
 - everything is lowercase, including code comments. the one exception is the text on `/js`.
 
 ## running it *locally*
