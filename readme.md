@@ -23,6 +23,7 @@ there are no `on*=` event attributes and no `javascript:` links anywhere.
 | `ip/` | your ip address bouncing and dancing around the screen |
 | `soy/` | the gitjak soytionary: git, sharty and javascript terms, filter chips, gem/coal voting with a css-counted tally, a "nooo you can't just" panel, and a rosetta stone |
 | `kara/` | kara eklund, the official mascot: profile, filterable gallery with popover lightbox, and a hotspot map of her bag |
+| `arcade/` | gem-tac-toe (css win detection, all 8 lines), whack-a-javascript (css counter + css timer), and the soy slots. "new game" is a plain `<button type="reset">` |
 | `support.html` | source + donate |
 | `license.html` | the mit license, rendered like a man page |
 | `404.html` | lost object |
@@ -47,7 +48,7 @@ two independent animations bounce it like a dvd logo.
 | language | where |
 | --- | --- |
 | html | every page |
-| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css` |
+| css | `css/somethingchan.css`, `css/lab.css`, `css/js.css`, `css/qa.css`, `css/ip.css`, `css/shame.css`, `css/soy.css`, `css/kara.css`, `css/arcade.css` |
 | svg + smil | `assets/*.svg`, inline graphs |
 | mathml | the math section on the home page |
 | xml + xslt | `feed.xml`, `feed.xsl`, `sitemap.xml` |

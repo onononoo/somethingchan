@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="content-security-policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · arcade</title>
+<link rel="icon" href="../assets/kara/favicon.png" type="image/png">
+<link rel="stylesheet" href="../css/somethingchan.css">
+<link rel="stylesheet" href="../css/lab.css">
+<link rel="stylesheet" href="../css/arcade.css">
+<!--
+  /arcade/ — three games, zero javascript.
+  "new game" buttons are <button type="reset"> inside a <form>. html has had this since the 90s.
+  the whack-a-javascript timer restarts by flipping a radio that swaps to identical keyframes with new names.
+-->
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="toggle terminal theme">
+<input type="radio" name="round" id="round-a" class="round" checked>
+<input type="radio" name="round" id="round-b" class="round">
+<div class="progress" aria-hidden="true"></div>
+
+<nav class="top" aria-label="site">
+  <a href="../index.html">home</a><a href="#ttt">tic-tac-toe</a><a href="#whack">whack</a><a href="#slots">slots</a>
+  <a href="../qa/">qa</a><a href="../kara/">kara</a><a href="../soy/">soy</a><a href="../shame/">shame</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="hero">
+  <h1><span class="glitch" data-t="arcade">arcade</span><img class="logo kara-logo" src="../assets/kara/avatar.webp" alt="kara eklund, mascot" width="44" height="44"></h1>
+  <p>three games. zero javascript. hosted by kara.</p>
+</header>
+
+<main>
+
+<section id="ttt">
+  <h2>gem-tac-toe</h2>
+  <span class="tag">two players, one screen. pick 💎 or 🪨 in any square. css checks all 8 lines for a winner.</span>
+  <form class="game ttt" action="#ttt">
+    <img class="host" src="../assets/kara/gmod.webp" alt="kara hosting" loading="lazy">
+    <div class="game-head"><span></span><button class="btn" type="reset">new game</button></div>
+    <div class="board">
+      <div class="cell"><input type="radio" name="c1" id="x1" class="x"><label for="x1">💎</label><input type="radio" name="c1" id="o1" class="o"><label for="o1">🪨</label></div>
+      <div class="cell"><input type="radio" name="c2" id="x2" class="x"><label for="x2">💎</label><input type="radio" name="c2" id="o2" class="o"><label for="o2">🪨</label></div>
+      <div class="cell"><input type="radio" name="c3" id="x3" class="x"><label for="x3">💎</label><input type="radio" name="c3" id="o3" class="o"><label for="o3">🪨</label></div>
+      <div class="cell"><input type="radio" name="c4" id="x4" class="x"><label for="x4">💎</label><input type="radio" name="c4" id="o4" class="o"><label for="o4">🪨</label></div>
+      <div class="cell"><input type="radio" name="c5" id="x5" class="x"><label for="x5">💎</label><input type="radio" name="c5" id="o5" class="o"><label for="o5">🪨</label></div>
+      <div class="cell"><input type="radio" name="c6" id="x6" class="x"><label for="x6">💎</label><input type="radio" name="c6" id="o6" class="o"><label for="o6">🪨</label></div>
+      <div class="cell"><input type="radio" name="c7" id="x7" class="x"><label for="x7">💎</label><input type="radio" name="c7" id="o7" class="o"><label for="o7">🪨</label></div>
+      <div class="cell"><input type="radio" name="c8" id="x8" class="x"><label for="x8">💎</label><input type="radio" name="c8" id="o8" class="o"><label for="o8">🪨</label></div>
+      <div class="cell"><input type="radio" name="c9" id="x9" class="x"><label for="x9">💎</label><input type="radio" name="c9" id="o9" class="o"><label for="o9">🪨</label></div>
+    </div>
+    <span class="tally-ttt"></span>
+    <p class="result" role="status"></p>
+  </form>
+</section>
+
+<section id="whack">
+  <h2>whack-a-javascript</h2>
+  <span class="tag">javascript keeps popping up. whack it. 30 seconds. the score is a css counter.</span>
+  <form class="game whack" action="#whack">
+    <div class="game-head"><span></span>
+      <span><button class="btn" type="reset">clear board</button> <label class="btn" for="round-b">restart timer</label> <label class="btn" for="round-a">restart timer (again)</label></span></div>
+    <div class="holes">
+      <input type="checkbox" class="w" id="w1"><div class="hole"><label for="w1" style="--t:2.1s;--d:0s" aria-label="whack javascript 1"></label></div>
+      <input type="checkbox" class="w" id="w2"><div class="hole"><label for="w2" style="--t:2.6s;--d:-0.7s" aria-label="whack javascript 2"></label></div>
+      <input type="checkbox" class="w" id="w3"><div class="hole"><label for="w3" style="--t:1.9s;--d:-1.3s" aria-label="whack javascript 3"></label></div>
+      <input type="checkbox" class="w" id="w4"><div class="hole"><label for="w4" style="--t:2.4s;--d:-0.4s" aria-label="whack javascript 4"></label></div>
+      <input type="checkbox" class="w" id="w5"><div class="hole"><label for="w5" style="--t:2.0s;--d:-1.8s" aria-label="whack javascript 5"></label></div>
+      <input type="checkbox" class="w" id="w6"><div class="hole"><label for="w6" style="--t:2.8s;--d:-1s" aria-label="whack javascript 6"></label></div>
+      <input type="checkbox" class="w" id="w7"><div class="hole"><label for="w7" style="--t:2.2s;--d:-0.2s" aria-label="whack javascript 7"></label></div>
+      <input type="checkbox" class="w" id="w8"><div class="hole"><label for="w8" style="--t:1.8s;--d:-1.5s" aria-label="whack javascript 8"></label></div>
+      <input type="checkbox" class="w" id="w9"><div class="hole"><label for="w9" style="--t:2.5s;--d:-0.9s" aria-label="whack javascript 9"></label></div>
+    </div>
+    <span class="score" role="status"></span>
+    <div class="timer" aria-hidden="true"><i></i></div>
+    <div class="over" role="status"><div><span class="final"></span><small>hit "clear board", then a "restart timer" button to play again.</small>
+      <img src="../assets/kara/maid-cafe.webp" alt="kara making a heart" width="120" style="margin:10px auto 0;display:block;border:2px solid #ccc" loading="lazy"></div></div>
+  </form>
+</section>
+
+<section id="slots">
+  <h2>the soy slots</h2>
+  <span class="tag">three reels. stop them one at a time. no payouts. no gambling. just gems.</span>
+  <form class="game slot-machine" action="#slots">
+    <div class="slots">
+      <div class="reel-wrap"><div class="reel"><div class="strip"><span>💎</span><span>🪨</span><span><img src="../assets/kara/avatar.webp" alt="kara"></span><span>🟨</span><span>💎</span></div></div><input type="checkbox" class="stop" id="s1"><label class="btn" for="s1">stop</label></div>
+      <div class="reel-wrap"><div class="reel"><div class="strip"><span>💎</span><span>🪨</span><span><img src="../assets/kara/avatar.webp" alt="kara"></span><span>🟨</span><span>💎</span></div></div><input type="checkbox" class="stop" id="s2"><label class="btn" for="s2">stop</label></div>
+      <div class="reel-wrap"><div class="reel"><div class="strip"><span>💎</span><span>🪨</span><span><img src="../assets/kara/avatar.webp" alt="kara"></span><span>🟨</span><span>💎</span></div></div><input type="checkbox" class="stop" id="s3"><label class="btn" for="s3">stop</label></div>
+    </div>
+    <p class="slot-note tag" style="text-align:center"></p>
+    <p style="text-align:center"><button class="btn" type="reset">spin again</button></p>
+  </form>
+</section>
+
+</main>
+
+<a class="sticker peek" href="../kara/" tabindex="0"><span class="say">kara's high score: 9/9</span><img src="../assets/kara/pose-tool.webp" alt="" loading="lazy"></a>
+<footer class="site">
+  © 2026 kai · <a href="../license.html">mit license</a> · somethingchan · <a href="../index.html">home</a> · mascot: kara eklund · art: hitsuji goods
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>
