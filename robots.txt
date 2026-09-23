@@ -1,0 +1,5 @@
+# robots welcome. javascript is not.
+User-agent: *
+Allow: /
+Disallow: /.git/
+Sitemap: sitemap.xml

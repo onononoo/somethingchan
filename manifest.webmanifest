@@ -1,0 +1,10 @@
+{
+  "name": "somethingchan",
+  "short_name": "somethingchan",
+  "description": "An authoritative and entirely wrong field guide to Git, GitHub, and GitLab. Zero JavaScript.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fdf8f0",
+  "theme_color": "#f05033",
+  "icons": [{ "src": "assets/logo.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

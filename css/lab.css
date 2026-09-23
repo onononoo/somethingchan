@@ -1,0 +1,125 @@
+/* =========================================================
+   lab.css — extra machinery for game.html, lab.html, 404.html
+   still zero JavaScript
+   ========================================================= */
+
+@layer sections {
+
+  /* ---------------- contribution graph ---------------- */
+  .contrib { display: grid; grid-template-rows: repeat(7, 12px); grid-auto-flow: column; grid-auto-columns: 12px; gap: 3px;
+    overflow-x: auto; padding: 4px 2px 10px; }
+  .contrib i { border-radius: 2px; background: var(--card2); animation: pop .4s backwards; }
+  .contrib i:nth-child(3n)   { background: color-mix(in srgb, var(--ok) 30%, var(--card2)); }
+  .contrib i:nth-child(5n+1) { background: color-mix(in srgb, var(--ok) 55%, var(--card2)); }
+  .contrib i:nth-child(7n+3) { background: color-mix(in srgb, var(--ok) 80%, var(--card2)); }
+  .contrib i:nth-child(11n+4){ background: var(--ok); }
+  .contrib i:nth-child(13n)  { background: var(--card2); }
+  .contrib i:nth-child(n+330){ background: var(--bad); } /* december: burnout */
+  .contrib i:hover { outline: 2px solid var(--fg); }
+  .contrib i:nth-child(10n) { animation-delay: .1s } .contrib i:nth-child(10n+5) { animation-delay: .3s }
+  @keyframes pop { from { transform: scale(0); } }
+  .legend { display: flex; gap: 4px; align-items: center; font: 12px var(--mono); color: var(--muted); justify-content: flex-end;
+    & i { width: 12px; height: 12px; border-radius: 2px; display: inline-block; } }
+
+  /* ---------------- 3D commit cube ---------------- */
+  .cube-stage { perspective: 900px; display: grid; place-items: center; padding: 50px 0; }
+  .cube { --s: 160px; width: var(--s); height: var(--s); position: relative; transform-style: preserve-3d;
+    animation: tumble 14s linear infinite; }
+  .cube-stage:hover .cube { animation-play-state: paused; }
+  .cube > div { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 10px;
+    font: 13px/1.4 var(--mono); color: #fff; border: 2px solid rgb(255 255 255 / .4); border-radius: 8px; backface-visibility: visible; opacity: .92; }
+  .cube .f1 { background: var(--git); transform: translateZ(calc(var(--s) / 2)); }
+  .cube .f2 { background: var(--hub); transform: rotateY(180deg) translateZ(calc(var(--s) / 2)); }
+  .cube .f3 { background: var(--lab); transform: rotateY(90deg) translateZ(calc(var(--s) / 2)); }
+  .cube .f4 { background: var(--ok); transform: rotateY(-90deg) translateZ(calc(var(--s) / 2)); }
+  .cube .f5 { background: var(--bad); transform: rotateX(90deg) translateZ(calc(var(--s) / 2)); }
+  .cube .f6 { background: #333; transform: rotateX(-90deg) translateZ(calc(var(--s) / 2)); }
+  @keyframes tumble { to { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); } }
+  /* radio-driven face lock */
+  .cube-ctl { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; font: 13px var(--mono);
+    & input { position: absolute; opacity: 0; }
+    & label { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; cursor: pointer; }
+    & input:checked + label { background: var(--fg); color: var(--bg); } }
+  .cubebox:has(#cf1:checked) .cube { animation: none; transform: rotateY(0); transition: transform 1s; }
+  .cubebox:has(#cf2:checked) .cube { animation: none; transform: rotateY(180deg); transition: transform 1s; }
+  .cubebox:has(#cf3:checked) .cube { animation: none; transform: rotateY(-90deg); transition: transform 1s; }
+  .cubebox:has(#cf5:checked) .cube { animation: none; transform: rotateX(-90deg); transition: transform 1s; }
+
+  /* ---------------- CI pipeline ---------------- */
+  .pipeline { display: flex; gap: 0; align-items: center; overflow-x: auto; padding: 20px 4px; }
+  .stage { flex: 0 0 auto; width: 120px; text-align: center; font: 13px var(--mono); position: relative; }
+  .stage .dot { width: 34px; height: 34px; border-radius: 50%; margin: 0 auto 8px; border: 3px solid var(--line); background: var(--card2);
+    animation: run 12s infinite; animation-delay: calc(var(--i) * 2s); }
+  .stage:not(:last-child)::after { content: ""; position: absolute; top: 17px; left: calc(50% + 20px); width: calc(100% - 40px); height: 3px; background: var(--line); }
+  .stage.fail .dot { animation-name: runfail; }
+  @keyframes run { 0% { background: var(--card2); border-color: var(--line); } 4%,14% { background: var(--warn); border-color: var(--warn); scale: 1.1; }
+    16%,90% { background: var(--ok); border-color: var(--ok); scale: 1; } 100% { background: var(--card2); border-color: var(--line); } }
+  @keyframes runfail { 0% { background: var(--card2); } 4%,14% { background: var(--warn); rotate: 0deg; } 15% { rotate: -12deg; } 16% { rotate: 12deg; }
+    17%,90% { background: var(--bad); border-color: var(--bad); rotate: 0deg; } 100% { background: var(--card2); } }
+
+  /* ---------------- merge conflict puzzle ---------------- */
+  .hunk { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-top: 14px; font: 13px/1.6 var(--mono); }
+  .hunk pre { margin: 0; padding: 10px 14px; overflow-x: auto; }
+  .hunk .ours { background: color-mix(in srgb, var(--ok) 14%, transparent); }
+  .hunk .theirs { background: color-mix(in srgb, var(--hub) 14%, transparent); }
+  .hunk .pick { display: flex; gap: 6px; padding: 8px 14px; background: var(--card2); flex-wrap: wrap;
+    & input { position: absolute; opacity: 0; }
+    & label { padding: 3px 10px; border-radius: 6px; border: 1px solid var(--line); cursor: pointer; }
+    & input:checked + label { background: var(--fg); color: var(--bg); }
+    & input:focus-visible + label { outline: 2px solid var(--git); } }
+  .hunk:has(.o:checked) .theirs, .hunk:has(.t:checked) .ours { opacity: .25; text-decoration: line-through; }
+  .ci-result { margin-top: 16px; padding: 14px; border-radius: 10px; font: 14px var(--mono); background: var(--card2); }
+  .ci-result::before { content: "⏳ CI: waiting for you to resolve all hunks…"; }
+  .puzzle:has(.hunk input:checked) .ci-result::before { content: "🔄 CI: running… (resolve every hunk)"; }
+  .puzzle:has(#h1b:checked):has(#h2a:checked):has(#h3c:checked) .ci-result { background: color-mix(in srgb, var(--ok) 25%, transparent); }
+  .puzzle:has(#h1b:checked):has(#h2a:checked):has(#h3c:checked) .ci-result::before { content: "✅ CI passed. Merged. You are now Senior Engineer."; }
+  .puzzle:has(#h1a:checked, #h1c:checked):has(.h2 :checked):has(.h3 :checked) .ci-result::before,
+  .puzzle:has(#h2b:checked, #h2c:checked):has(.h1 :checked):has(.h3 :checked) .ci-result::before,
+  .puzzle:has(#h3a:checked, #h3b:checked):has(.h1 :checked):has(.h2 :checked) .ci-result::before { content: "❌ CI failed: 1,204 tests red. Try again, intern."; }
+
+  /* ---------------- SVG filter showcase ---------------- */
+  .corrupt svg { width: 100%; height: auto; display: block; }
+
+  /* ---------------- man page ---------------- */
+  .man { background: var(--term); color: var(--termfg); border-radius: var(--r); padding: 20px 24px; font: 14px/1.7 var(--mono); overflow-x: auto;
+    counter-reset: mline;
+    & h4 { margin: 14px 0 2px; color: #fff; font-weight: bold; text-transform: uppercase; }
+    & p { margin: 0 0 0 4ch; }
+    & .head { display: flex; justify-content: space-between; color: #8f877b; } }
+
+  /* ---------------- dungeon (game.html) ---------------- */
+  .dungeon { max-width: 720px; margin: 0 auto; }
+  .room { display: none; scroll-margin-top: 120px; }
+  .room:target, body:not(:has(.room:target)) .room.start { display: block; animation: fade .5s; }
+  .room .scene { font: 15px/1.7 var(--mono); background: var(--term); color: var(--termfg); padding: 18px 20px; border-radius: var(--r); white-space: pre-wrap; overflow-x: auto; }
+  .room h2::before { content: "⌂ "; color: var(--muted); }
+  .choices { display: grid; gap: 8px; margin-top: 14px; }
+  .choices a, .choices label { display: block; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; background: var(--card);
+    font: 15px var(--mono); cursor: pointer; transition: border-color .15s, translate .15s;
+    &:hover { border-color: var(--git); translate: 4px 0; }
+    &::before { content: "▸ "; color: var(--git); } }
+  .inv-box { position: absolute; opacity: 0; pointer-events: none; }
+  .inventory { position: sticky; top: 50px; z-index: 5; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; padding: 10px 14px; margin: 16px 0;
+    border: 1px dashed var(--line); border-radius: 10px; background: color-mix(in srgb, var(--bg) 90%, transparent); backdrop-filter: blur(6px); font: 13px var(--mono); }
+  .inventory .item { display: none; padding: 2px 8px; border-radius: 6px; background: var(--card2); }
+  .inventory .empty { color: var(--muted); }
+  body:has(#inv-key:checked) .item.key, body:has(#inv-coffee:checked) .item.coffee, body:has(#inv-lease:checked) .item.lease { display: inline-block; }
+  body:has(.inv-box:checked) .inventory .empty { display: none; }
+  /* pick-up labels vanish once taken; locked paths unlock with items */
+  body:has(#inv-key:checked) label[for="inv-key"], body:has(#inv-coffee:checked) label[for="inv-coffee"], body:has(#inv-lease:checked) label[for="inv-lease"] { display: none; }
+  .locked { opacity: .45; pointer-events: none; }
+  .locked::after { content: " 🔒"; }
+  body:has(#inv-key:checked) .needs-key, body:has(#inv-lease:checked) .needs-lease, body:has(#inv-coffee:checked) .needs-coffee { opacity: 1; pointer-events: auto; }
+  body:has(#inv-key:checked) .needs-key::after, body:has(#inv-lease:checked) .needs-lease::after, body:has(#inv-coffee:checked) .needs-coffee::after { content: " 🔓"; }
+  .hp { display: inline-block; width: 120px; height: 10px; border-radius: 999px; background: var(--card2); overflow: hidden; vertical-align: middle; }
+  .hp::after { content: ""; display: block; height: 100%; width: 100%; background: var(--ok); transition: width .5s; }
+  body:has(.room.hurt:target) .hp::after { width: 35%; background: var(--bad); }
+  body:has(#inv-coffee:checked) .hp::after { width: 100%; background: var(--ok); }
+
+  /* ---------------- 404 ---------------- */
+  .four04 { min-height: 70vh; display: grid; place-items: center; text-align: center; padding: 40px 16px;
+    & .big { font: bold clamp(5rem, 25vw, 12rem)/1 var(--mono); letter-spacing: -.05em;
+      background: linear-gradient(90deg, var(--git), var(--hub), var(--lab), var(--git)); background-size: 300% 100%;
+      -webkit-background-clip: text; background-clip: text; color: transparent; animation: slide 6s linear infinite; } }
+  @keyframes slide { to { background-position: 300% 0; } }
+}

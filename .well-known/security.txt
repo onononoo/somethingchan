@@ -1,0 +1,6 @@
+# somethingchan security policy
+# attack surface: 0 bytes of JavaScript. good luck.
+Contact: https://kaieklund.vercel.app/
+Expires: 2027-09-23T00:00:00.000Z
+Preferred-Languages: en
+Policy: Please report vulnerabilities. Reports that say "you should add JavaScript" will be git rm'd.

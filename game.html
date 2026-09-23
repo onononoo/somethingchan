@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · rebase dungeon</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/somethingchan.css">
+<link rel="stylesheet" href="css/lab.css">
+</head>
+<body>
+<!-- inventory state lives in these checkboxes. rooms are :target. no JS. -->
+<input type="checkbox" id="theme-flip" aria-label="Toggle terminal theme">
+<input type="checkbox" class="inv-box" id="inv-coffee">
+<input type="checkbox" class="inv-box" id="inv-key">
+<input type="checkbox" class="inv-box" id="inv-lease">
+
+<nav class="top" aria-label="Site">
+  <a href="index.html">home</a><a href="lab.html">lab</a><a href="#lobby">restart room</a><a href="support.html">support</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="hero" style="padding:48px 16px 32px">
+  <h1><span class="glitch" data-t="rebase dungeon">rebase dungeon</span></h1>
+  <p>a text adventure built from anchor links, checkboxes and <code>:has()</code>. zero JavaScript.</p>
+</header>
+
+<main class="dungeon">
+  <div class="inventory" aria-label="Inventory">
+    <b>inventory:</b>
+    <span class="empty">empty pockets</span>
+    <span class="item coffee">☕ cold coffee</span>
+    <span class="item key">🗝 reflog key</span>
+    <span class="item lease">🛡 --force-with-lease</span>
+    <span style="margin-left:auto">sanity <span class="hp"></span></span>
+  </div>
+
+  <section class="room start" id="lobby">
+    <h2>The Lobby of main</h2>
+<div class="scene">You stand on branch main. It is 4:58pm on a Friday.
+A sign reads: "MERGE feature/everything BEFORE THE WEEKEND."
+Somewhere below, the Merge Dragon stirs.
+
+Paths lead DOWN to the Stash Cellar and EAST to the Reflog Crypt.
+A door to the NORTH hums with the sound of --force.</div>
+    <div class="choices">
+      <a href="#cellar">descend into the Stash Cellar</a>
+      <a href="#crypt">walk east to the Reflog Crypt</a>
+      <a href="#force">open the humming north door</a>
+      <a href="#bridge">approach the Rebase Bridge</a>
+    </div>
+  </section>
+
+  <section class="room" id="cellar">
+    <h2>The Stash Cellar</h2>
+<div class="scene">Hundreds of stashes line the shelves, dusty and unlabeled.
+stash@{0}: "WIP"   stash@{1}: "WIP"   stash@{212}: "please"
+
+On a shelf sits a mug of coffee from a stash popped in 2019.
+It is cold. It is still coffee.</div>
+    <div class="choices">
+      <label for="inv-coffee">take the cold coffee (restores sanity)</label>
+      <a href="#armory">squeeze through a gap marked "armory"</a>
+      <a href="#lobby">climb back to the lobby</a>
+    </div>
+  </section>
+
+  <section class="room" id="crypt">
+    <h2>The Reflog Crypt</h2>
+<div class="scene">Lost commits float here, whispering their hashes.
+"a1b2c3d... we were reset... --hard..."
+
+A ghostly commit offers you a key forged from HEAD@{7}.
+"Take it. Only the lost can open what is locked."</div>
+    <div class="choices">
+      <label for="inv-key">accept the reflog key</label>
+      <a href="#lobby">flee back to the lobby</a>
+    </div>
+  </section>
+
+  <section class="room hurt" id="force">
+    <h2>The Hall of --force</h2>
+<div class="scene">You push open the door. It was a push --force.
+Three coworkers' commits vanish. You hear distant screaming in Slack.
+
+Your sanity drops sharply. (Coffee would help.)</div>
+    <div class="choices">
+      <a href="#lobby">apologize in #general and retreat</a>
+      <a href="#cellar">go look for coffee</a>
+    </div>
+  </section>
+
+  <section class="room" id="armory">
+    <h2>The Armory</h2>
+<div class="scene">A rack of flags gleams in the dark.
+--no-verify (rusted)   --amend (cursed)   --force-with-lease (polished)
+
+The polished one glows. It is the polite knife.
+It will only overwrite what you expected to overwrite.</div>
+    <div class="choices">
+      <label for="inv-lease">take --force-with-lease</label>
+      <a href="#cellar">return to the cellar</a>
+    </div>
+  </section>
+
+  <section class="room" id="bridge">
+    <h2>The Rebase Bridge</h2>
+<div class="scene">A narrow bridge made of 47 commits spans a chasm of conflicts.
+Each plank must be replayed one by one.
+A sign: "ONLY THOSE WHO PUSH SAFELY MAY CROSS."
+
+Beyond, a locked iron gate. Beyond that, the Dragon.</div>
+    <div class="choices">
+      <a href="#gate" class="locked needs-lease">cross the bridge (needs --force-with-lease)</a>
+      <a href="#fall">just run across</a>
+      <a href="#lobby">back away slowly</a>
+    </div>
+  </section>
+
+  <section class="room hurt" id="fall">
+    <h2>The Chasm</h2>
+<div class="scene">Plank 23 has a conflict in package-lock.json.
+You fall. You land in a pile of 11,000 changed lines.
+git rebase --abort echoes from above. You are back where you started, but sadder.</div>
+    <div class="choices"><a href="#lobby">climb out</a></div>
+  </section>
+
+  <section class="room" id="gate">
+    <h2>The Iron Gate</h2>
+<div class="scene">You cross safely. The gate is engraved:
+"I REMEMBER EVERY COMMIT. DO YOU?"
+
+There is a keyhole shaped like a reflog entry.</div>
+    <div class="choices">
+      <a href="#dragon" class="locked needs-key">unlock with the reflog key</a>
+      <a href="#bridge">go back</a>
+    </div>
+  </section>
+
+  <section class="room" id="dragon">
+    <h2>Lair of the Merge Dragon</h2>
+<div class="scene">        __====-_  _-====___
+  _--^^^#####//      \\#####^^^--_
+ -^##########// (    ) \\##########^-
+ ##########//  |\^^/|  \\###########
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD             =======
+The Merge Dragon has 47 conflicts. It breathes diff markers.
+You are tired. You need your wits about you.</div>
+    <div class="choices">
+      <a href="#victory" class="locked needs-coffee">drink the cold coffee and resolve every conflict</a>
+      <a href="#defeat">accept all "theirs" and pray</a>
+    </div>
+  </section>
+
+  <section class="room" id="victory">
+    <h2>Victory</h2>
+<div class="scene">You resolve all 47 conflicts. CI turns green.
+The dragon shrinks into a small, friendly tanuki.
+
+  ✔ feature/everything merged into main
+  ✔ 0 JavaScript was used in this quest
+
+It is 5:01pm. You go home. You have won.</div>
+    <div class="choices"><a href="lab.html#puzzle">try the real resolver in the lab</a><a href="index.html">return to somethingchan</a></div>
+  </section>
+
+  <section class="room hurt" id="defeat">
+    <h2>Defeat</h2>
+<div class="scene">You accept "theirs" for all 47 conflicts.
+Production now serves a single file: TODO.txt.
+The dragon eats your weekend.
+
+GAME OVER. Reload the page to empty your pockets.</div>
+    <div class="choices"><a href="#lobby">respawn in the lobby</a></div>
+  </section>
+
+  <details style="margin-top:32px"><summary>how does this work without JavaScript?</summary>
+    <p>Each room is a <code>&lt;section&gt;</code> shown only when it is the URL <code>:target</code>. Items are hidden checkboxes; clicking a <code>&lt;label&gt;</code> toggles one. <code>body:has(#inv-key:checked)</code> unlocks doors and fills your inventory. Sanity is a pseudo-element whose width depends on which room you're in.</p></details>
+</main>
+
+<footer class="site">
+  © somethingchan · <a href="index.html">home</a> · <a href="lab.html">lab</a>
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>

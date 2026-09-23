@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="script-src 'none'; object-src 'none'">
+<title>somethingchan · support</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/somethingchan.css">
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="Toggle terminal theme">
+<nav class="top" aria-label="Site">
+  <a href="index.html">home</a><a href="#source">source</a><a href="#donate">donate</a><a href="lab.html">lab</a><a href="game.html">dungeon</a><a href="feed.xml">changelog</a>
+  <label for="theme-flip">◐ theme</label>
+</nav>
+
+<header class="hero" style="padding:56px 16px 40px">
+  <img class="logo" src="assets/logo.svg" alt="" width="120" height="120">
+  <h1><span class="glitch" data-t="support">support</span></h1>
+  <p>keep somethingchan JavaScript-free and fully nonsensical</p>
+</header>
+
+<main>
+  <section id="source">
+    <h2>Source</h2>
+    <div class="support-grid">
+      <div class="card">
+        <h3>Where's the code?</h3>
+        <p>The source code lives on GitHub in the <code>somethingchan</code> repository. Fork it. Star it. Open an issue that says "+1".</p>
+      </div>
+      <div class="card">
+        <h3>What's inside</h3>
+        <ul>
+          <li><code>index.html</code> — HTML5</li>
+          <li><code>css/somethingchan.css</code> — CSS (layers, nesting, @property, :has)</li>
+          <li><code>assets/*.svg</code> — SVG + SMIL animation</li>
+          <li><code>feed.xml</code> + <code>feed.xsl</code> — XML + XSLT</li>
+          <li><code>manifest.webmanifest</code> — JSON</li>
+          <li><code>sitemap.xml</code>, <code>robots.txt</code>, <code>humans.txt</code></li>
+          <li><code>lab.html</code>, <code>game.html</code>, <code>404.html</code> — more HTML</li>
+          <li><code>css/lab.css</code> — 3D transforms, :target game state</li>
+          <li><code>events.ics</code> — iCalendar</li>
+          <li><code>README.md</code> — Markdown</li>
+          <li><code>.well-known/security.txt</code> — RFC 9116</li>
+          <li>JavaScript — <strong>none</strong></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate">
+    <h2>Donate</h2>
+    <div class="card">
+      <p>Donations fund important research, such as finding out where stashes go when they die.</p>
+      <p><a class="pop" style="display:inline-block;text-decoration:none" href="https://kaieklund.vercel.app/" rel="noopener">→ kaieklund.vercel.app</a></p>
+      <details><summary>Where does the money go?</summary>
+        <p>40% CI minutes · 30% snacks for the tanuki · 20% therapy after rebases · 10% more CI minutes.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  © somethingchan · <a href="index.html">back home</a>
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>

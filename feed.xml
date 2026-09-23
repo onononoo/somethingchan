@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="feed.xsl"?>
+<rss version="2.0">
+  <channel>
+    <title>somethingchan changelog</title>
+    <link>https://kaieklund.vercel.app/</link>
+    <description>Release notes nobody reads, rendered by XSLT.</description>
+    <item><title>v4.0.0 — the extreme update</title><pubDate>Wed, 23 Sep 2026 13:00:00 GMT</pubDate><description>Added the lab (3D cube, pipeline, merge resolver, SVG filters), Rebase Dungeon text adventure, 404 page, iCalendar holidays, certificate SVG. Still 0 bytes of JavaScript.</description></item>
+    <item><title>v3.0.0 — the complexity update</title><pubDate>Wed, 23 Sep 2026 12:00:00 GMT</pubDate><description>Added MathML, SMIL, XSLT, popovers, image maps, and a CSP that bans scripts outright.</description></item>
+    <item><title>v2.0.0 — CSS only</title><pubDate>Wed, 23 Sep 2026 11:00:00 GMT</pubDate><description>Removed JavaScript that never existed. Added flip cards.</description></item>
+    <item><title>v1.0.0 — initial commit</title><pubDate>Wed, 23 Sep 2026 10:00:00 GMT</pubDate><description>"stuff"</description></item>
+    <item><title>v0.0.1 — pre-history</title><pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate><description>Epoch. The void. A lone .git folder.</description></item>
+  </channel>
+</rss>

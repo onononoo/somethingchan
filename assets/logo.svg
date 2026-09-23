@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="somethingchan logo">
+  <title>somethingchan</title>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f05033"><animate attributeName="stop-color" values="#f05033;#6e40c9;#fc6d26;#f05033" dur="6s" repeatCount="indefinite"/></stop>
+      <stop offset="1" stop-color="#fc6d26"><animate attributeName="stop-color" values="#fc6d26;#f05033;#6e40c9;#fc6d26" dur="6s" repeatCount="indefinite"/></stop>
+    </linearGradient>
+  </defs>
+  <rect x="14" y="14" width="92" height="92" rx="18" fill="url(#g)" transform="rotate(45 60 60)">
+    <animateTransform attributeName="transform" type="rotate" values="45 60 60;50 60 60;40 60 60;45 60 60" dur="5s" repeatCount="indefinite"/>
+  </rect>
+  <path d="M42 36 V84 M42 58 C42 70 78 58 78 72" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-dasharray="140" stroke-dashoffset="140">
+    <animate attributeName="stroke-dashoffset" from="140" to="0" dur="1.6s" fill="freeze"/>
+  </path>
+  <circle cx="42" cy="36" r="8" fill="#fff"/>
+  <circle cx="42" cy="84" r="8" fill="#fff"/>
+  <circle cx="78" cy="72" r="8" fill="#fff">
+    <animate attributeName="r" values="8;10;8" dur="1.2s" repeatCount="indefinite"/>
+  </circle>
+</svg>

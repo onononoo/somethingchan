@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="script-src 'none'; object-src 'none'">
+<meta name="description" content="somethingchan — an authoritative and entirely wrong field guide to Git, GitHub, and GitLab. Zero JavaScript.">
+<meta name="theme-color" content="#f05033">
+<title>somethingchan</title>
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="somethingchan changelog" href="feed.xml">
+<link rel="stylesheet" href="css/somethingchan.css">
+</head>
+<body>
+<input type="checkbox" id="theme-flip" aria-label="Toggle terminal theme">
+<div class="progress" aria-hidden="true"></div>
+
+<!-- yes, marquee. it still works. no JS required. -->
+<div class="ticker"><marquee scrollamount="5">
+  BREAKING: developer force-pushes to main, coworkers "processing" · Local man's stash reaches 212 entries · GitHub Actions minute found alive in YAML file · GitLab adds 14th sidebar · Study: 94% of commit messages are "wip" · Merge conflict enters third week of negotiations · Detached HEAD reattached after brief surgery · somethingchan still contains 0 bytes of JavaScript ·
+</marquee></div>
+
+<header class="hero">
+  <div class="ring" aria-hidden="true"></div>
+  <img class="logo" src="assets/logo.svg" alt="" width="120" height="120">
+  <h1><span class="glitch" data-t="somethingchan">somethingchan</span></h1>
+  <p>An authoritative and entirely wrong field guide to <ruby>Git<rt>/sigh/</rt></ruby>, GitHub, and GitLab</p>
+  <div class="badges">
+    <span class="badge"><b>build</b><i style="background:var(--ok)">passing (vibes)</i></span>
+    <span class="badge"><b>coverage</b><i style="background:var(--warn)">3%</i></span>
+    <span class="badge"><b>javascript</b><i style="background:var(--git)">0 bytes</i></span>
+    <span class="badge"><b>scripts</b><i style="background:var(--bad)">forbidden by CSP</i></span>
+    <span class="badge"><b>languages</b><i style="background:var(--hub)">HTML·CSS·SVG·SMIL·MathML·XML·XSLT·JSON·iCal·Markdown</i></span>
+  </div>
+</header>
+
+<nav class="top" aria-label="Sections">
+  <a href="#species">species</a><a href="#graph">graph</a><a href="#terminal">terminal</a>
+  <a href="#commands">commands</a><a href="#math">math</a><a href="#danger">danger</a>
+  <a href="#bestiary">bestiary</a><a href="#atlas">atlas</a><a href="#history">history</a>
+  <a href="#compare">compare</a><a href="#quiz">quiz</a><a href="#hooks">hooks</a><a href="#faq">faq</a>
+  <a href="lab.html">lab</a><a href="game.html">dungeon</a><a href="support.html">support</a>
+  <label for="theme-flip" title="CSS-only theme toggle">◐ theme</label>
+</nav>
+
+<main>
+
+<!-- ============ 01 SPECIES ============ -->
+<section id="species">
+  <h2>The Three Species</h2>
+  <div class="tag">Select a specimen. Flip the cards. Do not feed after midnight.</div>
+  <div class="tabs">
+    <input type="radio" name="sp" id="t-git" checked><label for="t-git">git</label>
+    <input type="radio" name="sp" id="t-hub"><label for="t-hub">github</label>
+    <input type="radio" name="sp" id="t-lab"><label for="t-lab">gitlab</label>
+
+    <div class="panel p-git">
+      <h3>Git <span class="tag">Versionidae · Habitat: hidden folders · Diet: diffs</span></h3>
+      <p>Git is a small, nocturnal creature that lives inside a folder called <code>.git</code> and hoards every thought you have ever had about a file. It was discovered in 2005 when a man became so annoyed that he accidentally invented it. Git does not forget. Git does not forgive. Git merely <em>rebases</em>.</p>
+      <div class="facts">
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Branches<small>hover to reveal</small></div><div class="face back">Grown from the trunk in spring. A healthy repo has 3–4,000 branches named <code>fix-final-2-REAL</code>.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Commits<small>hover to reveal</small></div><div class="face back">Sealed envelopes of regret, stamped with a 40-character hex name no human has read aloud.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">HEAD<small>hover to reveal</small></div><div class="face back">Where Git thinks you are. Frequently detached. Do not panic; it grows back.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Stash<small>hover to reveal</small></div><div class="face back">A drawer. Things go in. Things do not come out. 71% of stashes are never popped.</div></div></div>
+      </div>
+    </div>
+
+    <div class="panel p-hub">
+      <h3>GitHub <span class="tag">Mascot: octopus-cat of unknown legal status · Currency: green squares</span></h3>
+      <p>GitHub is a large public aquarium where Git repositories are displayed for the public to stare at. Visitors leave small gold stars as tribute. Developers measure their spiritual worth by the density of green squares on their contribution graph, which is harvested annually like a rice paddy.</p>
+      <div class="facts">
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Pull Requests<small>hover to reveal</small></div><div class="face back">Named for the ancient ritual of tugging code into <code>main</code> by hand.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Issues<small>hover to reveal</small></div><div class="face back">A support group where strangers say "+1" to each other for eleven years.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Actions<small>hover to reveal</small></div><div class="face back">Tiny robots running your tests in YAML, a language invented to be indented wrong.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Forks<small>hover to reveal</small></div><div class="face back">Cutlery. Also copies. Mostly cutlery.</div></div></div>
+      </div>
+    </div>
+
+    <div class="panel p-lab">
+      <h3>GitLab <span class="tag">Mascot: a tanuki, probably · Motto: "Why not also that?"</span></h3>
+      <p>GitLab is GitHub's cousin who went to laboratory school. It does everything, then several more things, including things you did not know software could do. Its pipelines are so long some have never been observed finishing. It says "merge request" because it prefers to ask rather than tug.</p>
+      <div class="facts">
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Merge Requests<small>hover to reveal</small></div><div class="face back">Pull requests, but with better manners and a longer sidebar.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Pipelines<small>hover to reveal</small></div><div class="face back">Plumbing. Your code enters one end. Something exits eventually.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Self-Hosting<small>hover to reveal</small></div><div class="face back">Keep GitLab in your basement, where it grows to fill all available RAM.</div></div></div>
+        <div class="flip" tabindex="0"><div class="flip-in"><div class="face front">Runners<small>hover to reveal</small></div><div class="face back">Marathon athletes who run your jobs. Unionized as of 2024.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 GRAPH (SVG + SMIL) ============ -->
+<section id="graph">
+  <h2>Anatomy of a Repository</h2>
+  <div class="tag">A commit graph recovered from a crime scene. Animated with SMIL, SVG's built-in animation language.</div>
+  <figure class="card graph">
+    <svg viewBox="0 0 720 230" role="img" aria-label="Commit graph with main, feature and hotfix branches">
+      <path d="M40 60 H680" stroke="var(--git)" stroke-width="3" fill="none" stroke-dasharray="640" stroke-dashoffset="640">
+        <animate attributeName="stroke-dashoffset" to="0" dur="2s" fill="freeze"/></path>
+      <path d="M160 60 C200 60 200 130 240 130 H480 C520 130 520 60 560 60" stroke="var(--hub)" stroke-width="3" fill="none" stroke-dasharray="500" stroke-dashoffset="500">
+        <animate attributeName="stroke-dashoffset" to="0" begin=".6s" dur="2s" fill="freeze"/></path>
+      <path d="M320 130 C350 130 350 195 380 195 H440" stroke="var(--lab)" stroke-width="3" fill="none" stroke-dasharray="200" stroke-dashoffset="200">
+        <animate attributeName="stroke-dashoffset" to="0" begin="1.2s" dur="1.5s" fill="freeze"/></path>
+      <g><circle cx="40" cy="60" r="8" fill="var(--git)"/><text class="msg" x="28" y="36">init</text></g>
+      <g><circle cx="160" cy="60" r="8" fill="var(--git)"/><text class="msg" x="130" y="36">"it works"</text></g>
+      <g><circle cx="240" cy="130" r="8" fill="var(--hub)"/><text class="msg" x="215" y="158">wip</text></g>
+      <g><circle cx="320" cy="130" r="8" fill="var(--hub)"/><text class="msg" x="300" y="113">wip 2</text></g>
+      <g><circle cx="380" cy="195" r="8" fill="var(--lab)"/><text class="msg" x="395" y="220">oops</text></g>
+      <g><circle cx="440" cy="195" r="8" fill="var(--lab)"/><text class="msg" x="456" y="199">oops oops (abandoned)</text></g>
+      <g><circle cx="400" cy="60" r="8" fill="var(--git)"/><text class="msg" x="350" y="36">"it doesn't work"</text></g>
+      <g><circle cx="480" cy="130" r="8" fill="var(--hub)"/><text class="msg" x="455" y="113">asdfgh</text></g>
+      <g><circle cx="560" cy="60" r="10" fill="var(--bg)" stroke="var(--git)" stroke-width="3"/><text class="msg" x="520" y="36">Merge (47 conflicts)</text></g>
+      <g><circle cx="680" cy="60" r="8" fill="var(--git)"><animate attributeName="r" values="8;12;8" dur="1.4s" repeatCount="indefinite"/></circle><text class="msg" x="630" y="36">revert merge</text></g>
+      <!-- a lost commit travelling along the feature branch forever -->
+      <circle r="5" fill="var(--warn)"><animateMotion dur="5s" repeatCount="indefinite" path="M160 60 C200 60 200 130 240 130 H480 C520 130 520 60 560 60"/></circle>
+      <text x="690" y="64" style="fill:var(--git)">main</text>
+      <text x="530" y="150" style="fill:var(--hub)">feature/todo</text>
+    </svg>
+    <figcaption>the yellow dot is a commit that has been cherry-picked so many times it no longer knows where it lives</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 03 TERMINAL ============ -->
+<section id="terminal">
+  <h2>A Typical Session</h2>
+  <div class="tag">Reconstructed from shell history. Names withheld. Typed by CSS <code>steps()</code>.</div>
+  <div class="term">
+    <div class="term-bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span>~/projects/definitely-final</span></div>
+    <div class="term-body"><samp>
+      <span class="ln cmd">git pull</span>
+      <span class="ln err">CONFLICT (content): Merge conflict in everything.js</span>
+      <span class="ln out">Automatic merge failed; fix conflicts and then commit the result.</span>
+      <span class="ln cmd">git merge --abort</span>
+      <span class="ln cmd">git stash</span>
+      <span class="ln out">Saved working directory and index state WIP on main: a1b2c3d oh no</span>
+      <span class="ln cmd">git push --force</span>
+      <span class="ln cmd">git status</span>
+      <span class="ln out">Your branch is ahead of 'origin/main' by 1 commit and behind by 1 friendship.</span>
+      <span class="ln cmd">rm -rf project &amp;&amp; git clone ... <span class="cursor"></span></span>
+    </samp></div>
+  </div>
+  <p class="tag">Pro tip: press <kbd>Ctrl</kbd> + <kbd>C</kbd> repeatedly. It won't help, but it's cathartic.</p>
+</section>
+
+<!-- ============ 04 COMMANDS ============ -->
+<section id="commands">
+  <h2>Command Dictionary</h2>
+  <div class="tag">Exclusive accordion via <code>&lt;details name&gt;</code> — only one opens at a time. Pure HTML.</div>
+  <div class="stack">
+    <details name="cmd"><summary>git init <span class="danger" style="background:var(--ok)">safe</span></summary><p>Awakens the creature. Once performed in your home directory, it cannot be unseen by your shell prompt.</p></details>
+    <details name="cmd"><summary>git add . <span class="danger" style="background:var(--warn)">mild</span></summary><p>Feeds Git everything within reach, including <code>node_modules</code>, <code>.env</code>, and a 4GB video named <code>final.mov</code>.</p></details>
+    <details name="cmd"><summary>git commit -m "stuff" <span class="danger" style="background:var(--ok)">safe</span></summary><p>The industry-standard commit message. Alternates include "stuff 2", "fix", and "please".</p></details>
+    <details name="cmd"><summary>git push --force <span class="danger" style="background:var(--bad)">lethal</span></summary><p>Asserts dominance over coworkers. Rewrites shared history. Legally a declaration of war in 3 countries. See also: <code>--force-with-lease</code>, the polite knife.</p></details>
+    <details name="cmd"><summary>git blame <span class="danger" style="background:var(--warn)">emotional</span></summary><p>A detective story in which you are always the culprit.</p></details>
+    <details name="cmd"><summary>git reflog <span class="danger" style="background:var(--hub)">occult</span></summary><p>The underworld, where lost commits wait to be summoned. Speak their hash three times.</p></details>
+    <details name="cmd"><summary>git bisect <span class="danger" style="background:var(--ok)">safe</span></summary><p>Binary search for the exact moment things went wrong. Answer: Tuesday.</p></details>
+    <details name="cmd"><summary>git cherry-pick <span class="danger" style="background:var(--warn)">mild</span></summary><p>Take one commit from another branch. The other commits notice. They will remember.</p></details>
+    <details name="cmd"><summary>git submodule update --init --recursive <span class="danger" style="background:var(--bad)">cursed</span></summary><p>Summons repositories within repositories within repositories. The recursion does not end. It merely waits.</p></details>
+    <details name="cmd"><summary>git gud <span class="danger" style="background:#555">unreleased</span></summary><p>Not a real command. Yet. Tracked in issue #1, opened 2008.</p></details>
+  </div>
+</section>
+
+<!-- ============ 05 MATHML ============ -->
+<section id="math">
+  <h2>The Mathematics of Version Control</h2>
+  <div class="tag">Peer-reviewed by nobody. Typeset in native MathML.</div>
+  <div class="math">
+    <div class="card">
+      <strong>Theorem 1 (Conservation of Conflicts)</strong>
+      <math display="block">
+        <mrow><munderover><mo>∑</mo><mrow><mi>b</mi><mo>∈</mo><mi>branches</mi></mrow><mi>∞</mi></munderover>
+        <msub><mi>conflicts</mi><mi>b</mi></msub><mo>=</mo><mfrac><msup><mi>developers</mi><mn>2</mn></msup><mi>communication</mi></mfrac></mrow>
+      </math>
+      <span class="tag">as communication → 0, conflicts → ∞. This has been observed in the wild.</span>
+    </div>
+    <div class="card">
+      <strong>Theorem 2 (The Stash Integral)</strong>
+      <math display="block">
+        <mrow><msubsup><mo>∫</mo><mn>0</mn><mi>forever</mi></msubsup><mi>stash</mi><mo>(</mo><mi>t</mi><mo>)</mo><mspace width=".2em"/><mi>d</mi><mi>t</mi>
+        <mo>=</mo><mi>stuff you will never pop</mi></mrow>
+      </math>
+    </div>
+    <div class="card">
+      <strong>Theorem 3 (Pipeline Duration)</strong>
+      <math display="block">
+        <mrow><msub><mi>T</mi><mi>CI</mi></msub><mo>=</mo><msqrt><mrow><mi>jobs</mi><mo>×</mo><mi>YAML lines</mi></mrow></msqrt><mo>+</mo><mi>your deadline</mi><mo>−</mo><mn>1</mn><mi>min</mi></mrow>
+      </math>
+    </div>
+    <div class="card">
+      <strong>Lemma (Commit Message Quality)</strong>
+      <math display="block">
+        <mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>t</mi><mo>→</mo><mn>5</mn><mtext>pm Friday</mtext></mrow></munder><mi>Q</mi><mo>(</mo><mi>msg</mi><mo>)</mo><mo>=</mo><mtext>"fix"</mtext></mrow>
+      </math>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 DANGER (meter / progress / conic @property) ============ -->
+<section id="danger">
+  <h2>Threat Assessment</h2>
+  <div class="tag">Native <code>&lt;meter&gt;</code> elements. Percentage chance of ruining your afternoon.</div>
+  <div class="card meters">
+    <div class="row"><span>merge conflict</span><meter min="0" max="100" low="30" high="70" optimum="0" value="64"></meter><span>64%</span></div>
+    <div class="row"><span>rebase -i</span><meter min="0" max="100" low="30" high="70" optimum="0" value="81"></meter><span>81%</span></div>
+    <div class="row"><span>CI pipeline</span><meter min="0" max="100" low="30" high="70" optimum="0" value="47"></meter><span>47%</span></div>
+    <div class="row"><span>submodules</span><meter min="0" max="100" low="30" high="70" optimum="0" value="100"></meter><span>100%</span></div>
+    <div class="row"><span>.gitignore typo</span><meter min="0" max="100" low="30" high="70" optimum="0" value="33"></meter><span>33%</span></div>
+    <div class="row"><span>clone progress</span><progress></progress><span>∞</span></div>
+  </div>
+  <div class="pies">
+    <div class="pie" style="--c:var(--git);--to:94"><span>94%<br>"wip"</span></div>
+    <div class="pie" style="--c:var(--hub);--to:71"><span>71%<br>stash never popped</span></div>
+    <div class="pie" style="--c:var(--lab);--to:38"><span>38%<br>pipelines green</span></div>
+  </div>
+</section>
+
+<!-- ============ 07 BESTIARY (scroll-snap) ============ -->
+<section id="bestiary">
+  <h2>Bestiary of Repository Creatures</h2>
+  <div class="tag">Swipe or scroll sideways. CSS scroll-snap.</div>
+  <div class="carousel">
+    <article class="card specimen"><h4>The Merge Goblin</h4><p>Appears only when two people edit line 42. Feeds on <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>.</p><dl><dt>threat</dt><dd>high</dd><dt>weakness</dt><dd>talking to coworkers</dd></dl></article>
+    <article class="card specimen"><h4>The Dependabot</h4><p>A tireless creature that opens 30 PRs every Monday to bump a library you forgot existed.</p><dl><dt>threat</dt><dd>mild</dd><dt>weakness</dt><dd>"close all"</dd></dl></article>
+    <article class="card specimen"><h4>The Orphan Branch</h4><p>Shares no ancestry with anyone. Lives alone. Named <code>gh-pages</code>.</p><dl><dt>threat</dt><dd>none</dd><dt>weakness</dt><dd>loneliness</dd></dl></article>
+    <article class="card specimen"><h4>The Flaky Test</h4><p>Passes on Tuesdays. Fails when observed. Quantum in nature.</p><dl><dt>threat</dt><dd>existential</dd><dt>weakness</dt><dd><code>retry: 3</code></dd></dl></article>
+    <article class="card specimen"><h4>The Large Binary</h4><p>A 2GB PSD committed in 2014. Every clone carries its weight forever.</p><dl><dt>threat</dt><dd>disk</dd><dt>weakness</dt><dd>git lfs (too late)</dd></dl></article>
+    <article class="card specimen"><h4>The Tanuki</h4><p>GitLab's guardian. Has opinions about your <code>.gitlab-ci.yml</code>.</p><dl><dt>threat</dt><dd>friendly</dd><dt>weakness</dt><dd>snacks</dd></dl></article>
+  </div>
+</section>
+
+<!-- ============ 08 ATLAS (image map) ============ -->
+<section id="atlas">
+  <h2>Atlas of the Repoverse</h2>
+  <div class="tag">A classic HTML <code>&lt;map&gt;</code>. Click a landmass to jump to its species.</div>
+  <figure class="mapwrap">
+    <img src="assets/map.svg" usemap="#repoverse" alt="Map showing Git island, GitHub continent and GitLab archipelago" width="520" height="300" style="width:100%;height:auto;border-radius:14px">
+    <map name="repoverse">
+      <area shape="circle" coords="110,150,70" href="#species" alt="Git island">
+      <area shape="circle" coords="300,100,60" href="#species" alt="GitHub continent">
+      <area shape="circle" coords="410,220,55" href="#species" alt="GitLab archipelago">
+      <area shape="rect" coords="190,235,330,275" href="#commands" alt="Submodule sea">
+    </map>
+    <figcaption>hand-drawn by an intern during a 40-minute CI run</figcaption>
+  </figure>
+</section>
+
+<!-- ============ 09 HISTORY ============ -->
+<section id="history">
+  <h2>A Brief &amp; False History</h2>
+  <ol class="timeline">
+    <li><time datetime="1972">1972</time> — Humans version files by naming them <code>report_v2_FINAL_use_this.doc</code>. Dark age begins.</li>
+    <li><time datetime="2005">2005</time> — Git is born out of pure spite. It learns to talk in hashes before it learns to walk.</li>
+    <li><time datetime="2008">2008</time> — GitHub opens the aquarium. The first star goes to a repo containing a README that says "hi".</li>
+    <li><time datetime="2011">2011</time> — GitLab arrives, looks at GitHub, and says "what if that, but also everything else."</li>
+    <li><time datetime="2016">2016</time> — The <abbr title="Continuous Integration">CI</abbr> era begins. Nobody has seen their laptop fan stop since.</li>
+    <li><time datetime="2020">2020</time> — Arctic Code Vault buries repositories in permafrost for future civilizations to be confused by.</li>
+    <li><time datetime="2026">2026</time> — somethingchan launches with <mark>zero JavaScript</mark>. Browsers everywhere breathe a sigh of relief.</li>
+  </ol>
+</section>
+
+<!-- ============ 10 COMPARE ============ -->
+<section id="compare">
+  <h2>Scientific Comparison</h2>
+  <div class="tablewrap">
+  <table>
+    <caption>Table 1. Data collected via vibes, n = 1.</caption>
+    <thead><tr><th scope="col"></th><th scope="col">Git</th><th scope="col">GitHub</th><th scope="col">GitLab</th></tr></thead>
+    <tbody>
+    <tr><th scope="row">Is a website</th><td>No</td><td>Yes</td><td>Yes, and a lifestyle</td></tr>
+    <tr><th scope="row">Favorite color</th><td>Red-orange</td><td>Contribution green</td><td>Tanuki orange</td></tr>
+    <tr><th scope="row">Fears</th><td>Merge conflicts</td><td>Monday outages</td><td>Feature scope limits</td></tr>
+    <tr><th scope="row">Sleeps</th><td>Never</td><td>During your deploy</td><td>In a Kubernetes pod</td></tr>
+    <tr><th scope="row">Calls it</th><td>a commit</td><td>a pull request</td><td>a merge request</td></tr>
+    <tr><th scope="row">Spirit animal</th><td>Raccoon</td><td>Octocat</td><td>Tanuki</td></tr>
+    <tr><th scope="row">Config language</th><td>INI-ish</td><td>YAML</td><td>More YAML</td></tr>
+    <tr><th scope="row">Would win in a fight</th><td colspan="3">Whoever runs <code>--force</code> first</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- ============ 11 QUIZ ============ -->
+<section id="quiz">
+  <h2>Certification Exam</h2>
+  <div class="tag">Answer all three to become a Certified Git Wizard™. Scored by CSS counters. Every answer is wrong.</div>
+  <div class="card quiz">
+    <fieldset class="q"><legend>1. What does HEAD point to?</legend>
+      <input type="radio" name="q1" id="q1a" class="q1"><label for="q1a" data-r="✗ Only on weekends.">The current commit</label>
+      <input type="radio" name="q1" id="q1b" class="q1"><label for="q1b" data-r="✗ Close, but it points at you, judgmentally.">A branch</label>
+      <input type="radio" name="q1" id="q1c" class="q1"><label for="q1c" data-r="✗ That's the tail.">Nowhere, spiritually</label>
+    </fieldset>
+    <fieldset class="q"><legend>2. How do you resolve a merge conflict?</legend>
+      <input type="radio" name="q2" id="q2a" class="q2"><label for="q2a" data-r="✗ The conflict resolves you.">Edit the file</label>
+      <input type="radio" name="q2" id="q2b" class="q2"><label for="q2b" data-r="✗ Mediation takes 6–8 weeks.">Talk it out</label>
+      <input type="radio" name="q2" id="q2c" class="q2"><label for="q2c" data-r="✗ Correct, but we don't reward this.">Delete the repo</label>
+    </fieldset>
+    <fieldset class="q"><legend>3. What is a GitLab runner?</legend>
+      <input type="radio" name="q3" id="q3a" class="q3"><label for="q3a" data-r="✗ It's a tanuki in shoes.">A CI agent</label>
+      <input type="radio" name="q3" id="q3b" class="q3"><label for="q3b" data-r="✗ That's GitHub Actions' cousin.">A marathon athlete</label>
+      <input type="radio" name="q3" id="q3c" class="q3"><label for="q3c" data-r="✗ Sir, this is a Wendy's.">A 1982 film</label>
+    </fieldset>
+    <p class="tag score"></p>
+    <div class="all-wrong">🎓 Score: 0/3. Congratulations — you are now certified. Nobody gets any right. <a href="assets/certificate.svg">claim your certificate →</a></div>
+  </div>
+</section>
+
+<!-- ============ 12 HOOKS (form, no submit handler) ============ -->
+<section id="hooks">
+  <h2>Pre-Commit Hook Simulator</h2>
+  <div class="tag">Validated entirely by CSS <code>:has()</code>, <code>:user-invalid</code> and <code>:placeholder-shown</code>. Nothing is sent anywhere.</div>
+  <form class="card fake-form" action="#hooks" method="get">
+    <label>commit message
+      <input id="commit-msg" type="text" placeholder="e.g. fix" autocomplete="off">
+    </label>
+    <label>branch name (lowercase, dashes)
+      <input type="text" pattern="[a-z0-9\-]+" placeholder="feature/cool-thing" required list="branches">
+      <datalist id="branches"><option value="main"><option value="fix-final-2-real"><option value="please-work"><option value="yolo"></datalist>
+    </label>
+    <label>blame target
+      <select><option>yourself</option><option>the intern</option><option>the tanuki</option><option>Mercury in retrograde</option></select>
+    </label>
+    <output class="verdict" aria-live="polite"></output>
+  </form>
+</section>
+
+<!-- ============ 13 FAQ ============ -->
+<section id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="stack">
+    <details name="faq"><summary>Is it pronounced "git" or "jit"?</summary><p>It is pronounced like a sigh.</p></details>
+    <details name="faq"><summary>What's the difference between merge and rebase?</summary><p>Merge is telling the truth. Rebase is rewriting history so it looks like you always knew what you were doing.</p></details>
+    <details name="faq"><summary>I committed my password. What do I do?</summary><p>Change the password. Then move to a new town.</p></details>
+    <details name="faq"><summary>Can I undo a commit?</summary><p>Yes. There are nineteen ways, and each undoes something slightly different.</p></details>
+    <details name="faq"><summary>GitHub or GitLab?</summary><p>Yes.</p></details>
+    <details name="faq"><summary>What languages is this site written in?</summary><p>HTML, CSS, SVG, SMIL, MathML, XML, XSLT (see the <a href="feed.xml">changelog feed</a>), JSON (<a href="manifest.webmanifest">manifest</a>), iCalendar (<a href="events.ics">holidays</a>), Markdown (README.md) and plain text (<a href="humans.txt">humans.txt</a>). JavaScript was not invited.</p></details>
+    <details name="faq"><summary>Why is there no JavaScript?</summary><p>It was in a separate branch. That branch was never merged.</p>
+      <p><button class="pop" popovertarget="conflict">view the merge conflict</button></p></details>
+  </div>
+
+  <!-- iframe srcdoc: a whole second HTML document, still zero JS -->
+  <iframe class="embed" title="A tiny README embedded via srcdoc" sandbox srcdoc="<!DOCTYPE html><html><body style='margin:0;padding:18px;font:14px/1.6 Consolas,monospace;background:#0d1117;color:#c9d1d9'><h3 style='margin:0 0 8px;color:#58a6ff'>README.md</h3><p># somethingchan</p><p>A field guide nobody asked for.</p><p>## Installation<br>1. Don't.<br>2. If you must: open index.html.</p><p>## Contributing<br>PRs welcome. PRs containing &amp;lt;script&amp;gt; will be closed with prejudice.</p></body></html>"></iframe>
+
+  <blockquote class="card" style="margin:24px 0 0;border-left:4px solid var(--git);font-style:italic">"I have been in a detached HEAD state since 2019 and honestly I've never been more at peace."
+    <footer class="tag" style="font-style:normal;margin-top:8px">— anonymous contributor, via <cite>git blame</cite></footer></blockquote>
+</section>
+
+</main>
+
+<!-- native popover, opened by popovertarget — no JS -->
+<div id="conflict" popover>error: could not merge branch 'javascript'
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<span class="a">&lt;!-- pure html. pure css. pure peace. --&gt;</span>
+=======
+<span class="b">&lt;script&gt;alert("hello")&lt;/script&gt;</span>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; javascript
+
+Resolved: kept HEAD. Branch deleted.
+<button class="pop" popovertarget="conflict" popovertargetaction="hide">[ git merge --abort ]</button></div>
+
+<footer class="site">
+  © somethingchan · no branches were harmed · 0 lines of JavaScript · last commit: "ok actually final"
+  <br><a href="support.html">support &amp; source</a> · <a href="lab.html">lab</a> · <a href="game.html">dungeon</a> · <a href="events.ics">holidays (.ics)</a> · <a href="feed.xml">changelog (XSLT)</a> · <a href="sitemap.xml">sitemap</a> · <a href="humans.txt">humans.txt</a>
+  <p class="tiny">source code is on my github under my repo: somethingchan, and pls donate! <a href="https://kaieklund.vercel.app/" rel="noopener">https://kaieklund.vercel.app/</a></p>
+</footer>
+</body>
+</html>
